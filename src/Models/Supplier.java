@@ -1,6 +1,8 @@
 package Models;
 
-public class Supplier
+import java.io.Serializable;
+
+public class Supplier implements Serializable
 {
     private int id;
     private String companyName;

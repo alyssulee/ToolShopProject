@@ -1,10 +1,11 @@
 package Models;
 
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
 import java.util.HashSet;
 
-public class Order
+public class Order implements Serializable
 {
     private HashSet<OrderLine> orderLines = new HashSet<>();
     private Date orderDate;

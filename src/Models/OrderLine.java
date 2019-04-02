@@ -1,6 +1,8 @@
 package Models;
 
-public class OrderLine
+import java.io.Serializable;
+
+public class OrderLine implements Serializable
 {
     private int toolId;
     private int supplierId;
