@@ -1,3 +1,5 @@
+package Model;
+
 public class Supplier
 {
     private int id;
