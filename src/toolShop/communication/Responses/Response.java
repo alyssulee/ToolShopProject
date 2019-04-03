@@ -2,9 +2,9 @@ package toolShop.communication.Responses;
 
 import toolShop.communication.Message;
 
-public class Response extends Message
+public abstract class Response extends Message
 {
-    public Response(int discriminator)
+    Response(int discriminator)
     {
         super(discriminator);
     }
