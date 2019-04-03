@@ -53,15 +53,6 @@ public class LinkedInventoryService implements InventoryService
     }
 
     @Override
-    public Optional<Integer> getToolQuantity(int toolId)
-    {
-        Optional<Tool> optional = toolRepository.getTool(toolId);
-        if (!optional.isPresent()) return Optional.empty();
-        Tool tool = optional.get();
-        return Optional.of(tool.getQuantity());
-    }
-
-    @Override
     public Iterable<Tool> getAllTools()
     {
         return toolRepository.getAllTools();

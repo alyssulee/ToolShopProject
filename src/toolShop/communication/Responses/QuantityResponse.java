@@ -1,21 +1,25 @@
 package toolShop.communication.Responses;
 
+import com.sun.istack.internal.Nullable;
+
 public class QuantityResponse extends Response
 {
-    private int quantity;
+    @Nullable
+    private Integer quantity;
 
-    public QuantityResponse(int quantity)
+    public QuantityResponse(@Nullable Integer quantity)
     {
         super(203);
         this.quantity = quantity;
     }
 
-    public int getQuantity()
+    @Nullable
+    public Integer getQuantity()
     {
         return quantity;
     }
 
-    public void setQuantity(int quantity)
+    public void setQuantity(@Nullable Integer quantity)
     {
         this.quantity = quantity;
     }

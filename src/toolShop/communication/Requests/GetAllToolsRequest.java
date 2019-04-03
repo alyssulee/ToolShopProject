@@ -4,6 +4,6 @@ public class GetAllToolsRequest extends Request
 {
     public GetAllToolsRequest()
     {
-        super(105);
+        super(104);
     }
 }

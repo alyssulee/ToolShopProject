@@ -7,7 +7,7 @@ public class ReduceToolQuantityRequest extends Request
 
     public ReduceToolQuantityRequest(int toolId, int quantity)
     {
-        super(106);
+        super(105);
         this.toolId = toolId;
         this.quantity = quantity;
     }

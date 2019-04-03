@@ -14,8 +14,6 @@ public interface InventoryService
 
     Iterable<Tool> getToolsWithName(String toolName);
 
-    Optional<Integer> getToolQuantity(int toolId);
-
     Iterable<Tool> getAllTools();
 
     boolean reduceToolQuantity(int toolId, int quantity);
