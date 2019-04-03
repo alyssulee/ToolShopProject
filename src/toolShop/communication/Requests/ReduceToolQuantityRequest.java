@@ -1,4 +1,4 @@
-package Communication.Requests;
+package toolShop.communication.Requests;
 
 public class ReduceToolQuantityRequest extends Request
 {

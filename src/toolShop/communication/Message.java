@@ -1,4 +1,4 @@
-package Communication;
+package toolShop.communication;
 
 import java.io.Serializable;
 

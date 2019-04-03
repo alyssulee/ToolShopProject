@@ -1,6 +1,6 @@
-package Communication.Requests;
+package toolShop.communication.Requests;
 
-import Communication.Message;
+import toolShop.communication.Message;
 
 public abstract class Request extends Message
 {

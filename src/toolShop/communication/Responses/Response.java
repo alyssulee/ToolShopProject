@@ -1,6 +1,6 @@
-package Communication.Responses;
+package toolShop.communication.Responses;
 
-import Communication.Message;
+import toolShop.communication.Message;
 
 public class Response extends Message
 {

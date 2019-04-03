@@ -1,4 +1,4 @@
-package Models;
+package toolShop.models;
 
 import java.io.Serializable;
 import java.util.Collection;

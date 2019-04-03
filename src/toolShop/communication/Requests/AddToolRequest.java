@@ -1,6 +1,6 @@
-package Communication.Requests;
+package toolShop.communication.Requests;
 
-import Models.Tool;
+import toolShop.models.Tool;
 
 public class AddToolRequest extends Request
 {

@@ -1,6 +1,6 @@
-package Repositories;
+package toolShop.repositories;
 
-import Models.Supplier;
+import toolShop.models.Supplier;
 
 import java.util.Optional;
 
