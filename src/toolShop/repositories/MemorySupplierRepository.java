@@ -17,9 +17,21 @@ public class MemorySupplierRepository implements SupplierRepository
     }
 
     @Override
+    public void removeSupplier(Supplier supplier)
+    {
+        suppliers.remove(supplier);
+    }
+
+    @Override
     public Optional<Supplier> getSupplier(int id)
     {
         return suppliers.stream().filter(s -> s.getId() == id).findFirst();
+    }
+
+    @Override
+    public Iterable<Supplier> getAllSuppliers()
+    {
+        return suppliers;
     }
 
     @Override

@@ -18,9 +18,21 @@ public class MemoryToolRepository implements ToolRepository
     }
 
     @Override
+    public void removeTool(Tool tool)
+    {
+        tools.remove(tool);
+    }
+
+    @Override
     public Optional<Tool> getTool(int id)
     {
         return tools.stream().filter(t -> t.getId() == id).findFirst();
+    }
+
+    @Override
+    public Iterable<Tool> getAllTools()
+    {
+        return tools;
     }
 
     @Override
