@@ -11,11 +11,11 @@ import toolShop.models.Tool;
 import java.util.ArrayList;
 import java.util.Optional;
 
-public class ClientRequestHandeler implements RequestHandler
+public class ClientRequestHandler implements RequestHandler
 {
     private InventoryService inventory;
 
-    public ClientRequestHandeler(InventoryService inventory)
+    public ClientRequestHandler(InventoryService inventory)
     {
         this.inventory = inventory;
     }
