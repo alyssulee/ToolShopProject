@@ -1,7 +1,7 @@
 package toolShop.server;
 
-import toolShop.communication.Requests.Request;
-import toolShop.communication.Responses.Response;
+import toolShop.communication.requests.Request;
+import toolShop.communication.responses.Response;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;

@@ -1,12 +1,12 @@
-package toolShop.communication.requests;
+package toolShop.communication.Requests;
 
-public class GetToolByIdRequest extends Request
+public class RemoveToolRequest extends Request
 {
     private int toolId;
 
-    public GetToolByIdRequest(int toolId)
+    public RemoveToolRequest(int toolId)
     {
-        super(102);
+        super(101);
         this.toolId = toolId;
     }
 

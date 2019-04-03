@@ -1,4 +1,4 @@
-package toolShop.communication.responses;
+package toolShop.communication.Responses;
 
 import com.sun.istack.internal.Nullable;
 import toolShop.models.Tool;

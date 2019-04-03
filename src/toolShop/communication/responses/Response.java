@@ -1,4 +1,4 @@
-package toolShop.communication.responses;
+package toolShop.communication.Responses;
 
 import toolShop.communication.Message;
 

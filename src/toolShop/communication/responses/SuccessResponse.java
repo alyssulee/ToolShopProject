@@ -1,4 +1,4 @@
-package toolShop.communication.responses;
+package toolShop.communication.Responses;
 
 public class SuccessResponse extends Response
 {

@@ -1,4 +1,4 @@
-package toolShop.communication.requests;
+package toolShop.communication.Requests;
 
 public class GetAllToolsRequest extends Request
 {

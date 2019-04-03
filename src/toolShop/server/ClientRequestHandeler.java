@@ -1,11 +1,11 @@
 package toolShop.server;
 
 import toolShop.InventoryService;
-import toolShop.communication.Requests.*;
-import toolShop.communication.Responses.Response;
-import toolShop.communication.Responses.SuccessResponse;
-import toolShop.communication.Responses.ToolResponse;
-import toolShop.communication.Responses.ToolsResponse;
+import toolShop.communication.requests.*;
+import toolShop.communication.responses.Response;
+import toolShop.communication.responses.SuccessResponse;
+import toolShop.communication.responses.ToolResponse;
+import toolShop.communication.responses.ToolsResponse;
 import toolShop.models.Tool;
 
 import java.util.ArrayList;
