@@ -1,6 +1,9 @@
+import toolShop.models.Tool;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.sql.*;
+import java.util.ArrayList;
 
 /**
  * Database containing information pertaining to a shop's suppliers and tools.
@@ -131,6 +134,34 @@ public class DataBase
         {
             e.printStackTrace();
         }
+    }
+
+    /**
+     * Returns an ArrayList of all tools in the database
+     *
+     * @return - ArrayList of tools
+     */
+    public ArrayList<Tool> getToolList()
+    {
+        ArrayList<Tool> toolList = new ArrayList<>();
+        try
+        {
+            resultSet = statement.executeQuery("select * from tool");
+            while (resultSet.next())
+            {
+                int id = resultSet.getInt("toolID");
+                String name = resultSet.getString("toolName");
+                int quantity = resultSet.getInt("toolQuantity");
+                int price = resultSet.getInt("toolPrice");
+                int supplierID = resultSet.getInt("supplierID");
+                resultSet.getRow();
+                toolList.add(new Tool(id, name, quantity, price, supplierID));
+            }
+        } catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
+        return toolList;
     }
 
     /**
@@ -275,5 +306,11 @@ public class DataBase
         dataBase.readSuppliersFile();
         //dataBase.insertTool(1, "the", 1, 2, 3);
         //dataBase.deleteTool(1);
+        //dataBase.close();
+        ArrayList<Tool> list = dataBase.getToolList();
+        for (Tool t : list)
+        {
+            System.out.println(t);
+        }
     }
 }
