@@ -24,7 +24,7 @@ public class ClientController
         view.setDecreaseQuantityAcceptActionListener(new decreaseQuantityAcceptActionListener());
         view.setCheckQuantityAcceptActionListener(new checkQuantityAcceptActionListener());
         view.setSearchNameAcceptActionListener(new searchNameAcceptActionListener());
-        view.setSearcIDAcceptActionListener(new searchIDAcceptActionListener());
+        view.setSearchIDAcceptActionListener(new searchIDAcceptActionListener());
         view.setListToolsActionListener(new listToolsActionListener());
     }
 
