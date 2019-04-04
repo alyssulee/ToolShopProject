@@ -536,13 +536,13 @@ public class GUI extends javax.swing.JFrame
         searchNameAccept.setFont(new java.awt.Font("Trebuchet MS", 1, 16)); // NOI18N
         searchNameAccept.setText("Search");
         searchNameAccept.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        searchNameAccept.addActionListener(new java.awt.event.ActionListener()
+        /*searchNameAccept.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
                 searchNameAcceptActionPerformed(evt);
             }
-        });
+        });*/
 
         searchNameCancel.setFont(new java.awt.Font("Trebuchet MS", 1, 16)); // NOI18N
         searchNameCancel.setText("Cancel");
@@ -694,13 +694,13 @@ public class GUI extends javax.swing.JFrame
         checkQuantityAccept.setFont(new java.awt.Font("Trebuchet MS", 1, 16)); // NOI18N
         checkQuantityAccept.setText("Search");
         checkQuantityAccept.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        checkQuantityAccept.addActionListener(new java.awt.event.ActionListener()
+        /*checkQuantityAccept.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
                 checkQuantityAcceptActionPerformed(evt);
             }
-        });
+        });*/
 
         checkQuantityCancel.setFont(new java.awt.Font("Trebuchet MS", 1, 16)); // NOI18N
         checkQuantityCancel.setText("Cancel");
@@ -770,13 +770,13 @@ public class GUI extends javax.swing.JFrame
         decreaseQuantityAccept.setFont(new java.awt.Font("Trebuchet MS", 1, 16)); // NOI18N
         decreaseQuantityAccept.setText("Decrease by Amount");
         decreaseQuantityAccept.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        decreaseQuantityAccept.addActionListener(new java.awt.event.ActionListener()
+       /* decreaseQuantityAccept.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
                 decreaseQuantityAcceptActionPerformed(evt);
             }
-        });
+        });*/
 
         decreaseQuantityCancel.setFont(new java.awt.Font("Trebuchet MS", 1, 16)); // NOI18N
         decreaseQuantityCancel.setText("Done");
@@ -792,13 +792,13 @@ public class GUI extends javax.swing.JFrame
         amountToDecreaseField.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         amountToDecreaseField.setEditable(false);
         amountToDecreaseField.setText("1");
-        amountToDecreaseField.addActionListener(new java.awt.event.ActionListener()
+/*        amountToDecreaseField.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
                 amountToDecreaseFieldActionPerformed(evt);
             }
-        });
+        });*/
 
         increaseAmount.setLabel("+");
         increaseAmount.addActionListener(new java.awt.event.ActionListener()
@@ -1045,13 +1045,13 @@ public class GUI extends javax.swing.JFrame
         listToolsCustomer.setText("List All Tools");
         listToolsCustomer.setToolTipText("Display all tools currently in inventory");
         listToolsCustomer.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        listToolsCustomer.addActionListener(new java.awt.event.ActionListener()
+       /* listToolsCustomer.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
                 listToolsCustomerActionPerformed(evt);
             }
-        });
+        });*/
 
         buyItem.setFont(new java.awt.Font("Trebuchet MS", 1, 16)); // NOI18N
         buyItem.setText("Buy Item");
@@ -1160,13 +1160,13 @@ public class GUI extends javax.swing.JFrame
         buyAmountAccept.setFont(new java.awt.Font("Trebuchet MS", 1, 16)); // NOI18N
         buyAmountAccept.setText("Buy Amount");
         buyAmountAccept.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        buyAmountAccept.addActionListener(new java.awt.event.ActionListener()
+        /*buyAmountAccept.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
                 buyAmountAcceptActionPerformed(evt);
             }
-        });
+        });*/
 
         buyAmountCancel.setFont(new java.awt.Font("Trebuchet MS", 1, 16)); // NOI18N
         buyAmountCancel.setText("Done");
@@ -1463,6 +1463,7 @@ public class GUI extends javax.swing.JFrame
         addOwnerLoginMenu.setVisible(true);
     }
 
+/*
     private void searchNameAcceptActionPerformed(java.awt.event.ActionEvent evt)
     {
         String nameToSearch = nameTextArea.getText();
@@ -1470,6 +1471,7 @@ public class GUI extends javax.swing.JFrame
         nameTextArea.setText("");
         searchByNameDialog.setVisible(false);
     }
+*/
 
     private void searchNameCancelActionPerformed(java.awt.event.ActionEvent evt)
     {
@@ -1491,7 +1493,7 @@ public class GUI extends javax.swing.JFrame
         searchByIDDialog.setVisible(false);
     }
 
-    private void checkQuantityAcceptActionPerformed(java.awt.event.ActionEvent evt)
+  /*  private void checkQuantityAcceptActionPerformed(java.awt.event.ActionEvent evt)
     {
         String input = idTextArea.getText();
 
@@ -1499,7 +1501,7 @@ public class GUI extends javax.swing.JFrame
         {
             int id = Integer.parseInt(input);
             //Lookup tool by id
-            /*
+            *//*
             Tool theTool = theShop.getTool(id);
             if (theTool != null) {
                 System.out.println("Tool found.\nStock: " + theTool.getQuantity() + "\n");
@@ -1507,23 +1509,23 @@ public class GUI extends javax.swing.JFrame
             } else {
                 System.out.println("This tool could not be found.\n");
             }
-            */
+            *//*
         } catch (java.lang.NumberFormatException string)
         {
             //Lookup tool by name
-            /*Tool theTool = theShop.getTool(in);
+            *//*Tool theTool = theShop.getTool(in);
             if (theTool != null) {
                 System.out.println("Tool found.\nStock: " + theTool.getQuantity() + "\n");
                 theShop.checkStock(theTool);
             } else {
                 System.out.println("This tool could not be found.\n");
             }
-            */
+            *//*
 
         }
         idTextArea.setText("");
         checkQuantityDialog.setVisible(false);
-    }
+    }*/
 
     private void checkQuantityCancelActionPerformed(java.awt.event.ActionEvent evt)
     {
@@ -1531,7 +1533,7 @@ public class GUI extends javax.swing.JFrame
         checkQuantityDialog.setVisible(false);
     }
 
-    private void decreaseQuantityAcceptActionPerformed(java.awt.event.ActionEvent evt)
+/*    private void decreaseQuantityAcceptActionPerformed(java.awt.event.ActionEvent evt)
     {
         String input = idTextArea.getText();
 
@@ -1539,7 +1541,7 @@ public class GUI extends javax.swing.JFrame
         {
             int id = Integer.parseInt(input);
             //Lookup tool by id
-            /*
+            *//*
             Tool theTool = theShop.getTool(id);
             if (theTool != null) {
                 System.out.println("Tool found.\nStock: " + theTool.getQuantity() + "\n");
@@ -1547,23 +1549,23 @@ public class GUI extends javax.swing.JFrame
             } else {
                 System.out.println("This tool could not be found.\n");
             }
-            */
+            *//*
         } catch (java.lang.NumberFormatException string)
         {
             //Lookup tool by name
-            /*Tool theTool = theShop.getTool(in);
+            *//*Tool theTool = theShop.getTool(in);
             if (theTool != null) {
                 System.out.println("Tool found.\nStock: " + theTool.getQuantity() + "\n");
                 theShop.checkStock(theTool);
             } else {
                 System.out.println("This tool could not be found.\n");
             }
-            */
+            *//*
 
         }
         decreaseTextArea.setText("");
         decreaseQuantityDialog.setVisible(false);
-    }
+    }*/
 
     private void decreaseQuantityCancelActionPerformed(java.awt.event.ActionEvent evt)
     {
@@ -1571,12 +1573,12 @@ public class GUI extends javax.swing.JFrame
         decreaseQuantityDialog.setVisible(false);
     }
 
-    private void amountToDecreaseFieldActionPerformed(java.awt.event.ActionEvent evt)
+   /* private void amountToDecreaseFieldActionPerformed(java.awt.event.ActionEvent evt)
     {
         int amountToDecrease = Integer.parseInt(amountToDecreaseField.getText());
         //Decrease stock by this amount
         decreaseQuantityDialog.setVisible(false);
-    }
+    }*/
 
     private void increaseAmountActionPerformed(java.awt.event.ActionEvent evt)
     {
@@ -1615,14 +1617,14 @@ public class GUI extends javax.swing.JFrame
         searchByNameDialog.setBounds(((int) screenSize.getWidth() - 404) / 2, ((int) screenSize.getHeight() - 160) / 2, 404, 180);
         searchByNameDialog.setVisible(true);
     }
-
+/*
     private void listToolsCustomerActionPerformed(java.awt.event.ActionEvent evt)
     {
         //List tools for customer display
         customerDisplay.setText("");
         //For xxx
         //customerDisplay.append(xxx);
-    }
+    }*/
 
     private void buyItemActionPerformed(java.awt.event.ActionEvent evt)
     {
@@ -1669,10 +1671,40 @@ public class GUI extends javax.swing.JFrame
         amountToBuyField.setText(Integer.toString(amount));
     }
 
-    public void setListToolsOwnerActionListener(ActionListener listener)
+
+    //Set ActionListeners
+    public void setListToolsActionListener(ActionListener listener)
     {
+        listToolsCustomer.addActionListener(listener);
         listToolsOwner.addActionListener(listener);
     }
+
+    public void setSearchNameAcceptActionListener(ActionListener listener)
+    {
+        searchNameAccept.addActionListener(listener);
+
+    }
+
+    public void setSearcIDAcceptActionListener(ActionListener listener)
+    {
+        searchIDAccept.addActionListener(listener);
+    }
+
+    public void setBuyAmountAcceptActionListener(ActionListener listener)
+    {
+        buyAmountAccept.addActionListener(listener);
+    }
+
+    public void setDecreaseQuantityAcceptActionListener(ActionListener listener)
+    {
+        decreaseQuantityAccept.addActionListener(listener);
+    }
+
+    public void setCheckQuantityAcceptActionListener(ActionListener listener)
+    {
+        checkQuantityAccept.addActionListener(listener);
+    }
+
 
     /**
      * @param args the command line arguments
@@ -1836,5 +1868,75 @@ public class GUI extends javax.swing.JFrame
     public JTextArea getOwnerDisplay()
     {
         return ownerDisplay;
+    }
+
+    public String getAmountToBuyText()
+    {
+        return amountToBuyField.getText();
+    }
+
+    public String getBuyTextAreaText()
+    {
+        return buyTextArea.getText();
+    }
+
+    public JDialog getBuyItemDialog()
+    {
+        return buyItemDialog;
+    }
+
+    public String getAmountToDecreaseText()
+    {
+        return amountToDecreaseField.getText();
+    }
+
+    public JTextArea getDecreaseTextArea()
+    {
+        return decreaseTextArea;
+    }
+
+    public JDialog getDecreaseQuantityDialog()
+    {
+        return decreaseQuantityDialog;
+    }
+
+    public JTextArea getQuantityTextArea()
+    {
+        return quantityTextArea;
+    }
+
+    public JDialog getCheckQuantityDialog()
+    {
+        return checkQuantityDialog;
+    }
+
+    public JTextArea getNameTextArea()
+    {
+        return nameTextArea;
+    }
+
+    public JDialog getSearchByIDDialog()
+    {
+        return searchByIDDialog;
+    }
+
+    public JDialog getSearchByNameDialog()
+    {
+        return searchByNameDialog;
+    }
+
+    public JTextArea getIdTextArea()
+    {
+        return idTextArea;
+    }
+
+    public JTextArea getCustomerDisplay()
+    {
+        return customerDisplay;
+    }
+
+    public JButton getListToolsOwner()
+    {
+        return listToolsOwner;
     }
 }

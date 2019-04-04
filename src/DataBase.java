@@ -275,6 +275,5 @@ public class DataBase
         dataBase.readSuppliersFile();
         //dataBase.insertTool(1, "the", 1, 2, 3);
         //dataBase.deleteTool(1);
-
     }
 }
