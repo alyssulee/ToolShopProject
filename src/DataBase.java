@@ -10,7 +10,6 @@ import java.util.ArrayList;
  */
 public class DataBase
 {
-
     /**
      * Used to establish a connection to the database
      */
@@ -294,6 +293,44 @@ public class DataBase
         }
     }
 
+    private void createUsersTable()
+    {
+        try
+        {
+            DatabaseMetaData meta = connect.getMetaData();
+            ResultSet rs = meta.getTables(null, null, "user", null);
+            if (rs.next() == false)
+            {
+                String query = "CREATE TABLE tool (username VARCHAR(255) not NULL, password VARCHAR(255) not NULL, "
+                        + " PRIMARY KEY (username))";
+                statement.executeUpdate(query);
+                insertUser("admin", "password");
+            }
+        } catch (SQLException e)
+        {
+            e.printStackTrace();
+            System.out.println("Could not create table");
+        }
+    }
+
+    private void insertUser(String username, String password)
+    {
+        try
+        {
+            String query = "INSERT INTO user (username, password)"
+                    + "values(?, ?)";
+            PreparedStatement pState = connect.prepareStatement(query);
+            pState.setString(1, username);
+            pState.setString(2, password);
+            pState.executeUpdate();
+            System.out.println("User added successfully");
+            pState.close();
+        } catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
+    }
+
     public static void main(String[] args)
     {
         DataBase dataBase = new DataBase();
@@ -307,10 +344,10 @@ public class DataBase
         //dataBase.insertTool(1, "the", 1, 2, 3);
         //dataBase.deleteTool(1);
         //dataBase.close();
-        ArrayList<Tool> list = dataBase.getToolList();
+        /*ArrayList<Tool> list = dataBase.getToolList();
         for (Tool t : list)
         {
             System.out.println(t);
-        }
+        }*/
     }
 }

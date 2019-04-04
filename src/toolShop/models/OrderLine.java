@@ -55,4 +55,11 @@ public class OrderLine implements Serializable
     {
         this.quantity = quantity;
     }
+
+    public String toString()
+    {
+        return ", Tool ID: " + toolId + "\n" +
+                "Order Quantity: " + quantity + "\n"
+                + "Supplier ID: " + supplierId + "\n";
+    }
 }
