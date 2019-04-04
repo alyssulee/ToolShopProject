@@ -155,7 +155,6 @@ public class ClientController
             //theShop.checkStock(theTool);
             view.getDecreaseTextArea().setText("");
             view.getDecreaseQuantityDialog().setVisible(false);
-
         }
     }
 
