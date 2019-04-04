@@ -1,5 +1,7 @@
 package toolShop.client;
 
+import toolShop.InventoryService;
+
 import java.io.IOException;
 import java.net.Socket;
 
@@ -46,7 +48,22 @@ public class Client
      */
     public void start() throws IOException {
         connection = establishConnection(host, port);
-        // --------
+        System.out.println("Connected to server.");
+
+        InventoryService inventory = new ServerInventoryService(connection);
+
+//        inventory.addTool(new Tool(1, "Hammer", 100, 20.0, 0));
+//        inventory.addTool(new Tool(2, "Chainsaw", 10, 150.0, 0));
+//        inventory.addTool(new Tool(3, "Nails", 75, 5.0, 0));
+//        inventory.addTool(new Tool(50, "Chainsaw", 1, 2000.0, 0));
+//
+//        boolean success = inventory.reduceToolQuantity(1, 90);
+//
+//        Iterable<Tool> duplicates = inventory.getToolsWithName("Chainsaw");
+//
+//        ArrayList<Tool> tools = new ArrayList<>();
+//        inventory.getAllTools().forEach(tools::add);
+
         connection.close();
     }
 
@@ -58,8 +75,6 @@ public class Client
 
         socket = new Socket(host, port);
 
-        ServerConnection connection = new ServerConnection(socket);
-        System.out.println("Connected to server.");
-        return connection;
+        return new ServerConnection(socket);
     }
 }

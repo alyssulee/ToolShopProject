@@ -69,8 +69,6 @@ public class Server
         while (true)
         {
             Socket socket = serverSocket.accept();
-            System.out.println("Client connected. Beginning session.");
-
             createSession(socket);
         }
     }
@@ -85,6 +83,7 @@ public class Server
 
         ClientSession session = new ClientSession(connection, requestHandler);
 
+        System.out.println("Client connected.");
         executorService.execute(session);
     }
 }
