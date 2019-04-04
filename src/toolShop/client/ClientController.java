@@ -20,18 +20,25 @@ public class ClientController
         view.setVisible(true);
 
         //setActionListeners of buttons relating to inventory
-        view.setBuyAmountAcceptActionListener(new BuyAmountAcceptActionListener());
+        view.getListToolsCustomer().addActionListener(new ListToolsActionListener());
+        view.getListToolsOwner().addActionListener(new ListToolsActionListener());
+        view.getSearchNameAccept().addActionListener(new SearchNameAcceptActionListener());
+        view.getSearchIDAccept().addActionListener(new SearchNameAcceptActionListener());
+        view.getBuyAmountAccept().addActionListener(new BuyAmountAcceptActionListener());
+        view.getDecreaseQuantityAccept().addActionListener(new DecreaseQuantityAcceptActionListener());
+
+        /*view.setBuyAmountAcceptActionListener(new BuyAmountAcceptActionListener());
         view.setDecreaseQuantityAcceptActionListener(new decreaseQuantityAcceptActionListener());
         view.setCheckQuantityAcceptActionListener(new checkQuantityAcceptActionListener());
         view.setSearchNameAcceptActionListener(new searchNameAcceptActionListener());
         view.setSearchIDAcceptActionListener(new searchIDAcceptActionListener());
-        view.setListToolsActionListener(new listToolsActionListener());
+        view.setListToolsActionListener(new listToolsActionListener());*/
     }
 
     /**
      * ActionListener for Customer and Shop Owner "List all Tools" button
      */
-    class listToolsActionListener implements ActionListener
+    class ListToolsActionListener implements ActionListener
     {
         @Override
         public void actionPerformed(ActionEvent e)
@@ -69,7 +76,7 @@ public class ClientController
     /**
      * ActionListener for Shop Owner and Customer "Search by Name" button
      */
-    class searchNameAcceptActionListener implements ActionListener
+    class SearchNameAcceptActionListener implements ActionListener
     {
 
         @Override
@@ -87,7 +94,7 @@ public class ClientController
     /**
      * ActionListener for Shop Owner "Search by Name" button
      */
-    class searchIDAcceptActionListener implements ActionListener
+    class SearchIDAcceptActionListener implements ActionListener
     {
 
         @Override
@@ -112,7 +119,7 @@ public class ClientController
     /**
      * ActionListener for Shop Owner "Check Quantity" button
      */
-    class checkQuantityAcceptActionListener implements ActionListener
+    class CheckQuantityAcceptActionListener implements ActionListener
     {
         @Override
         public void actionPerformed(ActionEvent e)
@@ -136,12 +143,12 @@ public class ClientController
     /**
      * ActionListener for Shop Owner decrease by amount button
      */
-    class decreaseQuantityAcceptActionListener implements ActionListener
+    class DecreaseQuantityAcceptActionListener implements ActionListener
     {
         @Override
         public void actionPerformed(ActionEvent e)
         {
-            int amountToDecrease = Integer.parseInt(view.getAmountToDecreaseText());
+            int amountToDecrease = Integer.parseInt(view.getAmountToDecreaseField().getText());
             String toolInfo = view.getDecreaseTextArea().getText();
             try
             {
@@ -166,8 +173,8 @@ public class ClientController
         @Override
         public void actionPerformed(ActionEvent e)
         {
-            int amountToBuy = Integer.parseInt(view.getAmountToBuyText());
-            String itemName = view.getBuyTextAreaText();
+            int amountToBuy = Integer.parseInt(view.getAmountToBuyField().getText());
+            String itemName = view.getBuyTextArea().getText();
 
             //Decrease stock by this amount
             //inventory.reduceToolQuantity(inventory.getToolsWithName(itemName), amountToBuy);

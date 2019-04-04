@@ -53,18 +53,6 @@ public class Client
         InventoryService inventory = new ServerInventoryService(connection);
         ClientController controller = new ClientController(inventory, new GUI());
 
-//        inventory.addTool(new Tool(1, "Hammer", 100, 20.0, 0));
-//        inventory.addTool(new Tool(2, "Chainsaw", 10, 150.0, 0));
-//        inventory.addTool(new Tool(3, "Nails", 75, 5.0, 0));
-//        inventory.addTool(new Tool(50, "Chainsaw", 1, 2000.0, 0));
-//
-//        boolean success = inventory.reduceToolQuantity(1, 90);
-//
-//        Iterable<Tool> duplicates = inventory.getToolsWithName("Chainsaw");
-//
-//        ArrayList<Tool> tools = new ArrayList<>();
-//        inventory.getAllTools().forEach(tools::add);
-
         connection.close();
     }
 
