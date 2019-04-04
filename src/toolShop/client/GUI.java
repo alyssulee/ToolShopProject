@@ -6,8 +6,9 @@ package toolShop.client;
  * and open the template in the editor.
  */
 
-import java.awt.Toolkit;
-import java.awt.Dimension;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionListener;
 
 public class GUI extends javax.swing.JFrame
 {
@@ -360,13 +361,13 @@ public class GUI extends javax.swing.JFrame
         listToolsOwner.setText("List All Tools");
         listToolsOwner.setToolTipText("Display all tools currently in inventory");
         listToolsOwner.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        listToolsOwner.addActionListener(new java.awt.event.ActionListener()
+/*        listToolsOwner.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
                 listToolsOwnerActionPerformed(evt);
             }
-        });
+        });*/
 
         searchByID.setFont(new java.awt.Font("Trebuchet MS", 1, 16)); // NOI18N
         searchByID.setText("Search By ID");
@@ -1668,6 +1669,11 @@ public class GUI extends javax.swing.JFrame
         amountToBuyField.setText(Integer.toString(amount));
     }
 
+    public void setListToolsOwnerActionListener(ActionListener listener)
+    {
+        listToolsOwner.addActionListener(listener);
+    }
+
     /**
      * @param args the command line arguments
      */
@@ -1825,4 +1831,10 @@ public class GUI extends javax.swing.JFrame
     private javax.swing.JButton searchNameAccept;
     private javax.swing.JButton searchNameCancel;
     // End of variables declaration
+
+
+    public JTextArea getOwnerDisplay()
+    {
+        return ownerDisplay;
+    }
 }

@@ -51,6 +51,7 @@ public class Client
         System.out.println("Connected to server.");
 
         InventoryService inventory = new ServerInventoryService(connection);
+        ClientController controller = new ClientController(inventory, new GUI());
 
 //        inventory.addTool(new Tool(1, "Hammer", 100, 20.0, 0));
 //        inventory.addTool(new Tool(2, "Chainsaw", 10, 150.0, 0));
