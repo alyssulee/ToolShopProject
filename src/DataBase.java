@@ -8,8 +8,17 @@ import java.sql.*;
 public class DataBase
 {
 
+    /**
+     * Used to establish a connection to the database
+     */
     private Connection connect;
+    /**
+     * Represents table of data in the database
+     */
     private ResultSet resultSet;
+    /**
+     * Represents a SQL statement and used to execute queries
+     */
     private Statement statement;
 
     /**
@@ -28,6 +37,12 @@ public class DataBase
         }
     }
 
+    /**
+     * Sets the quantity of a tool in the database
+     *
+     * @param id          - Tool ID
+     * @param newQuantity - New tool quantity
+     */
     public void changeToolQuantity(int id, int newQuantity)
     {
         try
@@ -40,6 +55,11 @@ public class DataBase
         }
     }
 
+    /**
+     * Receives a tool ID and removes the tool from the database
+     *
+     * @param id - Tool ID
+     */
     public void deleteTool(int id)
     {
         String query = "DELETE FROM tool WHERE toolID = " + id;
