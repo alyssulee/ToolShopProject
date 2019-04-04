@@ -5,14 +5,21 @@ package toolShop.client;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 
 import java.awt.Toolkit;
 import java.awt.Dimension;
 
+/**
+ * @author rushf
+ */
 public class GUI extends javax.swing.JFrame
 {
     Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-
     /**
      * Creates new form GUI
      */
@@ -64,6 +71,8 @@ public class GUI extends javax.swing.JFrame
         printOrder = new javax.swing.JButton();
         logout = new javax.swing.JButton();
         addLogin = new javax.swing.JButton();
+        addTool = new javax.swing.JButton();
+        removeTool = new javax.swing.JButton();
         searchByNameDialog = new javax.swing.JDialog();
         jPanel8 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
@@ -130,6 +139,32 @@ public class GUI extends javax.swing.JFrame
         amountToBuyField = new java.awt.TextField();
         increaseBuy = new java.awt.Button();
         decreaseBuy = new java.awt.Button();
+        addItemDialog = new javax.swing.JDialog();
+        jPanel12 = new javax.swing.JPanel();
+        jLabel12 = new javax.swing.JLabel();
+        jScrollPane8 = new javax.swing.JScrollPane();
+        addToolNameArea = new javax.swing.JTextArea();
+        addToolButton = new javax.swing.JButton();
+        doneAddingTools = new javax.swing.JButton();
+        jScrollPane13 = new javax.swing.JScrollPane();
+        addToolIDArea = new javax.swing.JTextArea();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jScrollPane14 = new javax.swing.JScrollPane();
+        addToolStockArea = new javax.swing.JTextArea();
+        jScrollPane15 = new javax.swing.JScrollPane();
+        addToolPriceArea = new javax.swing.JTextArea();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        jScrollPane16 = new javax.swing.JScrollPane();
+        addToolSupplierIDArea = new javax.swing.JTextArea();
+        removeToolDialog = new javax.swing.JDialog();
+        jPanel18 = new javax.swing.JPanel();
+        jLabel23 = new javax.swing.JLabel();
+        jScrollPane17 = new javax.swing.JScrollPane();
+        removeItemArea = new javax.swing.JTextArea();
+        removeItemButton = new javax.swing.JButton();
+        removeItemDone = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         loginOwnerButton = new javax.swing.JButton();
         loginCustomerButton = new javax.swing.JButton();
@@ -440,6 +475,30 @@ public class GUI extends javax.swing.JFrame
             }
         });
 
+        addTool.setFont(new java.awt.Font("Trebuchet MS", 1, 16)); // NOI18N
+        addTool.setText("Add Tool");
+        addTool.setToolTipText("Check the quantity of an item based on name or ID");
+        addTool.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        addTool.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                addToolActionPerformed(evt);
+            }
+        });
+
+        removeTool.setFont(new java.awt.Font("Trebuchet MS", 1, 16)); // NOI18N
+        removeTool.setText("Remove Tool");
+        removeTool.setToolTipText("Check the quantity of an item based on name or ID");
+        removeTool.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        removeTool.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                removeToolActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
@@ -457,13 +516,20 @@ public class GUI extends javax.swing.JFrame
                                                                 .addComponent(checkQuantity, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                                         .addComponent(decreaseQuantity, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                         .addComponent(printOrder, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                        .addComponent(logout, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                        .addComponent(addLogin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                                        .addComponent(addTool, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                        .addComponent(removeTool, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 510, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addGroup(jPanel6Layout.createSequentialGroup()
+                                                                .addComponent(addLogin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                .addComponent(logout, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addGap(15, 15, 15))
+                                                        .addGroup(jPanel6Layout.createSequentialGroup()
+                                                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 510, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                                                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 830, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -494,17 +560,21 @@ public class GUI extends javax.swing.JFrame
                                                                 .addComponent(decreaseQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                                 .addGap(18, 18, 18)
                                                                 .addComponent(printOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addGap(18, 18, 18)
-                                                                .addComponent(addLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                                .addComponent(logout, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addGap(0, 14, Short.MAX_VALUE))))
+                                                                .addComponent(addTool, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                                .addComponent(removeTool, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addGap(0, 12, Short.MAX_VALUE))))
                                         .addGroup(jPanel6Layout.createSequentialGroup()
-                                                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                        .addComponent(jSeparator2)
-                                                        .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 484, Short.MAX_VALUE))
-                                                .addGap(0, 0, Short.MAX_VALUE)))
-                                .addGap(0, 0, Short.MAX_VALUE))
+                                                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addGroup(jPanel6Layout.createSequentialGroup()
+                                                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 424, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                                        .addComponent(addLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                        .addComponent(logout, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 482, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGap(0, 0, Short.MAX_VALUE))))
         );
 
         javax.swing.GroupLayout ownerClientMenuLayout = new javax.swing.GroupLayout(ownerClientMenu.getContentPane());
@@ -1258,6 +1328,230 @@ public class GUI extends javax.swing.JFrame
                         .addComponent(jPanel17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
+        jPanel12.setBackground(new java.awt.Color(238, 90, 90));
+        jPanel12.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        jLabel12.setFont(new java.awt.Font("Tahoma", 2, 16)); // NOI18N
+        jLabel12.setText("Tool Name: ");
+        jLabel12.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+
+        jScrollPane8.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane8.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+
+        addToolNameArea.setColumns(20);
+        addToolNameArea.setRows(5);
+        jScrollPane8.setViewportView(addToolNameArea);
+
+        addToolButton.setFont(new java.awt.Font("Trebuchet MS", 1, 16)); // NOI18N
+        addToolButton.setText("Add");
+        addToolButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        addToolButton.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                addToolButtonActionPerformed(evt);
+            }
+        });
+
+        doneAddingTools.setFont(new java.awt.Font("Trebuchet MS", 1, 16)); // NOI18N
+        doneAddingTools.setText("Done");
+        doneAddingTools.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        doneAddingTools.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                doneAddingToolsActionPerformed(evt);
+            }
+        });
+
+        jScrollPane13.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane13.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+
+        addToolIDArea.setColumns(20);
+        addToolIDArea.setRows(5);
+        jScrollPane13.setViewportView(addToolIDArea);
+
+        jLabel19.setFont(new java.awt.Font("Tahoma", 2, 16)); // NOI18N
+        jLabel19.setText("Tool ID: ");
+        jLabel19.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+
+        jLabel20.setFont(new java.awt.Font("Tahoma", 2, 16)); // NOI18N
+        jLabel20.setText("Stock:");
+        jLabel20.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+
+        jScrollPane14.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane14.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+
+        addToolStockArea.setColumns(20);
+        addToolStockArea.setRows(5);
+        jScrollPane14.setViewportView(addToolStockArea);
+
+        jScrollPane15.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane15.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+
+        addToolPriceArea.setColumns(20);
+        addToolPriceArea.setRows(5);
+        jScrollPane15.setViewportView(addToolPriceArea);
+
+        jLabel21.setFont(new java.awt.Font("Tahoma", 2, 16)); // NOI18N
+        jLabel21.setText("Price: ");
+        jLabel21.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+
+        jLabel22.setText("SupplierID:");
+
+        jScrollPane16.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane16.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+
+        addToolSupplierIDArea.setColumns(20);
+        addToolSupplierIDArea.setRows(5);
+        jScrollPane16.setViewportView(addToolSupplierIDArea);
+
+        javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
+        jPanel12.setLayout(jPanel12Layout);
+        jPanel12Layout.setHorizontalGroup(
+                jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel12Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(jPanel12Layout.createSequentialGroup()
+                                                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                        .addComponent(doneAddingTools, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                        .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                        .addComponent(jLabel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                        .addComponent(jLabel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                                        .addGroup(jPanel12Layout.createSequentialGroup()
+                                                .addComponent(jLabel22)
+                                                .addGap(17, 17, 17)))
+                                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jScrollPane16)
+                                        .addComponent(jScrollPane15)
+                                        .addComponent(jScrollPane14)
+                                        .addComponent(jScrollPane13)
+                                        .addComponent(addToolButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel12Layout.createSequentialGroup()
+                                                .addGap(0, 0, Short.MAX_VALUE)
+                                                .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addContainerGap())
+        );
+        jPanel12Layout.setVerticalGroup(
+                jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel12Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel12)
+                                        .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jScrollPane13, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel19))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jScrollPane14, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel20))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jScrollPane15, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel21))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jScrollPane16, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel22))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(addToolButton, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
+                                        .addComponent(doneAddingTools, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout addItemDialogLayout = new javax.swing.GroupLayout(addItemDialog.getContentPane());
+        addItemDialog.getContentPane().setLayout(addItemDialogLayout);
+        addItemDialogLayout.setHorizontalGroup(
+                addItemDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jPanel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        addItemDialogLayout.setVerticalGroup(
+                addItemDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+
+        jPanel18.setBackground(java.awt.SystemColor.inactiveCaption);
+        jPanel18.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        jLabel23.setFont(new java.awt.Font("Tahoma", 2, 16)); // NOI18N
+        jLabel23.setText("Please enter tool name or ID to remove:");
+        jLabel23.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+
+        jScrollPane17.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane17.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+
+        removeItemArea.setColumns(20);
+        removeItemArea.setRows(5);
+        jScrollPane17.setViewportView(removeItemArea);
+
+        removeItemButton.setFont(new java.awt.Font("Trebuchet MS", 1, 16)); // NOI18N
+        removeItemButton.setText("Remove");
+        removeItemButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        removeItemButton.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                removeItemButtonActionPerformed(evt);
+            }
+        });
+
+        removeItemDone.setFont(new java.awt.Font("Trebuchet MS", 1, 16)); // NOI18N
+        removeItemDone.setText("Done");
+        removeItemDone.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        removeItemDone.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                removeItemDoneActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel18Layout = new javax.swing.GroupLayout(jPanel18);
+        jPanel18.setLayout(jPanel18Layout);
+        jPanel18Layout.setHorizontalGroup(
+                jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel18Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jScrollPane17)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel18Layout.createSequentialGroup()
+                                                .addComponent(removeItemDone, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(removeItemButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addComponent(jLabel23, javax.swing.GroupLayout.DEFAULT_SIZE, 366, Short.MAX_VALUE))
+                                .addContainerGap())
+        );
+        jPanel18Layout.setVerticalGroup(
+                jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel18Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel23)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jScrollPane17, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(removeItemButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(removeItemDone, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout removeToolDialogLayout = new javax.swing.GroupLayout(removeToolDialog.getContentPane());
+        removeToolDialog.getContentPane().setLayout(removeToolDialogLayout);
+        removeToolDialogLayout.setHorizontalGroup(
+                removeToolDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jPanel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        removeToolDialogLayout.setVerticalGroup(
+                removeToolDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jPanel18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(153, 153, 255));
@@ -1458,7 +1752,7 @@ public class GUI extends javax.swing.JFrame
 
     private void addLoginActionPerformed(java.awt.event.ActionEvent evt)
     {
-        addOwnerLoginMenu.setBounds(((int) screenSize.getWidth() - 404) / 2, ((int) screenSize.getHeight() - 260) / 2, 404, 250);
+        addOwnerLoginMenu.setBounds(((int) screenSize.getWidth() - 404) / 2, ((int) screenSize.getHeight() - 260) / 2, 404, 245);
         addOwnerLoginMenu.setVisible(true);
     }
 
@@ -1532,7 +1826,7 @@ public class GUI extends javax.swing.JFrame
 
     private void decreaseQuantityAcceptActionPerformed(java.awt.event.ActionEvent evt)
     {
-        String input = idTextArea.getText();
+        String input = decreaseTextArea.getText();
 
         try
         {
@@ -1668,6 +1962,82 @@ public class GUI extends javax.swing.JFrame
         amountToBuyField.setText(Integer.toString(amount));
     }
 
+    private void addToolActionPerformed(java.awt.event.ActionEvent evt)
+    {
+        addItemDialog.setBounds(((int) screenSize.getWidth() - 400) / 2, ((int) screenSize.getHeight() - 300) / 2, 400, 300);
+        addItemDialog.setVisible(true);
+    }
+
+    private void removeToolActionPerformed(java.awt.event.ActionEvent evt)
+    {
+        removeToolDialog.setBounds(((int) screenSize.getWidth() - 400) / 2, ((int) screenSize.getHeight() - 300) / 2, 400, 170);
+        removeToolDialog.setVisible(true);
+    }
+
+    private void addToolButtonActionPerformed(java.awt.event.ActionEvent evt)
+    {
+        String name = addToolNameArea.getText();
+        String id = addToolIDArea.getText();
+        String stock = addToolStockArea.getText();
+        String price = addToolPriceArea.getText();
+        String supplierID = addToolSupplierIDArea.getText();
+        addToolNameArea.setText("");
+        addToolIDArea.setText("");
+        addToolStockArea.setText("");
+        addToolPriceArea.setText("");
+        addToolSupplierIDArea.setText("");
+
+        //Add to inventory
+    }
+
+    private void doneAddingToolsActionPerformed(java.awt.event.ActionEvent evt)
+    {
+        addToolNameArea.setText("");
+        addToolIDArea.setText("");
+        addToolStockArea.setText("");
+        addToolPriceArea.setText("");
+        addToolSupplierIDArea.setText("");
+        addItemDialog.setVisible(false);
+    }
+
+    private void removeItemButtonActionPerformed(java.awt.event.ActionEvent evt)
+    {
+        String input = removeItemArea.getText();
+        try
+        {
+            int id = Integer.parseInt(input);
+            //Lookup tool by id
+            /*
+            Tool theTool = theShop.getTool(id);
+            if (theTool != null) {
+                System.out.println("Tool found.\nStock: " + theTool.getQuantity() + "\n");
+                theShop.checkStock(theTool);
+            } else {
+                System.out.println("This tool could not be found.\n");
+            }
+            */
+        } catch (java.lang.NumberFormatException string)
+        {
+            //Lookup tool by name
+            /*Tool theTool = theShop.getTool(in);
+            if (theTool != null) {
+                System.out.println("Tool found.\nStock: " + theTool.getQuantity() + "\n");
+                theShop.checkStock(theTool);
+            } else {
+                System.out.println("This tool could not be found.\n");
+            }
+            */
+
+        }
+        removeItemArea.setText("");
+    }
+
+    private void removeItemDoneActionPerformed(java.awt.event.ActionEvent evt)
+    {
+        removeItemArea.setText("");
+        removeToolDialog.setVisible(false);
+    }
+
     /**
      * @param args the command line arguments
      */
@@ -1715,9 +2085,17 @@ public class GUI extends javax.swing.JFrame
 
     // Variables declaration - do not modify
     private javax.swing.JButton acceptLoginButton;
+    private javax.swing.JDialog addItemDialog;
     private javax.swing.JButton addLogin;
     private javax.swing.JButton addLoginButton;
     private javax.swing.JFrame addOwnerLoginMenu;
+    private javax.swing.JButton addTool;
+    private javax.swing.JButton addToolButton;
+    private javax.swing.JTextArea addToolIDArea;
+    private javax.swing.JTextArea addToolNameArea;
+    private javax.swing.JTextArea addToolPriceArea;
+    private javax.swing.JTextArea addToolStockArea;
+    private javax.swing.JTextArea addToolSupplierIDArea;
     private java.awt.TextField amountToBuyField;
     private java.awt.TextField amountToDecreaseField;
     private javax.swing.JButton buyAmountAccept;
@@ -1729,7 +2107,6 @@ public class GUI extends javax.swing.JFrame
     private javax.swing.JButton cancelNewLoginButton;
     private javax.swing.JButton checkQuantity;
     private javax.swing.JButton checkQuantityAccept;
-    private javax.swing.JButton checkQuantityAccept2;
     private javax.swing.JButton checkQuantityCancel;
     private javax.swing.JDialog checkQuantityDialog;
     private javax.swing.JFrame customerClientMenu;
@@ -1741,6 +2118,7 @@ public class GUI extends javax.swing.JFrame
     private javax.swing.JButton decreaseQuantityCancel;
     private javax.swing.JDialog decreaseQuantityDialog;
     private javax.swing.JTextArea decreaseTextArea;
+    private javax.swing.JButton doneAddingTools;
     private javax.swing.JButton idNameCancel;
     private javax.swing.JTextArea idTextArea;
     private java.awt.Button increaseAmount;
@@ -1757,7 +2135,12 @@ public class GUI extends javax.swing.JFrame
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -1774,6 +2157,7 @@ public class GUI extends javax.swing.JFrame
     private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel16;
     private javax.swing.JPanel jPanel17;
+    private javax.swing.JPanel jPanel18;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -1786,6 +2170,11 @@ public class GUI extends javax.swing.JFrame
     private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane11;
     private javax.swing.JScrollPane jScrollPane12;
+    private javax.swing.JScrollPane jScrollPane13;
+    private javax.swing.JScrollPane jScrollPane14;
+    private javax.swing.JScrollPane jScrollPane15;
+    private javax.swing.JScrollPane jScrollPane16;
+    private javax.swing.JScrollPane jScrollPane17;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
@@ -1815,7 +2204,11 @@ public class GUI extends javax.swing.JFrame
     private javax.swing.JTextArea ownerDisplay;
     private javax.swing.JButton printOrder;
     private javax.swing.JTextArea quantityTextArea;
-    private javax.swing.JTextArea quantityTextArea2;
+    private javax.swing.JTextArea removeItemArea;
+    private javax.swing.JButton removeItemButton;
+    private javax.swing.JButton removeItemDone;
+    private javax.swing.JButton removeTool;
+    private javax.swing.JDialog removeToolDialog;
     private javax.swing.JButton searchByID;
     private javax.swing.JDialog searchByIDDialog;
     private javax.swing.JButton searchByName;
