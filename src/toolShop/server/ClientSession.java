@@ -34,7 +34,7 @@ public class ClientSession implements Runnable
             try
             {
                 connection.close();
-                System.out.println("Client disconnected");
+                System.out.println("Client disconnected.");
 
             } catch (IOException e1)
             {
