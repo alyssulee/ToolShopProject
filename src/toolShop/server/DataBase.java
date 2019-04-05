@@ -49,7 +49,14 @@ public class DataBase implements InventoryService
     {
         try
         {
-            connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/toolshop", username, password);
+            connect = DriverManager.getConnection(
+                    "jdbc:mysql://localhost:3306/toolshop" +
+                            "?useUnicode=true" +
+                            "&useJDBCCompliantTimezoneShift=true" +
+                            "&useLegacyDatetimeCode=false" +
+                            "&serverTimezone=UTC",
+                    username,
+                    password);
             statement = connect.createStatement();
 
         } catch (SQLException e)
