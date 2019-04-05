@@ -1861,7 +1861,7 @@ public class GUI extends javax.swing.JFrame
     {
         successDialog.setBounds(((int) screenSize.getWidth() - 403) / 2, ((int) screenSize.getHeight() - 250) / 2, 240, 100);
         failDialog.setBounds(((int) screenSize.getWidth() - 403) / 2, ((int) screenSize.getHeight() - 250) / 2, 230, 100);
-        loginMenu.setBounds(((int) screenSize.getWidth() - 403) / 2, ((int) screenSize.getHeight() - 250) / 2, 403, 250);
+        loginMenu.setBounds(((int) screenSize.getWidth() - 403) / 2, ((int) screenSize.getHeight() - 250) / 2, 408, 260);
         loginMenu.setVisible(true);
     }
 
@@ -1869,7 +1869,7 @@ public class GUI extends javax.swing.JFrame
     {
         successDialog.setBounds(((int) screenSize.getWidth() - 403) / 2, ((int) screenSize.getHeight() - 250) / 2, 240, 100);
         failDialog.setBounds(((int) screenSize.getWidth() - 403) / 2, ((int) screenSize.getHeight() - 250) / 2, 230, 100);
-        customerClientMenu.setBounds(((int) screenSize.getWidth() - 870) / 2, ((int) screenSize.getHeight() - 415) / 2, 870, 415);
+        customerClientMenu.setBounds(((int) screenSize.getWidth() - 870) / 2, ((int) screenSize.getHeight() - 415) / 2, 870, 425);
         customerClientMenu.setVisible(true);
     }
 
@@ -1895,7 +1895,7 @@ public class GUI extends javax.swing.JFrame
         //Check for validity here with database
         if (true)
         {
-            ownerClientMenu.setBounds(((int) screenSize.getWidth() - 880) / 2, ((int) screenSize.getHeight() - 650) / 2, 880, 650);
+            ownerClientMenu.setBounds(((int) screenSize.getWidth() - 880) / 2, ((int) screenSize.getHeight() - 650) / 2, 880, 595);
             ownerClientMenu.setVisible(true);
         } else
         {
@@ -1929,7 +1929,7 @@ public class GUI extends javax.swing.JFrame
 
     private void decreaseQuantityActionPerformed(java.awt.event.ActionEvent evt)
     {
-        decreaseQuantityDialog.setBounds(((int) screenSize.getWidth() - 404) / 2, ((int) screenSize.getHeight() - 160) / 2, 404, 195);
+        decreaseQuantityDialog.setBounds(((int) screenSize.getWidth() - 404) / 2, ((int) screenSize.getHeight() - 160) / 2, 404, 205);
         decreaseQuantityDialog.setVisible(true);
     }
 
@@ -2071,7 +2071,7 @@ public class GUI extends javax.swing.JFrame
 
     private void buyItemActionPerformed(java.awt.event.ActionEvent evt)
     {
-        buyItemDialog.setBounds(((int) screenSize.getWidth() - 404) / 2, ((int) screenSize.getHeight() - 160) / 2, 404, 195);
+        buyItemDialog.setBounds(((int) screenSize.getWidth() - 404) / 2, ((int) screenSize.getHeight() - 160) / 2, 404, 205);
         buyItemDialog.setVisible(true);
     }
 
@@ -2116,13 +2116,13 @@ public class GUI extends javax.swing.JFrame
 
     private void addToolActionPerformed(java.awt.event.ActionEvent evt)
     {
-        addItemDialog.setBounds(((int) screenSize.getWidth() - 400) / 2, ((int) screenSize.getHeight() - 300) / 2, 400, 300);
+        addItemDialog.setBounds(((int) screenSize.getWidth() - 400) / 2, ((int) screenSize.getHeight() - 300) / 2, 405, 310);
         addItemDialog.setVisible(true);
     }
 
     private void removeToolActionPerformed(java.awt.event.ActionEvent evt)
     {
-        removeToolDialog.setBounds(((int) screenSize.getWidth() - 400) / 2, ((int) screenSize.getHeight() - 300) / 2, 400, 170);
+        removeToolDialog.setBounds(((int) screenSize.getWidth() - 400) / 2, ((int) screenSize.getHeight() - 300) / 2, 400, 180);
         removeToolDialog.setVisible(true);
     }
 
@@ -2154,7 +2154,7 @@ public class GUI extends javax.swing.JFrame
 
     private void addLoginActionPerformed(java.awt.event.ActionEvent evt)
     {
-        addOwnerLoginMenu.setBounds(((int) screenSize.getWidth() - 404) / 2, ((int) screenSize.getHeight() - 260) / 2, 404, 245);
+        addOwnerLoginMenu.setBounds(((int) screenSize.getWidth() - 404) / 2, ((int) screenSize.getHeight() - 260) / 2, 404, 255);
         addOwnerLoginMenu.setVisible(true);
     }
 
