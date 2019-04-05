@@ -337,6 +337,16 @@ public class ClientController
         }
     }
 
+    class PlaceOrderAcceptButton implements ActionListener
+    {
+        @Override
+        public void actionPerformed(ActionEvent e)
+        {
+
+        }
+    }
+
+
     /**
      * ActionListener for customer purchase button
      */
