@@ -1,22 +1,31 @@
 package toolShop.server;
 
 import org.junit.jupiter.api.Test;
+import toolShop.InventoryService;
 import toolShop.OrderService;
+import toolShop.SupplierService;
 import toolShop.communication.requests.*;
 import toolShop.communication.responses.SuccessResponse;
+import toolShop.communication.responses.SupplierResponse;
 import toolShop.communication.responses.ToolResponse;
 import toolShop.communication.responses.ToolsResponse;
+import toolShop.models.Supplier;
 import toolShop.models.Tool;
+import toolShop.repositories.MemorySupplierRepository;
 import toolShop.repositories.MemoryToolRepository;
+import toolShop.repositories.SupplierRepository;
+import toolShop.repositories.ToolRepository;
 
 import java.util.Optional;
 
 class ClientRequestHandlerTest
 {
-    private MemoryToolRepository toolRepository = new MemoryToolRepository();
-    private LinkedInventoryService inventory = new LinkedInventoryService(toolRepository);
+    private ToolRepository toolRepository = new MemoryToolRepository();
+    private SupplierRepository supplierRepository = new MemorySupplierRepository();
+    private InventoryService inventory = new LinkedInventoryService(toolRepository);
+    private SupplierService supplierService = new LinkedSupplierService(supplierRepository);
     private OrderService orderService = new LinkedOrderService(toolRepository);
-    private ClientRequestHandler handler = new ClientRequestHandler(inventory, orderService);
+    private ClientRequestHandler handler = new ClientRequestHandler(inventory, supplierService, orderService);
 
     @Test
     void handelAddToolRequest()
@@ -88,5 +97,17 @@ class ClientRequestHandlerTest
         Optional<Tool> tool = inventory.getToolById(0);
         assert tool.isPresent();
         assert tool.get().getQuantity() == 2;
+    }
+
+    @Test
+    void handelGetSupplierByIdRequest()
+    {
+        Supplier supplier = new Supplier(0, "Bark's", "Main St.", "bark@barks.co");
+        supplierRepository.addSupplier(supplier);
+        GetSupplierByIdRequest request = new GetSupplierByIdRequest(0);
+
+        SupplierResponse response = handler.handelGetSupplierByIdRequest(request);
+
+        assert response.getSupplier() != null;
     }
 }
