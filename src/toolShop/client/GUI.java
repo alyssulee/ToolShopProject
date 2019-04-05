@@ -1077,13 +1077,6 @@ public class GUI extends javax.swing.JFrame
         listToolsCustomer.setText("List All Tools");
         listToolsCustomer.setToolTipText("Display all tools currently in inventory");
         listToolsCustomer.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        listToolsCustomer.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
-                listToolsCustomerActionPerformed(evt);
-            }
-        });
 
         buyItem.setFont(new java.awt.Font("Trebuchet MS", 1, 16)); // NOI18N
         buyItem.setText("Buy Item");

@@ -34,7 +34,8 @@ public class Order implements Serializable
     public String printOrder()
     {
         String order = "Order Date: " + orderDate.toString();
-
+        for (OrderLine o : orderLines)
+            order += o + "\n";
 
         return order;
     }
