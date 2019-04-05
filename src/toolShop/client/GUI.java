@@ -9,9 +9,6 @@ package toolShop.client;
 import javax.swing.*;
 import java.awt.*;
 
-/**
- * @author rushf
- */
 public class GUI extends javax.swing.JFrame
 {
     Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -166,6 +163,17 @@ public class GUI extends javax.swing.JFrame
         nameTextArea1 = new javax.swing.JTextArea();
         searchNameAccept1 = new javax.swing.JButton();
         searchNameCancel1 = new javax.swing.JButton();
+        placeOrderDialog = new javax.swing.JDialog();
+        jPanel20 = new javax.swing.JPanel();
+        jLabel25 = new javax.swing.JLabel();
+        placeOrderCancel = new java.awt.Button();
+        placeOrderAccept = new java.awt.Button();
+        successDialog = new javax.swing.JDialog();
+        jPanel21 = new javax.swing.JPanel();
+        jLabel26 = new javax.swing.JLabel();
+        failDialog = new javax.swing.JDialog();
+        jPanel22 = new javax.swing.JPanel();
+        jLabel27 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         loginOwnerButton = new javax.swing.JButton();
         loginCustomerButton = new javax.swing.JButton();
@@ -1608,6 +1616,141 @@ public class GUI extends javax.swing.JFrame
                         .addComponent(jPanel19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
+        jPanel20.setBackground(javax.swing.UIManager.getDefaults().getColor("ComboBox.selectionBackground"));
+        jPanel20.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        jLabel25.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel25.setText("Place daily order?");
+
+        placeOrderCancel.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
+        placeOrderCancel.setLabel("Don't Place");
+        placeOrderCancel.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                placeOrderCancelActionPerformed(evt);
+            }
+        });
+
+        placeOrderAccept.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
+        placeOrderAccept.setLabel("Place");
+        placeOrderAccept.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                placeOrderAcceptActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel20Layout = new javax.swing.GroupLayout(jPanel20);
+        jPanel20.setLayout(jPanel20Layout);
+        jPanel20Layout.setHorizontalGroup(
+                jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel20Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel20Layout.createSequentialGroup()
+                                                .addComponent(placeOrderCancel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(placeOrderAccept, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(jLabel25))
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel20Layout.setVerticalGroup(
+                jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel20Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel25)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(placeOrderCancel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(placeOrderAccept, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout placeOrderDialogLayout = new javax.swing.GroupLayout(placeOrderDialog.getContentPane());
+        placeOrderDialog.getContentPane().setLayout(placeOrderDialogLayout);
+        placeOrderDialogLayout.setHorizontalGroup(
+                placeOrderDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(placeOrderDialogLayout.createSequentialGroup()
+                                .addComponent(jPanel20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        placeOrderDialogLayout.setVerticalGroup(
+                placeOrderDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(placeOrderDialogLayout.createSequentialGroup()
+                                .addComponent(jPanel20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+        );
+
+        jPanel21.setBackground(new java.awt.Color(204, 255, 204));
+        jPanel21.setBorder(new javax.swing.border.MatteBorder(null));
+
+        jLabel26.setFont(new java.awt.Font("Trebuchet MS", 2, 24)); // NOI18N
+        jLabel26.setText("Operation Successful!");
+
+        javax.swing.GroupLayout jPanel21Layout = new javax.swing.GroupLayout(jPanel21);
+        jPanel21.setLayout(jPanel21Layout);
+        jPanel21Layout.setHorizontalGroup(
+                jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel21Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel26)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel21Layout.setVerticalGroup(
+                jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel21Layout.createSequentialGroup()
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel26)
+                                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout successDialogLayout = new javax.swing.GroupLayout(successDialog.getContentPane());
+        successDialog.getContentPane().setLayout(successDialogLayout);
+        successDialogLayout.setHorizontalGroup(
+                successDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jPanel21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        successDialogLayout.setVerticalGroup(
+                successDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jPanel21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+
+        jPanel22.setBackground(new java.awt.Color(255, 153, 153));
+        jPanel22.setBorder(new javax.swing.border.MatteBorder(null));
+
+        jLabel27.setFont(new java.awt.Font("Trebuchet MS", 2, 24)); // NOI18N
+        jLabel27.setText("Operation Failed.");
+
+        javax.swing.GroupLayout jPanel22Layout = new javax.swing.GroupLayout(jPanel22);
+        jPanel22.setLayout(jPanel22Layout);
+        jPanel22Layout.setHorizontalGroup(
+                jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel22Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel27)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel22Layout.setVerticalGroup(
+                jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel22Layout.createSequentialGroup()
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel27)
+                                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout failDialogLayout = new javax.swing.GroupLayout(failDialog.getContentPane());
+        failDialog.getContentPane().setLayout(failDialogLayout);
+        failDialogLayout.setHorizontalGroup(
+                failDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jPanel22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        failDialogLayout.setVerticalGroup(
+                failDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jPanel22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(153, 153, 255));
@@ -1716,12 +1859,16 @@ public class GUI extends javax.swing.JFrame
 
     private void loginOwnerButtonActionPerformed(java.awt.event.ActionEvent evt)
     {
+        successDialog.setBounds(((int) screenSize.getWidth() - 403) / 2, ((int) screenSize.getHeight() - 250) / 2, 240, 100);
+        failDialog.setBounds(((int) screenSize.getWidth() - 403) / 2, ((int) screenSize.getHeight() - 250) / 2, 230, 100);
         loginMenu.setBounds(((int) screenSize.getWidth() - 403) / 2, ((int) screenSize.getHeight() - 250) / 2, 403, 250);
         loginMenu.setVisible(true);
     }
 
     private void loginCustomerButtonActionPerformed(java.awt.event.ActionEvent evt)
     {
+        successDialog.setBounds(((int) screenSize.getWidth() - 403) / 2, ((int) screenSize.getHeight() - 250) / 2, 240, 100);
+        failDialog.setBounds(((int) screenSize.getWidth() - 403) / 2, ((int) screenSize.getHeight() - 250) / 2, 230, 100);
         customerClientMenu.setBounds(((int) screenSize.getWidth() - 870) / 2, ((int) screenSize.getHeight() - 415) / 2, 870, 415);
         customerClientMenu.setVisible(true);
     }
@@ -1767,7 +1914,6 @@ public class GUI extends javax.swing.JFrame
     {
         searchByNameDialog.setBounds(((int) screenSize.getWidth() - 404) / 2, ((int) screenSize.getHeight() - 160) / 2, 404, 180);
         searchByNameDialog.setVisible(true);
-
     }
 
     private void listToolsOwnerActionPerformed(java.awt.event.ActionEvent evt)
@@ -1789,7 +1935,8 @@ public class GUI extends javax.swing.JFrame
 
     private void printOrderActionPerformed(java.awt.event.ActionEvent evt)
     {
-        // Print order
+        placeOrderDialog.setBounds(((int) screenSize.getWidth() - 200) / 2, ((int) screenSize.getHeight() - 150) / 2, 230, 130);
+        placeOrderDialog.setVisible(true);
     }
 
     private void logoutActionPerformed(java.awt.event.ActionEvent evt)
@@ -1913,8 +2060,8 @@ public class GUI extends javax.swing.JFrame
 
     private void searchByName1ActionPerformed(java.awt.event.ActionEvent evt)
     {
-        searchByNameDialog1.setBounds(((int) screenSize.getWidth() - 404) / 2, ((int) screenSize.getHeight() - 160) / 2, 404, 180);
-        searchByNameDialog1.setVisible(true);
+        searchByNameDialog.setBounds(((int) screenSize.getWidth() - 404) / 2, ((int) screenSize.getHeight() - 160) / 2, 404, 180);
+        searchByNameDialog.setVisible(true);
     }
 
     private void listToolsCustomerActionPerformed(java.awt.event.ActionEvent evt)
@@ -2019,6 +2166,17 @@ public class GUI extends javax.swing.JFrame
     private void searchNameCancel1ActionPerformed(java.awt.event.ActionEvent evt)
     {
         // TODO add your handling code here:
+    }
+
+    private void placeOrderAcceptActionPerformed(java.awt.event.ActionEvent evt)
+    {
+        //Places order
+        placeOrderDialog.setVisible(false);
+    }
+
+    private void placeOrderCancelActionPerformed(java.awt.event.ActionEvent evt)
+    {
+        placeOrderDialog.setVisible(false);
     }
 
     public Dimension getScreenSize()
@@ -2371,6 +2529,16 @@ public class GUI extends javax.swing.JFrame
         this.doneAddingTools = doneAddingTools;
     }
 
+    public JDialog getFailDialog()
+    {
+        return failDialog;
+    }
+
+    public void setFailDialog(JDialog failDialog)
+    {
+        this.failDialog = failDialog;
+    }
+
     public JButton getIdNameCancel()
     {
         return idNameCancel;
@@ -2601,6 +2769,36 @@ public class GUI extends javax.swing.JFrame
         this.jLabel24 = jLabel24;
     }
 
+    public JLabel getjLabel25()
+    {
+        return jLabel25;
+    }
+
+    public void setjLabel25(JLabel jLabel25)
+    {
+        this.jLabel25 = jLabel25;
+    }
+
+    public JLabel getjLabel26()
+    {
+        return jLabel26;
+    }
+
+    public void setjLabel26(JLabel jLabel26)
+    {
+        this.jLabel26 = jLabel26;
+    }
+
+    public JLabel getjLabel27()
+    {
+        return jLabel27;
+    }
+
+    public void setjLabel27(JLabel jLabel27)
+    {
+        this.jLabel27 = jLabel27;
+    }
+
     public JLabel getjLabel3()
     {
         return jLabel3;
@@ -2789,6 +2987,36 @@ public class GUI extends javax.swing.JFrame
     public void setjPanel2(JPanel jPanel2)
     {
         this.jPanel2 = jPanel2;
+    }
+
+    public JPanel getjPanel20()
+    {
+        return jPanel20;
+    }
+
+    public void setjPanel20(JPanel jPanel20)
+    {
+        this.jPanel20 = jPanel20;
+    }
+
+    public JPanel getjPanel21()
+    {
+        return jPanel21;
+    }
+
+    public void setjPanel21(JPanel jPanel21)
+    {
+        this.jPanel21 = jPanel21;
+    }
+
+    public JPanel getjPanel22()
+    {
+        return jPanel22;
+    }
+
+    public void setjPanel22(JPanel jPanel22)
+    {
+        this.jPanel22 = jPanel22;
     }
 
     public JPanel getjPanel3()
@@ -3241,6 +3469,36 @@ public class GUI extends javax.swing.JFrame
         this.ownerDisplay = ownerDisplay;
     }
 
+    public Button getPlaceOrderAccept()
+    {
+        return placeOrderAccept;
+    }
+
+    public void setPlaceOrderAccept(Button placeOrderAccept)
+    {
+        this.placeOrderAccept = placeOrderAccept;
+    }
+
+    public Button getPlaceOrderCancel()
+    {
+        return placeOrderCancel;
+    }
+
+    public void setPlaceOrderCancel(Button placeOrderCancel)
+    {
+        this.placeOrderCancel = placeOrderCancel;
+    }
+
+    public JDialog getPlaceOrderDialog()
+    {
+        return placeOrderDialog;
+    }
+
+    public void setPlaceOrderDialog(JDialog placeOrderDialog)
+    {
+        this.placeOrderDialog = placeOrderDialog;
+    }
+
     public JButton getPrintOrder()
     {
         return printOrder;
@@ -3421,6 +3679,16 @@ public class GUI extends javax.swing.JFrame
         this.searchNameCancel1 = searchNameCancel1;
     }
 
+    public JDialog getSuccessDialog()
+    {
+        return successDialog;
+    }
+
+    public void setSuccessDialog(JDialog successDialog)
+    {
+        this.successDialog = successDialog;
+    }
+
     /**
      * @param args the command line arguments
      */
@@ -3501,6 +3769,7 @@ public class GUI extends javax.swing.JFrame
     private javax.swing.JDialog decreaseQuantityDialog;
     private javax.swing.JTextArea decreaseTextArea;
     private javax.swing.JButton doneAddingTools;
+    private javax.swing.JDialog failDialog;
     private javax.swing.JButton idNameCancel;
     private javax.swing.JTextArea idTextArea;
     private java.awt.Button increaseAmount;
@@ -3524,6 +3793,9 @@ public class GUI extends javax.swing.JFrame
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -3543,6 +3815,9 @@ public class GUI extends javax.swing.JFrame
     private javax.swing.JPanel jPanel18;
     private javax.swing.JPanel jPanel19;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel20;
+    private javax.swing.JPanel jPanel21;
+    private javax.swing.JPanel jPanel22;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
@@ -3588,6 +3863,9 @@ public class GUI extends javax.swing.JFrame
     private javax.swing.JTextArea nameTextArea1;
     private javax.swing.JFrame ownerClientMenu;
     private javax.swing.JTextArea ownerDisplay;
+    private java.awt.Button placeOrderAccept;
+    private java.awt.Button placeOrderCancel;
+    private javax.swing.JDialog placeOrderDialog;
     private javax.swing.JButton printOrder;
     private javax.swing.JTextArea quantityTextArea;
     private javax.swing.JTextArea removeItemArea;
@@ -3606,5 +3884,6 @@ public class GUI extends javax.swing.JFrame
     private javax.swing.JButton searchNameAccept1;
     private javax.swing.JButton searchNameCancel;
     private javax.swing.JButton searchNameCancel1;
+    private javax.swing.JDialog successDialog;
     // End of variables declaration
 }
