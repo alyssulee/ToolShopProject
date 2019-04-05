@@ -4,6 +4,7 @@ import toolShop.InventoryService;
 import toolShop.OrderService;
 import toolShop.models.Tool;
 
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -27,7 +28,7 @@ public class ClientController
         view.getListToolsCustomer().addActionListener(new ListToolsActionListener());
         view.getListToolsOwner().addActionListener(new ListToolsActionListener());
         view.getSearchNameAccept().addActionListener(new SearchNameAcceptActionListener());
-        view.getSearchNameAccept1().addActionListener(new SearchNameAccept1ActionListener());
+        view.getSearchNameAccept1().addActionListener(new SearchNameAcceptActionListener());
         view.getSearchIDAccept().addActionListener(new SearchIDAcceptActionListener());
         view.getBuyAmountAccept().addActionListener(new BuyAmountAcceptActionListener());
         view.getDecreaseQuantityAccept().addActionListener(new DecreaseQuantityAcceptActionListener());
@@ -90,54 +91,40 @@ public class ClientController
         @Override
         public void actionPerformed(ActionEvent e)
         {
-            String nameToSearch = view.getNameTextArea().getText();
+            String nameToSearch = nameTextArea(e).getText();
             Iterable<Tool> tools = inventory.getToolsWithName(nameToSearch);
             ArrayList<Tool> collected = new ArrayList<>();
             tools.forEach(collected::add);
             view.getNameTextArea().setText("");
             if (collected.size() != 0)
             {
-                view.getOwnerDisplay().setText("");
+                display(e).setText("");
                 for (int i = 0; i < collected.size(); i++)
                 {
                     Tool tool = collected.get(i);
-                    view.getOwnerDisplay().append(tool.toString());
+                    display(e).append(tool.toString());
                 }
             } else
             {
-                view.getOwnerDisplay().setText("Tool with name " + nameToSearch + " could not be found");
+                display(e).setText("Tool with name " + nameToSearch + " could not be found");
             }
             view.getSearchByNameDialog().setVisible(false);
         }
-    }
 
-    /**
-     * ActionListener for Shop Owner and Customer "Search by Name" button
-     */
-    class SearchNameAccept1ActionListener implements ActionListener
-    {
-
-        @Override
-        public void actionPerformed(ActionEvent e)
+        private JTextArea nameTextArea(ActionEvent e)
         {
-            String nameToSearch = view.getNameTextArea1().getText();
-            Iterable<Tool> tools = inventory.getToolsWithName(nameToSearch);
-            ArrayList<Tool> collected = new ArrayList<>();
-            tools.forEach(collected::add);
-            view.getNameTextArea1().setText("");
-            if (collected.size() != 0)
-            {
-                view.getCustomerDisplay().setText("");
-                for (int i = 0; i < collected.size(); i++)
-                {
-                    Tool tool = collected.get(i);
-                    view.getCustomerDisplay().append(tool.toString());
-                }
-            } else
-            {
-                view.getCustomerDisplay().setText("Tool with name " + nameToSearch + " could not be found");
-            }
-            view.getSearchByNameDialog1().setVisible(false);
+            if (e.getSource() == view.getSearchNameAccept())
+                return view.getNameTextArea();
+            else
+                return view.getNameTextArea1();
+        }
+
+        private JTextArea display(ActionEvent e)
+        {
+            if (e.getSource() == view.getSearchNameAccept())
+                return view.getOwnerDisplay();
+            else
+                return view.getCustomerDisplay();
         }
     }
 
