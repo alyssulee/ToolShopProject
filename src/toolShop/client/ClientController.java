@@ -33,7 +33,7 @@ public class ClientController
         view.getBuyAmountAccept().addActionListener(new BuyAmountAcceptActionListener());
         view.getDecreaseQuantityAccept().addActionListener(new DecreaseQuantityAcceptActionListener());
         view.getAddToolButton().addActionListener(new AddToolButtonActionListener());
-
+        view.getRemoveItemButton().addActionListener(new RemoveToolButtonActionListener());
         view.getPrintOrder().addActionListener(new PrintTodayOrderActionListener());
 
         /*view.setBuyAmountAcceptActionListener(new BuyAmountAcceptActionListener());
@@ -227,14 +227,20 @@ public class ClientController
         {
             int amountToDecrease = Integer.parseInt(view.getAmountToDecreaseField().getText());
             String toolInfo = view.getDecreaseTextArea().getText();
+            boolean bool;
             try
             {
                 int toolID = Integer.parseInt(toolInfo);
-                inventory.reduceToolQuantity(toolID, amountToDecrease);
+                bool = inventory.reduceToolQuantity(toolID, amountToDecrease);
             } catch (NumberFormatException exception)
             {
-                //inventory.reduceToolQuantity(inventory.getToolsWithName(itemName), amountToBuy);
+                ArrayList<Tool> toolList = (ArrayList<Tool>) inventory.getToolsWithName(toolInfo);
+                bool = inventory.reduceToolQuantity(toolList.get(0).getId(), amountToDecrease);
             }
+            if (bool)
+                view.getCustomerDisplay().setText(toolInfo + " successfully decreased");
+            else
+                view.getCustomerDisplay().setText(toolInfo + " NOT successfully decreased");
             // Todo: Add checkStock to ensure quantity is above limit
             //theShop.checkStock(theTool);
             view.getDecreaseTextArea().setText("");
@@ -259,9 +265,12 @@ public class ClientController
                 int supplierID = Integer.parseInt(view.getAddToolSupplierIDArea().getText());
 
                 Tool tool = new Tool(id, name, stock, price, supplierID);
-                inventory.addTool(tool);
+                boolean bool = inventory.addTool(tool);
                 view.getOwnerDisplay().setText("");
-                view.getOwnerDisplay().setText("Tool successfully added.\n");
+                if (bool)
+                    view.getOwnerDisplay().setText("Tool successfully added.\n");
+                else
+                    view.getOwnerDisplay().setText("Tool could not be added.\n");
                 view.getOwnerDisplay().append(tool.toString());
 
             } catch (Exception e1)
@@ -273,11 +282,24 @@ public class ClientController
 
     class RemoveToolButtonActionListener implements ActionListener
     {
-
         @Override
         public void actionPerformed(ActionEvent e)
         {
-
+            boolean bool;
+            int id = -1;
+            try
+            {
+                id = Integer.parseInt(view.getRemoveItemArea().getText());
+                bool = inventory.removeTool(id);
+            } catch (NumberFormatException e1)
+            {
+                bool = false;
+            }
+            view.getOwnerDisplay().setText("");
+            if (bool)
+                view.getOwnerDisplay().setText("Tool " + id + " was successfully removed.\n");
+            else
+                view.getOwnerDisplay().setText("Tool was NOT successfully removed.\n");
         }
     }
 
@@ -288,7 +310,6 @@ public class ClientController
         {
             view.getOwnerDisplay().setText("");
             view.getOwnerDisplay().setText(order.getOrder().printOrder());
-
         }
     }
 
@@ -304,7 +325,12 @@ public class ClientController
             String itemName = view.getBuyTextArea().getText();
 
             //Decrease stock by this amount
-            //inventory.reduceToolQuantity(inventory.getToolsWithName(itemName), amountToBuy);
+            ArrayList<Tool> toolList = (ArrayList<Tool>) inventory.getToolsWithName(itemName);
+            boolean bool = inventory.reduceToolQuantity(toolList.get(0).getId(), amountToBuy);
+            if (bool)
+                view.getCustomerDisplay().setText(itemName + " successfully purchased");
+            else
+                view.getCustomerDisplay().setText(itemName + " NOT successfully purchased");
 
             view.getBuyItemDialog().setVisible(false);
         }
