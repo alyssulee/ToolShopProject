@@ -1,6 +1,7 @@
 package toolShop.server;
 
 import toolShop.InventoryService;
+import toolShop.LoginService;
 import toolShop.OrderService;
 import toolShop.SupplierService;
 import toolShop.communication.requests.*;
@@ -17,12 +18,18 @@ public class ClientRequestHandler implements RequestHandler
     private InventoryService inventory;
     private SupplierService supplierService;
     private OrderService orderService;
+    private LoginService loginService;
 
-    public ClientRequestHandler(InventoryService inventory, SupplierService supplierService, OrderService orderService)
+    public ClientRequestHandler(
+            InventoryService inventory,
+            SupplierService supplierService,
+            OrderService orderService,
+            LoginService loginService)
     {
         this.inventory = inventory;
         this.supplierService = supplierService;
         this.orderService = orderService;
+        this.loginService = loginService;
     }
 
     @Override
@@ -42,12 +49,15 @@ public class ClientRequestHandler implements RequestHandler
                 return handelGetAllToolsRequest((GetAllToolsRequest) request);
             case 105:
                 return handelReduceToolQuantityRequest((ReduceToolQuantityRequest) request);
-            case 150:
-                return handelGetOrderRequest((GetOrderRequest) request);
             case 120:
                 return handelGetSupplierByIdRequest((GetSupplierByIdRequest) request);
+            case 150:
+                return handelGetOrderRequest((GetOrderRequest) request);
             case 151:
                 return handelExecuteOrderRequest((ExecuteOrderRequest) request);
+            case 170:
+                return handelLoginRequest((LoginRequest) request);
+
             default:
                 throw new Error("Received request with unknown discriminator");
         }
@@ -108,6 +118,12 @@ public class ClientRequestHandler implements RequestHandler
     public SuccessResponse handelExecuteOrderRequest(ExecuteOrderRequest executeOrderRequest)
     {
         boolean success = orderService.executeOrder(executeOrderRequest.getOrder());
+        return new SuccessResponse(success);
+    }
+
+    public SuccessResponse handelLoginRequest(LoginRequest request)
+    {
+        boolean success = loginService.login(request.getUsername(), request.getPassword(), request.getUserType());
         return new SuccessResponse(success);
     }
 }

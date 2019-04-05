@@ -1,14 +1,13 @@
 package toolShop.server;
 
 import toolShop.InventoryService;
+import toolShop.LoginService;
 import toolShop.OrderService;
 import toolShop.SupplierService;
-import toolShop.communication.responses.SupplierResponse;
 import toolShop.models.Supplier;
-import toolShop.repositories.MemorySupplierRepository;
-import toolShop.repositories.MemoryToolRepository;
-import toolShop.repositories.SupplierRepository;
-import toolShop.repositories.ToolRepository;
+import toolShop.models.User;
+import toolShop.models.UserType;
+import toolShop.repositories.*;
 
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -32,14 +31,19 @@ public class Server
     private ExecutorService executorService;
 
     /**
-     * The tool repository service.
+     * The tool repository.
      */
     private ToolRepository toolRepository;
 
     /**
-     * The supplier repository service.
+     * The supplier repository.
      */
     private SupplierRepository supplierRepository;
+
+    /**
+     * The user repository.
+     */
+    private UserRepository userRepository;
 
     /**
      * Creates a new tool shop server.
@@ -54,13 +58,19 @@ public class Server
         // Each client must have its own thread since Java IO is blocking
         executorService = Executors.newFixedThreadPool(maxClients);
 
-        // Todo: Replace in-memory repository with database repository
+        // Todo: Replace in-memory tool repository with database repository
         toolRepository = new MemoryToolRepository();
 
-        // Todo: Replace in-memory repository with database repository
+        // Todo: Consider replacing in-memory supplier repository with database repository
         supplierRepository = new MemorySupplierRepository();
         supplierRepository.addSupplier(
                 new Supplier(0, "Bark's Tools", "Main St.", "bark@barks.co"));
+
+        // Todo: Consider replacing in-memory user repository with database repository
+        userRepository = new MemoryUserRepository();
+        userRepository.addUser(new User("Joel", "1234", UserType.Owner));
+        userRepository.addUser(new User("Alyssa", "1234", UserType.Owner));
+        userRepository.addUser(new User("Owen", "1234", UserType.Customer));
 
 //        DataBase database = new DataBase();
 //        toolRepository = new DatabaseToolRepository(database);
@@ -101,7 +111,13 @@ public class Server
         InventoryService inventory = new LinkedInventoryService(toolRepository);
         SupplierService supplierService = new LinkedSupplierService(supplierRepository);
         OrderService orderService = new LinkedOrderService(toolRepository);
-        RequestHandler requestHandler = new ClientRequestHandler(inventory, supplierService, orderService);
+        LoginService loginService = new LinkedLoginService(userRepository);
+
+        RequestHandler requestHandler = new ClientRequestHandler(
+                inventory,
+                supplierService,
+                orderService,
+                loginService);
 
         ClientSession session = new ClientSession(connection, requestHandler);
 
