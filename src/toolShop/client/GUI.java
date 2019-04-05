@@ -1,22 +1,14 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
 package toolShop.client;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+import javax.swing.*;
+import java.awt.*;
 
-import java.awt.Toolkit;
-import java.awt.Dimension;
-
-/**
- * @author rushf
- */
 public class GUI extends javax.swing.JFrame
 {
     Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -66,7 +58,6 @@ public class GUI extends javax.swing.JFrame
         searchByName = new javax.swing.JButton();
         listToolsOwner = new javax.swing.JButton();
         searchByID = new javax.swing.JButton();
-        checkQuantity = new javax.swing.JButton();
         decreaseQuantity = new javax.swing.JButton();
         printOrder = new javax.swing.JButton();
         logout = new javax.swing.JButton();
@@ -395,13 +386,11 @@ public class GUI extends javax.swing.JFrame
         listToolsOwner.setText("List All Tools");
         listToolsOwner.setToolTipText("Display all tools currently in inventory");
         listToolsOwner.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        listToolsOwner.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+       /* listToolsOwner.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 listToolsOwnerActionPerformed(evt);
             }
-        });
+        });*/
 
         searchByID.setFont(new java.awt.Font("Trebuchet MS", 1, 16)); // NOI18N
         searchByID.setText("Search By ID");
@@ -412,18 +401,6 @@ public class GUI extends javax.swing.JFrame
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
                 searchByIDActionPerformed(evt);
-            }
-        });
-
-        checkQuantity.setFont(new java.awt.Font("Trebuchet MS", 1, 16)); // NOI18N
-        checkQuantity.setText("Check Quantity");
-        checkQuantity.setToolTipText("Check the quantity of an item based on name or ID");
-        checkQuantity.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        checkQuantity.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
-                checkQuantityActionPerformed(evt);
             }
         });
 
@@ -443,13 +420,12 @@ public class GUI extends javax.swing.JFrame
         printOrder.setText("Print Today's Order");
         printOrder.setToolTipText("Decrease the quantity of an item based on name or ID");
         printOrder.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        printOrder.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        /*printOrder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 printOrderActionPerformed(evt);
             }
-        });
+
+        });*/
 
         logout.setFont(new java.awt.Font("Trebuchet MS", 1, 16)); // NOI18N
         logout.setText("Logout");
@@ -512,8 +488,7 @@ public class GUI extends javax.swing.JFrame
                                                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                                                 .addComponent(searchByName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)
                                                                 .addComponent(listToolsOwner, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                                .addComponent(searchByID, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                                .addComponent(checkQuantity, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                                                .addComponent(searchByID, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                                         .addComponent(decreaseQuantity, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                         .addComponent(printOrder, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                         .addComponent(addTool, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -521,15 +496,13 @@ public class GUI extends javax.swing.JFrame
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                                         .addGroup(jPanel6Layout.createSequentialGroup()
                                                                 .addComponent(addLogin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                .addComponent(logout, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addGap(15, 15, 15))
-                                                        .addGroup(jPanel6Layout.createSequentialGroup()
-                                                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 510, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                                                .addGap(15, 15, 15)
+                                                                .addComponent(logout, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 510, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 830, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -554,26 +527,24 @@ public class GUI extends javax.swing.JFrame
                                                                 .addComponent(searchByName, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                                 .addGap(18, 18, 18)
                                                                 .addComponent(searchByID, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addGap(18, 18, 18)
-                                                                .addComponent(checkQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addGap(18, 18, 18)
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                                                 .addComponent(decreaseQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addGap(18, 18, 18)
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                                                 .addComponent(printOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                                                 .addComponent(addTool, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                                                 .addComponent(removeTool, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addGap(0, 12, Short.MAX_VALUE))))
+                                                                .addGap(0, 8, Short.MAX_VALUE))))
                                         .addGroup(jPanel6Layout.createSequentialGroup()
                                                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                         .addGroup(jPanel6Layout.createSequentialGroup()
-                                                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 424, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 368, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                                        .addComponent(addLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                        .addComponent(logout, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 482, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                                        .addComponent(logout, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                        .addComponent(addLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                 .addGap(0, 0, Short.MAX_VALUE))))
         );
 
@@ -605,13 +576,11 @@ public class GUI extends javax.swing.JFrame
         searchNameAccept.setFont(new java.awt.Font("Trebuchet MS", 1, 16)); // NOI18N
         searchNameAccept.setText("Search");
         searchNameAccept.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        searchNameAccept.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        /*searchNameAccept.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 searchNameAcceptActionPerformed(evt);
             }
-        });
+        });*/
 
         searchNameCancel.setFont(new java.awt.Font("Trebuchet MS", 1, 16)); // NOI18N
         searchNameCancel.setText("Cancel");
@@ -683,13 +652,11 @@ public class GUI extends javax.swing.JFrame
         searchIDAccept.setFont(new java.awt.Font("Trebuchet MS", 1, 16)); // NOI18N
         searchIDAccept.setText("Search");
         searchIDAccept.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        searchIDAccept.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        /*searchIDAccept.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 searchIDAcceptActionPerformed(evt);
             }
-        });
+        });*/
 
         idNameCancel.setFont(new java.awt.Font("Trebuchet MS", 1, 16)); // NOI18N
         idNameCancel.setText("Cancel");
@@ -763,13 +730,11 @@ public class GUI extends javax.swing.JFrame
         checkQuantityAccept.setFont(new java.awt.Font("Trebuchet MS", 1, 16)); // NOI18N
         checkQuantityAccept.setText("Search");
         checkQuantityAccept.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        checkQuantityAccept.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        /*checkQuantityAccept.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 checkQuantityAcceptActionPerformed(evt);
             }
-        });
+        });*/
 
         checkQuantityCancel.setFont(new java.awt.Font("Trebuchet MS", 1, 16)); // NOI18N
         checkQuantityCancel.setText("Cancel");
@@ -839,13 +804,11 @@ public class GUI extends javax.swing.JFrame
         decreaseQuantityAccept.setFont(new java.awt.Font("Trebuchet MS", 1, 16)); // NOI18N
         decreaseQuantityAccept.setText("Decrease by Amount");
         decreaseQuantityAccept.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        decreaseQuantityAccept.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        /*decreaseQuantityAccept.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 decreaseQuantityAcceptActionPerformed(evt);
             }
-        });
+        });*/
 
         decreaseQuantityCancel.setFont(new java.awt.Font("Trebuchet MS", 1, 16)); // NOI18N
         decreaseQuantityCancel.setText("Done");
@@ -1480,7 +1443,7 @@ public class GUI extends javax.swing.JFrame
         jPanel18.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jLabel23.setFont(new java.awt.Font("Tahoma", 2, 16)); // NOI18N
-        jLabel23.setText("Please enter tool name or ID to remove:");
+        jLabel23.setText("Please enter tool ID to remove:");
         jLabel23.setBorder(javax.swing.BorderFactory.createCompoundBorder());
 
         jScrollPane17.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
@@ -1689,7 +1652,7 @@ public class GUI extends javax.swing.JFrame
         loginMenu.setVisible(false);
         loginUsernameField.setText("");
         loginPasswordField.setText("");
-        //Check for validity here
+        //Check for validity here with database
         if (true)
         {
             ownerClientMenu.setBounds(((int) screenSize.getWidth() - 880) / 2, ((int) screenSize.getHeight() - 650) / 2, 880, 650);
@@ -1714,24 +1677,10 @@ public class GUI extends javax.swing.JFrame
 
     }
 
-    private void listToolsOwnerActionPerformed(java.awt.event.ActionEvent evt)
-    {
-        //Display all tools for owner
-        ownerDisplay.setText("");
-        //For xxx
-        //ownerDisplay.append(xxx);
-    }
-
     private void searchByIDActionPerformed(java.awt.event.ActionEvent evt)
     {
         searchByIDDialog.setBounds(((int) screenSize.getWidth() - 404) / 2, ((int) screenSize.getHeight() - 160) / 2, 404, 180);
         searchByIDDialog.setVisible(true);
-    }
-
-    private void checkQuantityActionPerformed(java.awt.event.ActionEvent evt)
-    {
-        checkQuantityDialog.setBounds(((int) screenSize.getWidth() - 404) / 2, ((int) screenSize.getHeight() - 160) / 2, 404, 180);
-        checkQuantityDialog.setVisible(true);
     }
 
     private void decreaseQuantityActionPerformed(java.awt.event.ActionEvent evt)
@@ -1740,28 +1689,9 @@ public class GUI extends javax.swing.JFrame
         decreaseQuantityDialog.setVisible(true);
     }
 
-    private void printOrderActionPerformed(java.awt.event.ActionEvent evt)
-    {
-        // Print order
-    }
-
     private void logoutActionPerformed(java.awt.event.ActionEvent evt)
     {
         System.exit(1);
-    }
-
-    private void addLoginActionPerformed(java.awt.event.ActionEvent evt)
-    {
-        addOwnerLoginMenu.setBounds(((int) screenSize.getWidth() - 404) / 2, ((int) screenSize.getHeight() - 260) / 2, 404, 245);
-        addOwnerLoginMenu.setVisible(true);
-    }
-
-    private void searchNameAcceptActionPerformed(java.awt.event.ActionEvent evt)
-    {
-        String nameToSearch = nameTextArea.getText();
-        //Search name
-        nameTextArea.setText("");
-        searchByNameDialog.setVisible(false);
     }
 
     private void searchNameCancelActionPerformed(java.awt.event.ActionEvent evt)
@@ -1770,13 +1700,6 @@ public class GUI extends javax.swing.JFrame
         searchByNameDialog.setVisible(false);
     }
 
-    private void searchIDAcceptActionPerformed(java.awt.event.ActionEvent evt)
-    {
-        String idToSearch = idTextArea.getText();
-        //Search id
-        idTextArea.setText("");
-        searchByIDDialog.setVisible(false);
-    }
 
     private void idNameCancelActionPerformed(java.awt.event.ActionEvent evt)
     {
@@ -1784,78 +1707,10 @@ public class GUI extends javax.swing.JFrame
         searchByIDDialog.setVisible(false);
     }
 
-    private void checkQuantityAcceptActionPerformed(java.awt.event.ActionEvent evt)
-    {
-        String input = idTextArea.getText();
-
-        try
-        {
-            int id = Integer.parseInt(input);
-            //Lookup tool by id
-            /*
-            Tool theTool = theShop.getTool(id);
-            if (theTool != null) {
-                System.out.println("Tool found.\nStock: " + theTool.getQuantity() + "\n");
-                theShop.checkStock(theTool);
-            } else {
-                System.out.println("This tool could not be found.\n");
-            }
-            */
-        } catch (java.lang.NumberFormatException string)
-        {
-            //Lookup tool by name
-            /*Tool theTool = theShop.getTool(in);
-            if (theTool != null) {
-                System.out.println("Tool found.\nStock: " + theTool.getQuantity() + "\n");
-                theShop.checkStock(theTool);
-            } else {
-                System.out.println("This tool could not be found.\n");
-            }
-            */
-
-        }
-        idTextArea.setText("");
-        checkQuantityDialog.setVisible(false);
-    }
-
     private void checkQuantityCancelActionPerformed(java.awt.event.ActionEvent evt)
     {
         quantityTextArea.setText("");
         checkQuantityDialog.setVisible(false);
-    }
-
-    private void decreaseQuantityAcceptActionPerformed(java.awt.event.ActionEvent evt)
-    {
-        String input = decreaseTextArea.getText();
-
-        try
-        {
-            int id = Integer.parseInt(input);
-            //Lookup tool by id
-            /*
-            Tool theTool = theShop.getTool(id);
-            if (theTool != null) {
-                System.out.println("Tool found.\nStock: " + theTool.getQuantity() + "\n");
-                theShop.checkStock(theTool);
-            } else {
-                System.out.println("This tool could not be found.\n");
-            }
-            */
-        } catch (java.lang.NumberFormatException string)
-        {
-            //Lookup tool by name
-            /*Tool theTool = theShop.getTool(in);
-            if (theTool != null) {
-                System.out.println("Tool found.\nStock: " + theTool.getQuantity() + "\n");
-                theShop.checkStock(theTool);
-            } else {
-                System.out.println("This tool could not be found.\n");
-            }
-            */
-
-        }
-        decreaseTextArea.setText("");
-        decreaseQuantityDialog.setVisible(false);
     }
 
     private void decreaseQuantityCancelActionPerformed(java.awt.event.ActionEvent evt)
@@ -1911,10 +1766,16 @@ public class GUI extends javax.swing.JFrame
 
     private void listToolsCustomerActionPerformed(java.awt.event.ActionEvent evt)
     {
-        //List tools for customer display
+        /*Iterable<Tool> tools = inventory.getAllTools());
+        ArrayList<Tool> collected = new ArrayList<>();
+        tools.forEach(collected::add);
         customerDisplay.setText("");
-        //For xxx
-        //customerDisplay.append(xxx);
+        for(int i = 0; i < collected.size(); i++)
+        {
+            Tool tool = collected.get(i);
+            customerDisplay.append(tool.toString);
+        }
+        */
     }
 
     private void buyItemActionPerformed(java.awt.event.ActionEvent evt)
@@ -1944,7 +1805,7 @@ public class GUI extends javax.swing.JFrame
 
     private void amountToBuyFieldActionPerformed(java.awt.event.ActionEvent evt)
     {
-
+        //Delete this
     }
 
     private void increaseBuyActionPerformed(java.awt.event.ActionEvent evt)
@@ -1976,7 +1837,7 @@ public class GUI extends javax.swing.JFrame
 
     private void addToolButtonActionPerformed(java.awt.event.ActionEvent evt)
     {
-        String name = addToolNameArea.getText();
+        /*String name = addToolNameArea.getText();
         String id = addToolIDArea.getText();
         String stock = addToolStockArea.getText();
         String price = addToolPriceArea.getText();
@@ -1986,8 +1847,9 @@ public class GUI extends javax.swing.JFrame
         addToolStockArea.setText("");
         addToolPriceArea.setText("");
         addToolSupplierIDArea.setText("");
-
-        //Add to inventory
+        Tool tool = new Tool(id, name, stock, price, supplierID);
+        inventory.addTool(tool);
+        */
     }
 
     private void doneAddingToolsActionPerformed(java.awt.event.ActionEvent evt)
@@ -2002,40 +1864,1359 @@ public class GUI extends javax.swing.JFrame
 
     private void removeItemButtonActionPerformed(java.awt.event.ActionEvent evt)
     {
-        String input = removeItemArea.getText();
-        try
-        {
-            int id = Integer.parseInt(input);
-            //Lookup tool by id
-            /*
-            Tool theTool = theShop.getTool(id);
-            if (theTool != null) {
-                System.out.println("Tool found.\nStock: " + theTool.getQuantity() + "\n");
-                theShop.checkStock(theTool);
-            } else {
-                System.out.println("This tool could not be found.\n");
-            }
-            */
-        } catch (java.lang.NumberFormatException string)
-        {
-            //Lookup tool by name
-            /*Tool theTool = theShop.getTool(in);
-            if (theTool != null) {
-                System.out.println("Tool found.\nStock: " + theTool.getQuantity() + "\n");
-                theShop.checkStock(theTool);
-            } else {
-                System.out.println("This tool could not be found.\n");
-            }
-            */
-
+        /*try{
+            int input = Integer.parseInt(removeItemArea.getText());
+            inventory.removeTool();
+            removeItemArea.setText("");
         }
-        removeItemArea.setText("");
+        catch(Exception e)
+        {
+            removeItemArea.setText("ERROR");
+        }
+        */
     }
+
 
     private void removeItemDoneActionPerformed(java.awt.event.ActionEvent evt)
     {
         removeItemArea.setText("");
         removeToolDialog.setVisible(false);
+    }
+
+    private void addLoginActionPerformed(java.awt.event.ActionEvent evt)
+    {
+        addOwnerLoginMenu.setBounds(((int) screenSize.getWidth() - 404) / 2, ((int) screenSize.getHeight() - 260) / 2, 404, 245);
+        addOwnerLoginMenu.setVisible(true);
+    }
+
+    public Dimension getScreenSize()
+    {
+        return screenSize;
+    }
+
+    public void setScreenSize(Dimension screenSize)
+    {
+        this.screenSize = screenSize;
+    }
+
+    public JButton getAcceptLoginButton()
+    {
+        return acceptLoginButton;
+    }
+
+    public void setAcceptLoginButton(JButton acceptLoginButton)
+    {
+        this.acceptLoginButton = acceptLoginButton;
+    }
+
+    public JDialog getAddItemDialog()
+    {
+        return addItemDialog;
+    }
+
+    public void setAddItemDialog(JDialog addItemDialog)
+    {
+        this.addItemDialog = addItemDialog;
+    }
+
+    public JButton getAddLogin()
+    {
+        return addLogin;
+    }
+
+    public void setAddLogin(JButton addLogin)
+    {
+        this.addLogin = addLogin;
+    }
+
+    public JButton getAddLoginButton()
+    {
+        return addLoginButton;
+    }
+
+    public void setAddLoginButton(JButton addLoginButton)
+    {
+        this.addLoginButton = addLoginButton;
+    }
+
+    public JFrame getAddOwnerLoginMenu()
+    {
+        return addOwnerLoginMenu;
+    }
+
+    public void setAddOwnerLoginMenu(JFrame addOwnerLoginMenu)
+    {
+        this.addOwnerLoginMenu = addOwnerLoginMenu;
+    }
+
+    public JButton getAddTool()
+    {
+        return addTool;
+    }
+
+    public void setAddTool(JButton addTool)
+    {
+        this.addTool = addTool;
+    }
+
+    public JButton getAddToolButton()
+    {
+        return addToolButton;
+    }
+
+    public void setAddToolButton(JButton addToolButton)
+    {
+        this.addToolButton = addToolButton;
+    }
+
+    public JTextArea getAddToolIDArea()
+    {
+        return addToolIDArea;
+    }
+
+    public void setAddToolIDArea(JTextArea addToolIDArea)
+    {
+        this.addToolIDArea = addToolIDArea;
+    }
+
+    public JTextArea getAddToolNameArea()
+    {
+        return addToolNameArea;
+    }
+
+    public void setAddToolNameArea(JTextArea addToolNameArea)
+    {
+        this.addToolNameArea = addToolNameArea;
+    }
+
+    public JTextArea getAddToolPriceArea()
+    {
+        return addToolPriceArea;
+    }
+
+    public void setAddToolPriceArea(JTextArea addToolPriceArea)
+    {
+        this.addToolPriceArea = addToolPriceArea;
+    }
+
+    public JTextArea getAddToolStockArea()
+    {
+        return addToolStockArea;
+    }
+
+    public void setAddToolStockArea(JTextArea addToolStockArea)
+    {
+        this.addToolStockArea = addToolStockArea;
+    }
+
+    public JTextArea getAddToolSupplierIDArea()
+    {
+        return addToolSupplierIDArea;
+    }
+
+    public void setAddToolSupplierIDArea(JTextArea addToolSupplierIDArea)
+    {
+        this.addToolSupplierIDArea = addToolSupplierIDArea;
+    }
+
+    public TextField getAmountToBuyField()
+    {
+        return amountToBuyField;
+    }
+
+    public void setAmountToBuyField(TextField amountToBuyField)
+    {
+        this.amountToBuyField = amountToBuyField;
+    }
+
+    public TextField getAmountToDecreaseField()
+    {
+        return amountToDecreaseField;
+    }
+
+    public void setAmountToDecreaseField(TextField amountToDecreaseField)
+    {
+        this.amountToDecreaseField = amountToDecreaseField;
+    }
+
+    public JButton getBuyAmountAccept()
+    {
+        return buyAmountAccept;
+    }
+
+    public void setBuyAmountAccept(JButton buyAmountAccept)
+    {
+        this.buyAmountAccept = buyAmountAccept;
+    }
+
+    public JButton getBuyAmountCancel()
+    {
+        return buyAmountCancel;
+    }
+
+    public void setBuyAmountCancel(JButton buyAmountCancel)
+    {
+        this.buyAmountCancel = buyAmountCancel;
+    }
+
+    public JButton getBuyItem()
+    {
+        return buyItem;
+    }
+
+    public void setBuyItem(JButton buyItem)
+    {
+        this.buyItem = buyItem;
+    }
+
+    public JDialog getBuyItemDialog()
+    {
+        return buyItemDialog;
+    }
+
+    public void setBuyItemDialog(JDialog buyItemDialog)
+    {
+        this.buyItemDialog = buyItemDialog;
+    }
+
+    public JTextArea getBuyTextArea()
+    {
+        return buyTextArea;
+    }
+
+    public void setBuyTextArea(JTextArea buyTextArea)
+    {
+        this.buyTextArea = buyTextArea;
+    }
+
+    public JButton getCancelLoginButton()
+    {
+        return cancelLoginButton;
+    }
+
+    public void setCancelLoginButton(JButton cancelLoginButton)
+    {
+        this.cancelLoginButton = cancelLoginButton;
+    }
+
+    public JButton getCancelNewLoginButton()
+    {
+        return cancelNewLoginButton;
+    }
+
+    public void setCancelNewLoginButton(JButton cancelNewLoginButton)
+    {
+        this.cancelNewLoginButton = cancelNewLoginButton;
+    }
+
+    public JButton getCheckQuantityAccept()
+    {
+        return checkQuantityAccept;
+    }
+
+    public void setCheckQuantityAccept(JButton checkQuantityAccept)
+    {
+        this.checkQuantityAccept = checkQuantityAccept;
+    }
+
+    public JButton getCheckQuantityCancel()
+    {
+        return checkQuantityCancel;
+    }
+
+    public void setCheckQuantityCancel(JButton checkQuantityCancel)
+    {
+        this.checkQuantityCancel = checkQuantityCancel;
+    }
+
+    public JDialog getCheckQuantityDialog()
+    {
+        return checkQuantityDialog;
+    }
+
+    public void setCheckQuantityDialog(JDialog checkQuantityDialog)
+    {
+        this.checkQuantityDialog = checkQuantityDialog;
+    }
+
+    public JFrame getCustomerClientMenu()
+    {
+        return customerClientMenu;
+    }
+
+    public void setCustomerClientMenu(JFrame customerClientMenu)
+    {
+        this.customerClientMenu = customerClientMenu;
+    }
+
+    public JTextArea getCustomerDisplay()
+    {
+        return customerDisplay;
+    }
+
+    public void setCustomerDisplay(JTextArea customerDisplay)
+    {
+        this.customerDisplay = customerDisplay;
+    }
+
+    public Button getDecreaseAmount()
+    {
+        return decreaseAmount;
+    }
+
+    public void setDecreaseAmount(Button decreaseAmount)
+    {
+        this.decreaseAmount = decreaseAmount;
+    }
+
+    public Button getDecreaseBuy()
+    {
+        return decreaseBuy;
+    }
+
+    public void setDecreaseBuy(Button decreaseBuy)
+    {
+        this.decreaseBuy = decreaseBuy;
+    }
+
+    public JButton getDecreaseQuantity()
+    {
+        return decreaseQuantity;
+    }
+
+    public void setDecreaseQuantity(JButton decreaseQuantity)
+    {
+        this.decreaseQuantity = decreaseQuantity;
+    }
+
+    public JButton getDecreaseQuantityAccept()
+    {
+        return decreaseQuantityAccept;
+    }
+
+    public void setDecreaseQuantityAccept(JButton decreaseQuantityAccept)
+    {
+        this.decreaseQuantityAccept = decreaseQuantityAccept;
+    }
+
+    public JButton getDecreaseQuantityCancel()
+    {
+        return decreaseQuantityCancel;
+    }
+
+    public void setDecreaseQuantityCancel(JButton decreaseQuantityCancel)
+    {
+        this.decreaseQuantityCancel = decreaseQuantityCancel;
+    }
+
+    public JDialog getDecreaseQuantityDialog()
+    {
+        return decreaseQuantityDialog;
+    }
+
+    public void setDecreaseQuantityDialog(JDialog decreaseQuantityDialog)
+    {
+        this.decreaseQuantityDialog = decreaseQuantityDialog;
+    }
+
+    public JTextArea getDecreaseTextArea()
+    {
+        return decreaseTextArea;
+    }
+
+    public void setDecreaseTextArea(JTextArea decreaseTextArea)
+    {
+        this.decreaseTextArea = decreaseTextArea;
+    }
+
+    public JButton getDoneAddingTools()
+    {
+        return doneAddingTools;
+    }
+
+    public void setDoneAddingTools(JButton doneAddingTools)
+    {
+        this.doneAddingTools = doneAddingTools;
+    }
+
+    public JButton getIdNameCancel()
+    {
+        return idNameCancel;
+    }
+
+    public void setIdNameCancel(JButton idNameCancel)
+    {
+        this.idNameCancel = idNameCancel;
+    }
+
+    public JTextArea getIdTextArea()
+    {
+        return idTextArea;
+    }
+
+    public void setIdTextArea(JTextArea idTextArea)
+    {
+        this.idTextArea = idTextArea;
+    }
+
+    public Button getIncreaseAmount()
+    {
+        return increaseAmount;
+    }
+
+    public void setIncreaseAmount(Button increaseAmount)
+    {
+        this.increaseAmount = increaseAmount;
+    }
+
+    public Button getIncreaseBuy()
+    {
+        return increaseBuy;
+    }
+
+    public void setIncreaseBuy(Button increaseBuy)
+    {
+        this.increaseBuy = increaseBuy;
+    }
+
+    public JButton getInvalidLoginAcknowledge()
+    {
+        return invalidLoginAcknowledge;
+    }
+
+    public void setInvalidLoginAcknowledge(JButton invalidLoginAcknowledge)
+    {
+        this.invalidLoginAcknowledge = invalidLoginAcknowledge;
+    }
+
+    public JDialog getInvalidLoginPopup()
+    {
+        return invalidLoginPopup;
+    }
+
+    public void setInvalidLoginPopup(JDialog invalidLoginPopup)
+    {
+        this.invalidLoginPopup = invalidLoginPopup;
+    }
+
+    public JLabel getjLabel1()
+    {
+        return jLabel1;
+    }
+
+    public void setjLabel1(JLabel jLabel1)
+    {
+        this.jLabel1 = jLabel1;
+    }
+
+    public JLabel getjLabel10()
+    {
+        return jLabel10;
+    }
+
+    public void setjLabel10(JLabel jLabel10)
+    {
+        this.jLabel10 = jLabel10;
+    }
+
+    public JLabel getjLabel11()
+    {
+        return jLabel11;
+    }
+
+    public void setjLabel11(JLabel jLabel11)
+    {
+        this.jLabel11 = jLabel11;
+    }
+
+    public JLabel getjLabel12()
+    {
+        return jLabel12;
+    }
+
+    public void setjLabel12(JLabel jLabel12)
+    {
+        this.jLabel12 = jLabel12;
+    }
+
+    public JLabel getjLabel13()
+    {
+        return jLabel13;
+    }
+
+    public void setjLabel13(JLabel jLabel13)
+    {
+        this.jLabel13 = jLabel13;
+    }
+
+    public JLabel getjLabel14()
+    {
+        return jLabel14;
+    }
+
+    public void setjLabel14(JLabel jLabel14)
+    {
+        this.jLabel14 = jLabel14;
+    }
+
+    public JLabel getjLabel15()
+    {
+        return jLabel15;
+    }
+
+    public void setjLabel15(JLabel jLabel15)
+    {
+        this.jLabel15 = jLabel15;
+    }
+
+    public JLabel getjLabel16()
+    {
+        return jLabel16;
+    }
+
+    public void setjLabel16(JLabel jLabel16)
+    {
+        this.jLabel16 = jLabel16;
+    }
+
+    public JLabel getjLabel17()
+    {
+        return jLabel17;
+    }
+
+    public void setjLabel17(JLabel jLabel17)
+    {
+        this.jLabel17 = jLabel17;
+    }
+
+    public JLabel getjLabel18()
+    {
+        return jLabel18;
+    }
+
+    public void setjLabel18(JLabel jLabel18)
+    {
+        this.jLabel18 = jLabel18;
+    }
+
+    public JLabel getjLabel19()
+    {
+        return jLabel19;
+    }
+
+    public void setjLabel19(JLabel jLabel19)
+    {
+        this.jLabel19 = jLabel19;
+    }
+
+    public JLabel getjLabel2()
+    {
+        return jLabel2;
+    }
+
+    public void setjLabel2(JLabel jLabel2)
+    {
+        this.jLabel2 = jLabel2;
+    }
+
+    public JLabel getjLabel20()
+    {
+        return jLabel20;
+    }
+
+    public void setjLabel20(JLabel jLabel20)
+    {
+        this.jLabel20 = jLabel20;
+    }
+
+    public JLabel getjLabel21()
+    {
+        return jLabel21;
+    }
+
+    public void setjLabel21(JLabel jLabel21)
+    {
+        this.jLabel21 = jLabel21;
+    }
+
+    public JLabel getjLabel22()
+    {
+        return jLabel22;
+    }
+
+    public void setjLabel22(JLabel jLabel22)
+    {
+        this.jLabel22 = jLabel22;
+    }
+
+    public JLabel getjLabel23()
+    {
+        return jLabel23;
+    }
+
+    public void setjLabel23(JLabel jLabel23)
+    {
+        this.jLabel23 = jLabel23;
+    }
+
+    public JLabel getjLabel3()
+    {
+        return jLabel3;
+    }
+
+    public void setjLabel3(JLabel jLabel3)
+    {
+        this.jLabel3 = jLabel3;
+    }
+
+    public JLabel getjLabel4()
+    {
+        return jLabel4;
+    }
+
+    public void setjLabel4(JLabel jLabel4)
+    {
+        this.jLabel4 = jLabel4;
+    }
+
+    public JLabel getjLabel5()
+    {
+        return jLabel5;
+    }
+
+    public void setjLabel5(JLabel jLabel5)
+    {
+        this.jLabel5 = jLabel5;
+    }
+
+    public JLabel getjLabel6()
+    {
+        return jLabel6;
+    }
+
+    public void setjLabel6(JLabel jLabel6)
+    {
+        this.jLabel6 = jLabel6;
+    }
+
+    public JLabel getjLabel7()
+    {
+        return jLabel7;
+    }
+
+    public void setjLabel7(JLabel jLabel7)
+    {
+        this.jLabel7 = jLabel7;
+    }
+
+    public JLabel getjLabel8()
+    {
+        return jLabel8;
+    }
+
+    public void setjLabel8(JLabel jLabel8)
+    {
+        this.jLabel8 = jLabel8;
+    }
+
+    public JLabel getjLabel9()
+    {
+        return jLabel9;
+    }
+
+    public void setjLabel9(JLabel jLabel9)
+    {
+        this.jLabel9 = jLabel9;
+    }
+
+    public JPanel getjPanel1()
+    {
+        return jPanel1;
+    }
+
+    public void setjPanel1(JPanel jPanel1)
+    {
+        this.jPanel1 = jPanel1;
+    }
+
+    public JPanel getjPanel10()
+    {
+        return jPanel10;
+    }
+
+    public void setjPanel10(JPanel jPanel10)
+    {
+        this.jPanel10 = jPanel10;
+    }
+
+    public JPanel getjPanel11()
+    {
+        return jPanel11;
+    }
+
+    public void setjPanel11(JPanel jPanel11)
+    {
+        this.jPanel11 = jPanel11;
+    }
+
+    public JPanel getjPanel12()
+    {
+        return jPanel12;
+    }
+
+    public void setjPanel12(JPanel jPanel12)
+    {
+        this.jPanel12 = jPanel12;
+    }
+
+    public JPanel getjPanel13()
+    {
+        return jPanel13;
+    }
+
+    public void setjPanel13(JPanel jPanel13)
+    {
+        this.jPanel13 = jPanel13;
+    }
+
+    public JPanel getjPanel14()
+    {
+        return jPanel14;
+    }
+
+    public void setjPanel14(JPanel jPanel14)
+    {
+        this.jPanel14 = jPanel14;
+    }
+
+    public JPanel getjPanel15()
+    {
+        return jPanel15;
+    }
+
+    public void setjPanel15(JPanel jPanel15)
+    {
+        this.jPanel15 = jPanel15;
+    }
+
+    public JPanel getjPanel16()
+    {
+        return jPanel16;
+    }
+
+    public void setjPanel16(JPanel jPanel16)
+    {
+        this.jPanel16 = jPanel16;
+    }
+
+    public JPanel getjPanel17()
+    {
+        return jPanel17;
+    }
+
+    public void setjPanel17(JPanel jPanel17)
+    {
+        this.jPanel17 = jPanel17;
+    }
+
+    public JPanel getjPanel18()
+    {
+        return jPanel18;
+    }
+
+    public void setjPanel18(JPanel jPanel18)
+    {
+        this.jPanel18 = jPanel18;
+    }
+
+    public JPanel getjPanel2()
+    {
+        return jPanel2;
+    }
+
+    public void setjPanel2(JPanel jPanel2)
+    {
+        this.jPanel2 = jPanel2;
+    }
+
+    public JPanel getjPanel3()
+    {
+        return jPanel3;
+    }
+
+    public void setjPanel3(JPanel jPanel3)
+    {
+        this.jPanel3 = jPanel3;
+    }
+
+    public JPanel getjPanel4()
+    {
+        return jPanel4;
+    }
+
+    public void setjPanel4(JPanel jPanel4)
+    {
+        this.jPanel4 = jPanel4;
+    }
+
+    public JPanel getjPanel5()
+    {
+        return jPanel5;
+    }
+
+    public void setjPanel5(JPanel jPanel5)
+    {
+        this.jPanel5 = jPanel5;
+    }
+
+    public JPanel getjPanel6()
+    {
+        return jPanel6;
+    }
+
+    public void setjPanel6(JPanel jPanel6)
+    {
+        this.jPanel6 = jPanel6;
+    }
+
+    public JPanel getjPanel7()
+    {
+        return jPanel7;
+    }
+
+    public void setjPanel7(JPanel jPanel7)
+    {
+        this.jPanel7 = jPanel7;
+    }
+
+    public JPanel getjPanel8()
+    {
+        return jPanel8;
+    }
+
+    public void setjPanel8(JPanel jPanel8)
+    {
+        this.jPanel8 = jPanel8;
+    }
+
+    public JPanel getjPanel9()
+    {
+        return jPanel9;
+    }
+
+    public void setjPanel9(JPanel jPanel9)
+    {
+        this.jPanel9 = jPanel9;
+    }
+
+    public JScrollPane getjScrollPane1()
+    {
+        return jScrollPane1;
+    }
+
+    public void setjScrollPane1(JScrollPane jScrollPane1)
+    {
+        this.jScrollPane1 = jScrollPane1;
+    }
+
+    public JScrollPane getjScrollPane10()
+    {
+        return jScrollPane10;
+    }
+
+    public void setjScrollPane10(JScrollPane jScrollPane10)
+    {
+        this.jScrollPane10 = jScrollPane10;
+    }
+
+    public JScrollPane getjScrollPane11()
+    {
+        return jScrollPane11;
+    }
+
+    public void setjScrollPane11(JScrollPane jScrollPane11)
+    {
+        this.jScrollPane11 = jScrollPane11;
+    }
+
+    public JScrollPane getjScrollPane12()
+    {
+        return jScrollPane12;
+    }
+
+    public void setjScrollPane12(JScrollPane jScrollPane12)
+    {
+        this.jScrollPane12 = jScrollPane12;
+    }
+
+    public JScrollPane getjScrollPane13()
+    {
+        return jScrollPane13;
+    }
+
+    public void setjScrollPane13(JScrollPane jScrollPane13)
+    {
+        this.jScrollPane13 = jScrollPane13;
+    }
+
+    public JScrollPane getjScrollPane14()
+    {
+        return jScrollPane14;
+    }
+
+    public void setjScrollPane14(JScrollPane jScrollPane14)
+    {
+        this.jScrollPane14 = jScrollPane14;
+    }
+
+    public JScrollPane getjScrollPane15()
+    {
+        return jScrollPane15;
+    }
+
+    public void setjScrollPane15(JScrollPane jScrollPane15)
+    {
+        this.jScrollPane15 = jScrollPane15;
+    }
+
+    public JScrollPane getjScrollPane16()
+    {
+        return jScrollPane16;
+    }
+
+    public void setjScrollPane16(JScrollPane jScrollPane16)
+    {
+        this.jScrollPane16 = jScrollPane16;
+    }
+
+    public JScrollPane getjScrollPane17()
+    {
+        return jScrollPane17;
+    }
+
+    public void setjScrollPane17(JScrollPane jScrollPane17)
+    {
+        this.jScrollPane17 = jScrollPane17;
+    }
+
+    public JScrollPane getjScrollPane2()
+    {
+        return jScrollPane2;
+    }
+
+    public void setjScrollPane2(JScrollPane jScrollPane2)
+    {
+        this.jScrollPane2 = jScrollPane2;
+    }
+
+    public JScrollPane getjScrollPane3()
+    {
+        return jScrollPane3;
+    }
+
+    public void setjScrollPane3(JScrollPane jScrollPane3)
+    {
+        this.jScrollPane3 = jScrollPane3;
+    }
+
+    public JScrollPane getjScrollPane4()
+    {
+        return jScrollPane4;
+    }
+
+    public void setjScrollPane4(JScrollPane jScrollPane4)
+    {
+        this.jScrollPane4 = jScrollPane4;
+    }
+
+    public JScrollPane getjScrollPane5()
+    {
+        return jScrollPane5;
+    }
+
+    public void setjScrollPane5(JScrollPane jScrollPane5)
+    {
+        this.jScrollPane5 = jScrollPane5;
+    }
+
+    public JScrollPane getjScrollPane6()
+    {
+        return jScrollPane6;
+    }
+
+    public void setjScrollPane6(JScrollPane jScrollPane6)
+    {
+        this.jScrollPane6 = jScrollPane6;
+    }
+
+    public JScrollPane getjScrollPane7()
+    {
+        return jScrollPane7;
+    }
+
+    public void setjScrollPane7(JScrollPane jScrollPane7)
+    {
+        this.jScrollPane7 = jScrollPane7;
+    }
+
+    public JScrollPane getjScrollPane8()
+    {
+        return jScrollPane8;
+    }
+
+    public void setjScrollPane8(JScrollPane jScrollPane8)
+    {
+        this.jScrollPane8 = jScrollPane8;
+    }
+
+    public JScrollPane getjScrollPane9()
+    {
+        return jScrollPane9;
+    }
+
+    public void setjScrollPane9(JScrollPane jScrollPane9)
+    {
+        this.jScrollPane9 = jScrollPane9;
+    }
+
+    public JSeparator getjSeparator1()
+    {
+        return jSeparator1;
+    }
+
+    public void setjSeparator1(JSeparator jSeparator1)
+    {
+        this.jSeparator1 = jSeparator1;
+    }
+
+    public JSeparator getjSeparator2()
+    {
+        return jSeparator2;
+    }
+
+    public void setjSeparator2(JSeparator jSeparator2)
+    {
+        this.jSeparator2 = jSeparator2;
+    }
+
+    public JSeparator getjSeparator3()
+    {
+        return jSeparator3;
+    }
+
+    public void setjSeparator3(JSeparator jSeparator3)
+    {
+        this.jSeparator3 = jSeparator3;
+    }
+
+    public JSeparator getjSeparator4()
+    {
+        return jSeparator4;
+    }
+
+    public void setjSeparator4(JSeparator jSeparator4)
+    {
+        this.jSeparator4 = jSeparator4;
+    }
+
+    public JButton getListToolsCustomer()
+    {
+        return listToolsCustomer;
+    }
+
+    public void setListToolsCustomer(JButton listToolsCustomer)
+    {
+        this.listToolsCustomer = listToolsCustomer;
+    }
+
+    public JButton getListToolsOwner()
+    {
+        return listToolsOwner;
+    }
+
+    public void setListToolsOwner(JButton listToolsOwner)
+    {
+        this.listToolsOwner = listToolsOwner;
+    }
+
+    public JButton getLoginCustomerButton()
+    {
+        return loginCustomerButton;
+    }
+
+    public void setLoginCustomerButton(JButton loginCustomerButton)
+    {
+        this.loginCustomerButton = loginCustomerButton;
+    }
+
+    public JFrame getLoginMenu()
+    {
+        return loginMenu;
+    }
+
+    public void setLoginMenu(JFrame loginMenu)
+    {
+        this.loginMenu = loginMenu;
+    }
+
+    public JTextArea getLoginNewPasswordField()
+    {
+        return loginNewPasswordField;
+    }
+
+    public void setLoginNewPasswordField(JTextArea loginNewPasswordField)
+    {
+        this.loginNewPasswordField = loginNewPasswordField;
+    }
+
+    public JTextArea getLoginNewUsernameField()
+    {
+        return loginNewUsernameField;
+    }
+
+    public void setLoginNewUsernameField(JTextArea loginNewUsernameField)
+    {
+        this.loginNewUsernameField = loginNewUsernameField;
+    }
+
+    public JButton getLoginOwnerButton()
+    {
+        return loginOwnerButton;
+    }
+
+    public void setLoginOwnerButton(JButton loginOwnerButton)
+    {
+        this.loginOwnerButton = loginOwnerButton;
+    }
+
+    public JTextArea getLoginPasswordField()
+    {
+        return loginPasswordField;
+    }
+
+    public void setLoginPasswordField(JTextArea loginPasswordField)
+    {
+        this.loginPasswordField = loginPasswordField;
+    }
+
+    public JButton getLoginQuitButton()
+    {
+        return loginQuitButton;
+    }
+
+    public void setLoginQuitButton(JButton loginQuitButton)
+    {
+        this.loginQuitButton = loginQuitButton;
+    }
+
+    public JTextArea getLoginUsernameField()
+    {
+        return loginUsernameField;
+    }
+
+    public void setLoginUsernameField(JTextArea loginUsernameField)
+    {
+        this.loginUsernameField = loginUsernameField;
+    }
+
+    public JButton getLogout()
+    {
+        return logout;
+    }
+
+    public void setLogout(JButton logout)
+    {
+        this.logout = logout;
+    }
+
+    public JButton getLogout1()
+    {
+        return logout1;
+    }
+
+    public void setLogout1(JButton logout1)
+    {
+        this.logout1 = logout1;
+    }
+
+    public JTextArea getNameTextArea()
+    {
+        return nameTextArea;
+    }
+
+    public void setNameTextArea(JTextArea nameTextArea)
+    {
+        this.nameTextArea = nameTextArea;
+    }
+
+    public JFrame getOwnerClientMenu()
+    {
+        return ownerClientMenu;
+    }
+
+    public void setOwnerClientMenu(JFrame ownerClientMenu)
+    {
+        this.ownerClientMenu = ownerClientMenu;
+    }
+
+    public JTextArea getOwnerDisplay()
+    {
+        return ownerDisplay;
+    }
+
+    public void setOwnerDisplay(JTextArea ownerDisplay)
+    {
+        this.ownerDisplay = ownerDisplay;
+    }
+
+    public JButton getPrintOrder()
+    {
+        return printOrder;
+    }
+
+    public void setPrintOrder(JButton printOrder)
+    {
+        this.printOrder = printOrder;
+    }
+
+    public JTextArea getQuantityTextArea()
+    {
+        return quantityTextArea;
+    }
+
+    public void setQuantityTextArea(JTextArea quantityTextArea)
+    {
+        this.quantityTextArea = quantityTextArea;
+    }
+
+    public JTextArea getRemoveItemArea()
+    {
+        return removeItemArea;
+    }
+
+    public void setRemoveItemArea(JTextArea removeItemArea)
+    {
+        this.removeItemArea = removeItemArea;
+    }
+
+    public JButton getRemoveItemButton()
+    {
+        return removeItemButton;
+    }
+
+    public void setRemoveItemButton(JButton removeItemButton)
+    {
+        this.removeItemButton = removeItemButton;
+    }
+
+    public JButton getRemoveItemDone()
+    {
+        return removeItemDone;
+    }
+
+    public void setRemoveItemDone(JButton removeItemDone)
+    {
+        this.removeItemDone = removeItemDone;
+    }
+
+    public JButton getRemoveTool()
+    {
+        return removeTool;
+    }
+
+    public void setRemoveTool(JButton removeTool)
+    {
+        this.removeTool = removeTool;
+    }
+
+    public JDialog getRemoveToolDialog()
+    {
+        return removeToolDialog;
+    }
+
+    public void setRemoveToolDialog(JDialog removeToolDialog)
+    {
+        this.removeToolDialog = removeToolDialog;
+    }
+
+    public JButton getSearchByID()
+    {
+        return searchByID;
+    }
+
+    public void setSearchByID(JButton searchByID)
+    {
+        this.searchByID = searchByID;
+    }
+
+    public JDialog getSearchByIDDialog()
+    {
+        return searchByIDDialog;
+    }
+
+    public void setSearchByIDDialog(JDialog searchByIDDialog)
+    {
+        this.searchByIDDialog = searchByIDDialog;
+    }
+
+    public JButton getSearchByName()
+    {
+        return searchByName;
+    }
+
+    public void setSearchByName(JButton searchByName)
+    {
+        this.searchByName = searchByName;
+    }
+
+    public JButton getSearchByName1()
+    {
+        return searchByName1;
+    }
+
+    public void setSearchByName1(JButton searchByName1)
+    {
+        this.searchByName1 = searchByName1;
+    }
+
+    public JDialog getSearchByNameDialog()
+    {
+        return searchByNameDialog;
+    }
+
+    public void setSearchByNameDialog(JDialog searchByNameDialog)
+    {
+        this.searchByNameDialog = searchByNameDialog;
+    }
+
+    public JButton getSearchIDAccept()
+    {
+        return searchIDAccept;
+    }
+
+    public void setSearchIDAccept(JButton searchIDAccept)
+    {
+        this.searchIDAccept = searchIDAccept;
+    }
+
+    public JButton getSearchNameAccept()
+    {
+        return searchNameAccept;
+    }
+
+    public void setSearchNameAccept(JButton searchNameAccept)
+    {
+        this.searchNameAccept = searchNameAccept;
+    }
+
+    public JButton getSearchNameCancel()
+    {
+        return searchNameCancel;
+    }
+
+    public void setSearchNameCancel(JButton searchNameCancel)
+    {
+        this.searchNameCancel = searchNameCancel;
     }
 
     /**
@@ -2105,7 +3286,6 @@ public class GUI extends javax.swing.JFrame
     private javax.swing.JTextArea buyTextArea;
     private javax.swing.JButton cancelLoginButton;
     private javax.swing.JButton cancelNewLoginButton;
-    private javax.swing.JButton checkQuantity;
     private javax.swing.JButton checkQuantityAccept;
     private javax.swing.JButton checkQuantityCancel;
     private javax.swing.JDialog checkQuantityDialog;

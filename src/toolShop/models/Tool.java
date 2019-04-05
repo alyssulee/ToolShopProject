@@ -88,4 +88,10 @@ public class Tool implements Serializable
     {
         this.supplierId = supplierId;
     }
+
+    public String toString()
+    {
+        String str = "Tool ID: " + id + ", Tool Name: " + name + ", Item Quantity: " + quantity + "\n";
+        return str;
+    }
 }

@@ -1,13 +1,19 @@
+package toolShop.repositories;
+
+import toolShop.InventoryService;
+import toolShop.models.Tool;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.Optional;
 
 /**
  * Database containing information pertaining to a shop's suppliers and tools.
  */
-public class DataBase
+public class DataBase implements InventoryService
 {
-
     /**
      * Used to establish a connection to the database
      */
@@ -20,6 +26,21 @@ public class DataBase
      * Represents a SQL statement and used to execute queries
      */
     private Statement statement;
+    private final String customer = "Customer";
+    private final String owner = "Shop Owner";
+
+    public DataBase()
+    {
+        initializeConnection("newuser", "password");
+
+        createToolTable();
+        createSupplierTables();
+        createUserTable();
+
+        readToolsFile();
+        readSuppliersFile();
+    }
+
 
     /**
      * Connects to the database
@@ -34,6 +55,7 @@ public class DataBase
         } catch (SQLException e)
         {
             e.printStackTrace();
+            System.out.println("Connection not established");
         }
     }
 
@@ -43,46 +65,47 @@ public class DataBase
      * @param id          - Tool ID
      * @param newQuantity - New tool quantity
      */
-    public void changeToolQuantity(int id, int newQuantity)
+    public boolean reduceToolQuantity(int id, int newQuantity)
     {
         try
         {
             String query = "UPDATE tool" + " SET toolQuantity = " + newQuantity + " WHERE toolID = " + id;
             statement.executeUpdate(query);
+            return true;
         } catch (SQLException e)
         {
             e.printStackTrace();
+            return false;
         }
     }
+
 
     /**
      * Receives a tool ID and removes the tool from the database
      *
      * @param id - Tool ID
      */
-    public void deleteTool(int id)
+    public boolean removeTool(int id)
     {
         String query = "DELETE FROM tool WHERE toolID = " + id;
         try
         {
             statement.executeUpdate(query);
             System.out.println("Successfully deleted");
+            return true;
         } catch (SQLException e)
         {
             e.printStackTrace();
+            return false;
         }
     }
 
     /**
      * Inserts a tool into the tool table in the database
      *
-     * @param id         - Tool ID
-     * @param name       - Tool Name
-     * @param quantity   - Tool Quantity
-     * @param price      - Tool Price
-     * @param supplierID - ID of the Supplier supplying the specified tool
+     * @param tool - Tool to be added to database
      */
-    public void insertTool(int id, String name, int quantity, double price, int supplierID)
+    public boolean addTool(Tool tool)
     {
         try
         {
@@ -90,17 +113,23 @@ public class DataBase
                     + " values(?, ?, ?, ?, ?)";
 
             PreparedStatement pState = connect.prepareStatement(query);
-            pState.setInt(1, id);
-            pState.setString(2, name);
-            pState.setInt(3, quantity);
-            pState.setDouble(4, price);
-            pState.setInt(5, supplierID);
+            pState.setInt(1, tool.getId());
+            pState.setString(2, tool.getName());
+            pState.setInt(3, tool.getQuantity());
+            pState.setDouble(4, tool.getPrice());
+            pState.setInt(5, tool.getSupplierId());
             pState.executeUpdate();
             System.out.println("Tool added successfully");
             pState.close();
+            return true;
+        } catch (SQLIntegrityConstraintViolationException e)
+        {
+            System.out.println("Entry of the same ID has already been added!");
+            return false;
         } catch (SQLException e)
         {
             e.printStackTrace();
+            return false;
         }
     }
 
@@ -131,6 +160,79 @@ public class DataBase
         {
             e.printStackTrace();
         }
+    }
+
+    /**
+     * Returns an ArrayList of all tools in the database
+     *
+     * @return - ArrayList of tools
+     */
+    public ArrayList<Tool> getAllTools()
+    {
+        ArrayList<Tool> toolList = new ArrayList<>();
+        try
+        {
+            resultSet = statement.executeQuery("select * from tool");
+            while (resultSet.next())
+            {
+                int id = resultSet.getInt("toolID");
+                String name = resultSet.getString("toolName");
+                int quantity = resultSet.getInt("toolQuantity");
+                int price = resultSet.getInt("toolPrice");
+                int supplierID = resultSet.getInt("supplierID");
+                resultSet.getRow();
+                toolList.add(new Tool(id, name, quantity, price, supplierID));
+            }
+        } catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
+        return toolList;
+    }
+
+    public ArrayList<Tool> getToolsWithName(String toolName)
+    {
+        ArrayList<Tool> toolList = new ArrayList<>();
+        try
+        {
+            resultSet = statement.executeQuery("Select * from tool WHERE toolName = " + "\"" + toolName + "\"");
+            while (resultSet.next())
+            {
+                int id = resultSet.getInt("toolID");
+                String name = resultSet.getString("toolName");
+                int quantity = resultSet.getInt("toolQuantity");
+                int price = resultSet.getInt("toolPrice");
+                int supplierID = resultSet.getInt("supplierID");
+                //resultSet.getRow();
+                toolList.add(new Tool(id, name, quantity, price, supplierID));
+            }
+        } catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
+        return toolList;
+    }
+
+    public Optional<Tool> getToolById(int toolID)
+    {
+        Tool tool = null;
+        try
+        {
+            resultSet = statement.executeQuery("Select * from tool WHERE toolID = " + "\"" + toolID + "\"");
+            if (resultSet.next())
+            {
+                int id = resultSet.getInt("toolID");
+                String name = resultSet.getString("toolName");
+                int quantity = resultSet.getInt("toolQuantity");
+                int price = resultSet.getInt("toolPrice");
+                int supplierID = resultSet.getInt("supplierID");
+                tool = new Tool(id, name, quantity, price, supplierID);
+            }
+        } catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
+        return Optional.ofNullable(tool);
     }
 
     /**
@@ -175,7 +277,7 @@ public class DataBase
                 while ((line = br.readLine()) != null)
                 {
                     String[] temp = line.split(";");
-                    insertTool(Integer.parseInt(temp[0]), temp[1], Integer.parseInt(temp[2]), Double.parseDouble(temp[3]), Integer.parseInt(temp[4]));
+                    addTool(new Tool(Integer.parseInt(temp[0]), temp[1], Integer.parseInt(temp[2]), Double.parseDouble(temp[3]), Integer.parseInt(temp[4])));
                 }
             } catch (Exception e)
             {
@@ -263,18 +365,95 @@ public class DataBase
         }
     }
 
+    private void createUserTable()
+    {
+        try
+        {
+            DatabaseMetaData meta = connect.getMetaData();
+            ResultSet rs = meta.getTables(null, null, "shopusers", null);
+
+
+            if (rs.next() == false)
+            {
+                String query = "CREATE TABLE shopusers (username VARCHAR(255) not NULL, password VARCHAR(255), userType VARCHAR(255),"
+                        + " PRIMARY KEY (username))";
+                statement.executeUpdate(query);
+
+                insertUser("admin", "password", owner);
+                insertUser("user1", "user1", customer);
+                insertUser("user2", "user2", customer);
+                System.out.println("User Table created");
+            }
+        } catch (SQLException e)
+        {
+            e.printStackTrace();
+            System.out.println("Could not create table");
+        }
+    }
+
+    private void insertUser(String username, String password, String userType)
+    {
+        try
+        {
+            String query = "INSERT INTO shopusers (username, password, userType)"
+                    + "values(?, ?, ?)";
+            PreparedStatement pState = connect.prepareStatement(query);
+            pState.setString(1, username);
+            pState.setString(2, password);
+            pState.setString(3, userType);
+            pState.executeUpdate();
+            System.out.println("User added successfully");
+            pState.close();
+        } catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
+    }
+
+    private boolean userExists(String username, String password)
+    {
+        try
+        {
+            resultSet = statement.executeQuery("Select * from shopusers WHERE username = " + "\"" + username + "\"");
+            if (resultSet.next())
+            {
+                if (resultSet.getString("password").equals(password))
+                    return true;
+                else
+                {
+                    System.out.println("Incorrect Password!");
+                }
+            }
+        } catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
+        return false;
+
+    }
+
     public static void main(String[] args)
     {
         DataBase dataBase = new DataBase();
-        dataBase.initializeConnection("newuser", "password");
 
-        dataBase.createToolTable();
-        dataBase.createSupplierTables();
+        //dataBase.addTool(new Tool(1, "Barn Bins", 1, 2, 3));
+        //dataBase.removeTool(1);
+        //dataBase.close();
+/*        ArrayList<Tool> list = dataBase.getAllTools();
+        for (Tool t : list)
+        {
+            System.out.println(t);
+        }*/
+/*
+        ArrayList<Tool> toolList = dataBase.getToolsWithName("Barn Bins");
+        for(Tool t : toolList)
+        {
+            System.out.println(t);
+        }
+*/
 
-        dataBase.readToolsFile();
-        dataBase.readSuppliersFile();
-        //dataBase.insertTool(1, "the", 1, 2, 3);
-        //dataBase.deleteTool(1);
-
+/*        Optional<Tool> tool = dataBase.getToolById(1);
+        System.out.println(tool);*/
+        System.out.println(dataBase.userExists("admin", "password"));
     }
 }

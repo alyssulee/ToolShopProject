@@ -9,6 +9,7 @@ public class Order implements Serializable
 {
     private HashSet<OrderLine> orderLines = new HashSet<>();
     private Date orderDate;
+    private int orderNum;
 
     public Order(Date orderDate)
     {
@@ -28,5 +29,13 @@ public class Order implements Serializable
     public void setOrderDate(Date orderDate)
     {
         this.orderDate = orderDate;
+    }
+
+    public String printOrder()
+    {
+        String order = "Order Date: " + orderDate.toString();
+
+
+        return order;
     }
 }
