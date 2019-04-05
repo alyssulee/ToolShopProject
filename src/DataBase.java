@@ -85,12 +85,6 @@ public class DataBase implements InventoryService
         }
     }
 
-    @Override
-    public Optional<Tool> getToolById(int toolId)
-    {
-        return Optional.empty();
-    }
-
     /**
      * Inserts a tool into the tool table in the database
      *
@@ -204,7 +198,7 @@ public class DataBase implements InventoryService
         return toolList;
     }
 
-    public Tool getToolByID(int toolID)
+    public Optional<Tool> getToolById(int toolID)
     {
         Tool tool = null;
         try
@@ -223,7 +217,7 @@ public class DataBase implements InventoryService
         {
             e.printStackTrace();
         }
-        return tool;
+        return Optional.ofNullable(tool);
     }
 
     /**
@@ -423,7 +417,7 @@ public class DataBase implements InventoryService
         }
 */
 
-        //Tool tool = dataBase.getToolByID(1);
-        //System.out.println(tool);
+/*        Optional<Tool> tool = dataBase.getToolById(1);
+        System.out.println(tool);*/
     }
 }
