@@ -9,6 +9,9 @@ package toolShop.client;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * @author rushf
+ */
 public class GUI extends javax.swing.JFrame
 {
     Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -156,6 +159,13 @@ public class GUI extends javax.swing.JFrame
         removeItemArea = new javax.swing.JTextArea();
         removeItemButton = new javax.swing.JButton();
         removeItemDone = new javax.swing.JButton();
+        searchByNameDialog1 = new javax.swing.JDialog();
+        jPanel19 = new javax.swing.JPanel();
+        jLabel24 = new javax.swing.JLabel();
+        jScrollPane18 = new javax.swing.JScrollPane();
+        nameTextArea1 = new javax.swing.JTextArea();
+        searchNameAccept1 = new javax.swing.JButton();
+        searchNameCancel1 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         loginOwnerButton = new javax.swing.JButton();
         loginCustomerButton = new javax.swing.JButton();
@@ -386,11 +396,12 @@ public class GUI extends javax.swing.JFrame
         listToolsOwner.setText("List All Tools");
         listToolsOwner.setToolTipText("Display all tools currently in inventory");
         listToolsOwner.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-       /* listToolsOwner.addActionListener(new java.awt.event.ActionListener() {
+        listToolsOwner.addActionListener(new java.awt.event.ActionListener()
+        {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 listToolsOwnerActionPerformed(evt);
             }
-        });*/
+        });
 
         searchByID.setFont(new java.awt.Font("Trebuchet MS", 1, 16)); // NOI18N
         searchByID.setText("Search By ID");
@@ -420,12 +431,12 @@ public class GUI extends javax.swing.JFrame
         printOrder.setText("Print Today's Order");
         printOrder.setToolTipText("Decrease the quantity of an item based on name or ID");
         printOrder.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        /*printOrder.addActionListener(new java.awt.event.ActionListener() {
+        printOrder.addActionListener(new java.awt.event.ActionListener()
+        {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 printOrderActionPerformed(evt);
             }
-
-        });*/
+        });
 
         logout.setFont(new java.awt.Font("Trebuchet MS", 1, 16)); // NOI18N
         logout.setText("Logout");
@@ -576,11 +587,12 @@ public class GUI extends javax.swing.JFrame
         searchNameAccept.setFont(new java.awt.Font("Trebuchet MS", 1, 16)); // NOI18N
         searchNameAccept.setText("Search");
         searchNameAccept.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        /*searchNameAccept.addActionListener(new java.awt.event.ActionListener() {
+        searchNameAccept.addActionListener(new java.awt.event.ActionListener()
+        {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 searchNameAcceptActionPerformed(evt);
             }
-        });*/
+        });
 
         searchNameCancel.setFont(new java.awt.Font("Trebuchet MS", 1, 16)); // NOI18N
         searchNameCancel.setText("Cancel");
@@ -652,11 +664,12 @@ public class GUI extends javax.swing.JFrame
         searchIDAccept.setFont(new java.awt.Font("Trebuchet MS", 1, 16)); // NOI18N
         searchIDAccept.setText("Search");
         searchIDAccept.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        /*searchIDAccept.addActionListener(new java.awt.event.ActionListener() {
+        searchIDAccept.addActionListener(new java.awt.event.ActionListener()
+        {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 searchIDAcceptActionPerformed(evt);
             }
-        });*/
+        });
 
         idNameCancel.setFont(new java.awt.Font("Trebuchet MS", 1, 16)); // NOI18N
         idNameCancel.setText("Cancel");
@@ -730,11 +743,12 @@ public class GUI extends javax.swing.JFrame
         checkQuantityAccept.setFont(new java.awt.Font("Trebuchet MS", 1, 16)); // NOI18N
         checkQuantityAccept.setText("Search");
         checkQuantityAccept.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        /*checkQuantityAccept.addActionListener(new java.awt.event.ActionListener() {
+        checkQuantityAccept.addActionListener(new java.awt.event.ActionListener()
+        {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 checkQuantityAcceptActionPerformed(evt);
             }
-        });*/
+        });
 
         checkQuantityCancel.setFont(new java.awt.Font("Trebuchet MS", 1, 16)); // NOI18N
         checkQuantityCancel.setText("Cancel");
@@ -804,11 +818,12 @@ public class GUI extends javax.swing.JFrame
         decreaseQuantityAccept.setFont(new java.awt.Font("Trebuchet MS", 1, 16)); // NOI18N
         decreaseQuantityAccept.setText("Decrease by Amount");
         decreaseQuantityAccept.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        /*decreaseQuantityAccept.addActionListener(new java.awt.event.ActionListener() {
+        decreaseQuantityAccept.addActionListener(new java.awt.event.ActionListener()
+        {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 decreaseQuantityAcceptActionPerformed(evt);
             }
-        });*/
+        });
 
         decreaseQuantityCancel.setFont(new java.awt.Font("Trebuchet MS", 1, 16)); // NOI18N
         decreaseQuantityCancel.setText("Done");
@@ -1077,6 +1092,13 @@ public class GUI extends javax.swing.JFrame
         listToolsCustomer.setText("List All Tools");
         listToolsCustomer.setToolTipText("Display all tools currently in inventory");
         listToolsCustomer.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        listToolsCustomer.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                listToolsCustomerActionPerformed(evt);
+            }
+        });
 
         buyItem.setFont(new java.awt.Font("Trebuchet MS", 1, 16)); // NOI18N
         buyItem.setText("Buy Item");
@@ -1508,6 +1530,84 @@ public class GUI extends javax.swing.JFrame
                         .addComponent(jPanel18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
+        jPanel19.setBackground(new java.awt.Color(255, 204, 204));
+        jPanel19.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        jLabel24.setFont(new java.awt.Font("Tahoma", 2, 16)); // NOI18N
+        jLabel24.setText("Please enter tool name:");
+        jLabel24.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+
+        jScrollPane18.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane18.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+
+        nameTextArea1.setColumns(20);
+        nameTextArea1.setRows(5);
+        jScrollPane18.setViewportView(nameTextArea1);
+
+        searchNameAccept1.setFont(new java.awt.Font("Trebuchet MS", 1, 16)); // NOI18N
+        searchNameAccept1.setText("Search");
+        searchNameAccept1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        searchNameAccept1.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                searchNameAccept1ActionPerformed(evt);
+            }
+        });
+
+        searchNameCancel1.setFont(new java.awt.Font("Trebuchet MS", 1, 16)); // NOI18N
+        searchNameCancel1.setText("Cancel");
+        searchNameCancel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        searchNameCancel1.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                searchNameCancel1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel19Layout = new javax.swing.GroupLayout(jPanel19);
+        jPanel19.setLayout(jPanel19Layout);
+        jPanel19Layout.setHorizontalGroup(
+                jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel19Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(jPanel19Layout.createSequentialGroup()
+                                                .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(0, 0, Short.MAX_VALUE))
+                                        .addComponent(jScrollPane18)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel19Layout.createSequentialGroup()
+                                                .addComponent(searchNameCancel1, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
+                                                .addComponent(searchNameAccept1, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addContainerGap())
+        );
+        jPanel19Layout.setVerticalGroup(
+                jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel19Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel24)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jScrollPane18, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(searchNameAccept1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(searchNameCancel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout searchByNameDialog1Layout = new javax.swing.GroupLayout(searchByNameDialog1.getContentPane());
+        searchByNameDialog1.getContentPane().setLayout(searchByNameDialog1Layout);
+        searchByNameDialog1Layout.setHorizontalGroup(
+                searchByNameDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jPanel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        searchByNameDialog1Layout.setVerticalGroup(
+                searchByNameDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jPanel19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(153, 153, 255));
@@ -1670,6 +1770,11 @@ public class GUI extends javax.swing.JFrame
 
     }
 
+    private void listToolsOwnerActionPerformed(java.awt.event.ActionEvent evt)
+    {
+
+    }
+
     private void searchByIDActionPerformed(java.awt.event.ActionEvent evt)
     {
         searchByIDDialog.setBounds(((int) screenSize.getWidth() - 404) / 2, ((int) screenSize.getHeight() - 160) / 2, 404, 180);
@@ -1682,9 +1787,19 @@ public class GUI extends javax.swing.JFrame
         decreaseQuantityDialog.setVisible(true);
     }
 
+    private void printOrderActionPerformed(java.awt.event.ActionEvent evt)
+    {
+        // Print order
+    }
+
     private void logoutActionPerformed(java.awt.event.ActionEvent evt)
     {
         System.exit(1);
+    }
+
+    private void searchNameAcceptActionPerformed(java.awt.event.ActionEvent evt)
+    {
+
     }
 
     private void searchNameCancelActionPerformed(java.awt.event.ActionEvent evt)
@@ -1693,6 +1808,10 @@ public class GUI extends javax.swing.JFrame
         searchByNameDialog.setVisible(false);
     }
 
+    private void searchIDAcceptActionPerformed(java.awt.event.ActionEvent evt)
+    {
+
+    }
 
     private void idNameCancelActionPerformed(java.awt.event.ActionEvent evt)
     {
@@ -1700,10 +1819,51 @@ public class GUI extends javax.swing.JFrame
         searchByIDDialog.setVisible(false);
     }
 
+    private void checkQuantityAcceptActionPerformed(java.awt.event.ActionEvent evt)
+    {
+
+    }
+
     private void checkQuantityCancelActionPerformed(java.awt.event.ActionEvent evt)
     {
         quantityTextArea.setText("");
         checkQuantityDialog.setVisible(false);
+    }
+
+    private void decreaseQuantityAcceptActionPerformed(java.awt.event.ActionEvent evt)
+    {
+        String input = decreaseTextArea.getText();
+
+        try
+        {
+            int id = Integer.parseInt(input);
+            //Lookup tool by id
+            /*
+            Tool theTool = theShop.getTool(id);
+            if (theTool != null) {
+                System.out.println("Tool found.\nStock: " + theTool.getQuantity() + "\n");
+                theShop.checkStock(theTool);
+            } else {
+                System.out.println("This tool could not be found.\n");
+            }
+            */
+
+        } catch (java.lang.NumberFormatException string)
+        {
+            //Lookup tool by name
+
+            /*Tool theTool = theShop.getTool(in);
+            if (theTool != null) {
+                System.out.println("Tool found.\nStock: " + theTool.getQuantity() + "\n");
+                theShop.checkStock(theTool);
+            } else {
+                System.out.println("This tool could not be found.\n");
+            }
+           */
+
+        }
+        decreaseTextArea.setText("");
+        decreaseQuantityDialog.setVisible(false);
     }
 
     private void decreaseQuantityCancelActionPerformed(java.awt.event.ActionEvent evt)
@@ -1753,22 +1913,13 @@ public class GUI extends javax.swing.JFrame
 
     private void searchByName1ActionPerformed(java.awt.event.ActionEvent evt)
     {
-        searchByNameDialog.setBounds(((int) screenSize.getWidth() - 404) / 2, ((int) screenSize.getHeight() - 160) / 2, 404, 180);
-        searchByNameDialog.setVisible(true);
+        searchByNameDialog1.setBounds(((int) screenSize.getWidth() - 404) / 2, ((int) screenSize.getHeight() - 160) / 2, 404, 180);
+        searchByNameDialog1.setVisible(true);
     }
 
     private void listToolsCustomerActionPerformed(java.awt.event.ActionEvent evt)
     {
-        /*Iterable<Tool> tools = inventory.getAllTools());
-        ArrayList<Tool> collected = new ArrayList<>();
-        tools.forEach(collected::add);
-        customerDisplay.setText("");
-        for(int i = 0; i < collected.size(); i++)
-        {
-            Tool tool = collected.get(i);
-            customerDisplay.append(tool.toString);
-        }
-        */
+
     }
 
     private void buyItemActionPerformed(java.awt.event.ActionEvent evt)
@@ -1830,19 +1981,7 @@ public class GUI extends javax.swing.JFrame
 
     private void addToolButtonActionPerformed(java.awt.event.ActionEvent evt)
     {
-        /*String name = addToolNameArea.getText();
-        String id = addToolIDArea.getText();
-        String stock = addToolStockArea.getText();
-        String price = addToolPriceArea.getText();
-        String supplierID = addToolSupplierIDArea.getText();
-        addToolNameArea.setText("");
-        addToolIDArea.setText("");
-        addToolStockArea.setText("");
-        addToolPriceArea.setText("");
-        addToolSupplierIDArea.setText("");
-        Tool tool = new Tool(id, name, stock, price, supplierID);
-        inventory.addTool(tool);
-        */
+
     }
 
     private void doneAddingToolsActionPerformed(java.awt.event.ActionEvent evt)
@@ -1857,18 +1996,8 @@ public class GUI extends javax.swing.JFrame
 
     private void removeItemButtonActionPerformed(java.awt.event.ActionEvent evt)
     {
-        /*try{
-            int input = Integer.parseInt(removeItemArea.getText());
-            inventory.removeTool();
-            removeItemArea.setText("");
-        }
-        catch(Exception e)
-        {
-            removeItemArea.setText("ERROR");
-        }
-        */
-    }
 
+    }
 
     private void removeItemDoneActionPerformed(java.awt.event.ActionEvent evt)
     {
@@ -1880,6 +2009,16 @@ public class GUI extends javax.swing.JFrame
     {
         addOwnerLoginMenu.setBounds(((int) screenSize.getWidth() - 404) / 2, ((int) screenSize.getHeight() - 260) / 2, 404, 245);
         addOwnerLoginMenu.setVisible(true);
+    }
+
+    private void searchNameAccept1ActionPerformed(java.awt.event.ActionEvent evt)
+    {
+        // TODO add your handling code here:
+    }
+
+    private void searchNameCancel1ActionPerformed(java.awt.event.ActionEvent evt)
+    {
+        // TODO add your handling code here:
     }
 
     public Dimension getScreenSize()
@@ -2452,6 +2591,16 @@ public class GUI extends javax.swing.JFrame
         this.jLabel23 = jLabel23;
     }
 
+    public JLabel getjLabel24()
+    {
+        return jLabel24;
+    }
+
+    public void setjLabel24(JLabel jLabel24)
+    {
+        this.jLabel24 = jLabel24;
+    }
+
     public JLabel getjLabel3()
     {
         return jLabel3;
@@ -2622,6 +2771,16 @@ public class GUI extends javax.swing.JFrame
         this.jPanel18 = jPanel18;
     }
 
+    public JPanel getjPanel19()
+    {
+        return jPanel19;
+    }
+
+    public void setjPanel19(JPanel jPanel19)
+    {
+        this.jPanel19 = jPanel19;
+    }
+
     public JPanel getjPanel2()
     {
         return jPanel2;
@@ -2790,6 +2949,16 @@ public class GUI extends javax.swing.JFrame
     public void setjScrollPane17(JScrollPane jScrollPane17)
     {
         this.jScrollPane17 = jScrollPane17;
+    }
+
+    public JScrollPane getjScrollPane18()
+    {
+        return jScrollPane18;
+    }
+
+    public void setjScrollPane18(JScrollPane jScrollPane18)
+    {
+        this.jScrollPane18 = jScrollPane18;
     }
 
     public JScrollPane getjScrollPane2()
@@ -3042,6 +3211,16 @@ public class GUI extends javax.swing.JFrame
         this.nameTextArea = nameTextArea;
     }
 
+    public JTextArea getNameTextArea1()
+    {
+        return nameTextArea1;
+    }
+
+    public void setNameTextArea1(JTextArea nameTextArea1)
+    {
+        this.nameTextArea1 = nameTextArea1;
+    }
+
     public JFrame getOwnerClientMenu()
     {
         return ownerClientMenu;
@@ -3182,6 +3361,16 @@ public class GUI extends javax.swing.JFrame
         this.searchByNameDialog = searchByNameDialog;
     }
 
+    public JDialog getSearchByNameDialog1()
+    {
+        return searchByNameDialog1;
+    }
+
+    public void setSearchByNameDialog1(JDialog searchByNameDialog1)
+    {
+        this.searchByNameDialog1 = searchByNameDialog1;
+    }
+
     public JButton getSearchIDAccept()
     {
         return searchIDAccept;
@@ -3202,6 +3391,16 @@ public class GUI extends javax.swing.JFrame
         this.searchNameAccept = searchNameAccept;
     }
 
+    public JButton getSearchNameAccept1()
+    {
+        return searchNameAccept1;
+    }
+
+    public void setSearchNameAccept1(JButton searchNameAccept1)
+    {
+        this.searchNameAccept1 = searchNameAccept1;
+    }
+
     public JButton getSearchNameCancel()
     {
         return searchNameCancel;
@@ -3210,6 +3409,16 @@ public class GUI extends javax.swing.JFrame
     public void setSearchNameCancel(JButton searchNameCancel)
     {
         this.searchNameCancel = searchNameCancel;
+    }
+
+    public JButton getSearchNameCancel1()
+    {
+        return searchNameCancel1;
+    }
+
+    public void setSearchNameCancel1(JButton searchNameCancel1)
+    {
+        this.searchNameCancel1 = searchNameCancel1;
     }
 
     /**
@@ -3314,6 +3523,7 @@ public class GUI extends javax.swing.JFrame
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -3331,6 +3541,7 @@ public class GUI extends javax.swing.JFrame
     private javax.swing.JPanel jPanel16;
     private javax.swing.JPanel jPanel17;
     private javax.swing.JPanel jPanel18;
+    private javax.swing.JPanel jPanel19;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -3348,6 +3559,7 @@ public class GUI extends javax.swing.JFrame
     private javax.swing.JScrollPane jScrollPane15;
     private javax.swing.JScrollPane jScrollPane16;
     private javax.swing.JScrollPane jScrollPane17;
+    private javax.swing.JScrollPane jScrollPane18;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
@@ -3373,6 +3585,7 @@ public class GUI extends javax.swing.JFrame
     private javax.swing.JButton logout;
     private javax.swing.JButton logout1;
     private javax.swing.JTextArea nameTextArea;
+    private javax.swing.JTextArea nameTextArea1;
     private javax.swing.JFrame ownerClientMenu;
     private javax.swing.JTextArea ownerDisplay;
     private javax.swing.JButton printOrder;
@@ -3387,8 +3600,11 @@ public class GUI extends javax.swing.JFrame
     private javax.swing.JButton searchByName;
     private javax.swing.JButton searchByName1;
     private javax.swing.JDialog searchByNameDialog;
+    private javax.swing.JDialog searchByNameDialog1;
     private javax.swing.JButton searchIDAccept;
     private javax.swing.JButton searchNameAccept;
+    private javax.swing.JButton searchNameAccept1;
     private javax.swing.JButton searchNameCancel;
+    private javax.swing.JButton searchNameCancel1;
     // End of variables declaration
 }

@@ -31,12 +31,12 @@ public class Server
     private ExecutorService executorService;
 
     /**
-     * The tool repository.
+     * The tool repository service.
      */
     private ToolRepository toolRepository;
 
     /**
-     * The supplier repository.
+     * The supplier repository service.
      */
     private SupplierRepository supplierRepository;
 
