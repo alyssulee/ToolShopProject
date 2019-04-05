@@ -1859,7 +1859,7 @@ public class GUI extends javax.swing.JFrame
 
     private void loginOwnerButtonActionPerformed(java.awt.event.ActionEvent evt)
     {
-        successDialog.setBounds(((int) screenSize.getWidth() - 403) / 2, ((int) screenSize.getHeight() - 250) / 2, 240, 100);
+        successDialog.setBounds(((int) screenSize.getWidth() - 403) / 2, ((int) screenSize.getHeight() - 250) / 2, 280, 100);
         failDialog.setBounds(((int) screenSize.getWidth() - 403) / 2, ((int) screenSize.getHeight() - 250) / 2, 230, 100);
         loginMenu.setBounds(((int) screenSize.getWidth() - 403) / 2, ((int) screenSize.getHeight() - 250) / 2, 408, 260);
         loginMenu.setVisible(true);
@@ -1867,7 +1867,7 @@ public class GUI extends javax.swing.JFrame
 
     private void loginCustomerButtonActionPerformed(java.awt.event.ActionEvent evt)
     {
-        successDialog.setBounds(((int) screenSize.getWidth() - 403) / 2, ((int) screenSize.getHeight() - 250) / 2, 240, 100);
+        successDialog.setBounds(((int) screenSize.getWidth() - 403) / 2, ((int) screenSize.getHeight() - 250) / 2, 280, 100);
         failDialog.setBounds(((int) screenSize.getWidth() - 403) / 2, ((int) screenSize.getHeight() - 250) / 2, 230, 100);
         customerClientMenu.setBounds(((int) screenSize.getWidth() - 870) / 2, ((int) screenSize.getHeight() - 415) / 2, 870, 425);
         customerClientMenu.setVisible(true);
