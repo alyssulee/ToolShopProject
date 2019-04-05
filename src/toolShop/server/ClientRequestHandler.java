@@ -42,25 +42,25 @@ public class ClientRequestHandler implements RequestHandler
         }
     }
 
-    private SuccessResponse handelAddToolRequest(AddToolRequest request)
+    public SuccessResponse handelAddToolRequest(AddToolRequest request)
     {
         boolean success = inventory.addTool(request.getTool());
         return new SuccessResponse(success);
     }
 
-    private SuccessResponse handelRemoveToolRequest(RemoveToolRequest request)
+    public SuccessResponse handelRemoveToolRequest(RemoveToolRequest request)
     {
         boolean success = inventory.removeTool(request.getToolId());
         return new SuccessResponse(success);
     }
 
-    private ToolResponse handelGetToolByIdRequest(GetToolByIdRequest request)
+    public ToolResponse handelGetToolByIdRequest(GetToolByIdRequest request)
     {
         Optional<Tool> optional = inventory.getToolById(request.getToolId());
         return optional.map(ToolResponse::new).orElseGet(() -> new ToolResponse(null));
     }
 
-    private ToolsResponse handelGetToolsWithNameRequest(GetToolsWithNameRequest request)
+    public ToolsResponse handelGetToolsWithNameRequest(GetToolsWithNameRequest request)
     {
         Iterable<Tool> tools = inventory.getToolsWithName(request.getToolName());
         ArrayList<Tool> collected = new ArrayList<>();
@@ -68,7 +68,7 @@ public class ClientRequestHandler implements RequestHandler
         return new ToolsResponse(collected);
     }
 
-    private ToolsResponse handelGetAllToolsRequest(GetAllToolsRequest request)
+    public ToolsResponse handelGetAllToolsRequest(GetAllToolsRequest request)
     {
         Iterable<Tool> tools = inventory.getAllTools();
         ArrayList<Tool> collected = new ArrayList<>();
@@ -76,7 +76,7 @@ public class ClientRequestHandler implements RequestHandler
         return new ToolsResponse(collected);
     }
 
-    private SuccessResponse handelReduceToolQuantityRequest(ReduceToolQuantityRequest request)
+    public SuccessResponse handelReduceToolQuantityRequest(ReduceToolQuantityRequest request)
     {
         boolean success = inventory.reduceToolQuantity(request.getToolId(), request.getQuantity());
         return new SuccessResponse(success);
