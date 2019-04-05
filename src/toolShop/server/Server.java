@@ -1,6 +1,7 @@
 package toolShop.server;
 
 import toolShop.InventoryService;
+import toolShop.OrderService;
 import toolShop.repositories.MemoryToolRepository;
 import toolShop.repositories.ToolRepository;
 
@@ -26,9 +27,9 @@ public class Server
     private ExecutorService executorService;
 
     /**
-     * The inventory management service.
+     * The tool repository service.
      */
-    private InventoryService inventoryService;
+    private ToolRepository toolRepository;
 
     /**
      * Creates a new tool shop server.
@@ -44,8 +45,7 @@ public class Server
         executorService = Executors.newFixedThreadPool(maxClients);
 
         // Todo: Replace in-memory repository with database repository
-        ToolRepository toolRepository = new MemoryToolRepository();
-        inventoryService = new LinkedInventoryService(toolRepository);
+        toolRepository = new MemoryToolRepository();
     }
 
     /**
@@ -79,7 +79,10 @@ public class Server
     private void createSession(Socket socket) throws IOException
     {
         ClientConnection connection = new ClientConnection(socket);
-        RequestHandler requestHandler = new ClientRequestHandler(inventoryService);
+
+        InventoryService inventory = new LinkedInventoryService(toolRepository);
+        OrderService orderService = new LinkedOrderService(toolRepository);
+        RequestHandler requestHandler = new ClientRequestHandler(inventory, orderService);
 
         ClientSession session = new ClientSession(connection, requestHandler);
 

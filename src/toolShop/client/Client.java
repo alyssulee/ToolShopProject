@@ -1,6 +1,7 @@
 package toolShop.client;
 
 import toolShop.InventoryService;
+import toolShop.OrderService;
 
 import java.io.IOException;
 import java.net.Socket;
@@ -30,7 +31,8 @@ public class Client
     /**
      * Creates a new tool shop client.
      */
-    public Client(String host, int port) {
+    public Client(String host, int port)
+    {
         this.host = host;
         this.port = port;
     }
@@ -38,7 +40,8 @@ public class Client
     /**
      * The client program entry point.
      */
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException
+    {
         Client client = new Client("localhost", 8098);
         client.start();
     }
@@ -46,23 +49,16 @@ public class Client
     /**
      * Starts a session with the tool shop server. Blocks until the session ends.
      */
-    public void start() throws IOException {
+    public void start() throws IOException
+    {
         connection = establishConnection(host, port);
         System.out.println("Connected to server.");
 
+        // Use this InventoryService for accessing tools
         InventoryService inventory = new ServerInventoryService(connection);
 
-//        inventory.addTool(new Tool(1, "Hammer", 100, 20.0, 0));
-//        inventory.addTool(new Tool(2, "Chainsaw", 10, 150.0, 0));
-//        inventory.addTool(new Tool(3, "Nails", 75, 5.0, 0));
-//        inventory.addTool(new Tool(50, "Chainsaw", 1, 2000.0, 0));
-//
-//        boolean success = inventory.reduceToolQuantity(1, 90);
-//
-//        Iterable<Tool> duplicates = inventory.getToolsWithName("Chainsaw");
-//
-//        ArrayList<Tool> tools = new ArrayList<>();
-//        inventory.getAllTools().forEach(tools::add);
+        // Use this order service for accessing orders
+        OrderService orderService = new ServerOrderService(connection);
 
         connection.close();
     }
@@ -70,7 +66,8 @@ public class Client
     /**
      * Establish a connection with the server in preparation of a session.
      */
-    private ServerConnection establishConnection(String host, int port) throws IOException {
+    private ServerConnection establishConnection(String host, int port) throws IOException
+    {
         System.out.println("Connecting to server...");
 
         socket = new Socket(host, port);

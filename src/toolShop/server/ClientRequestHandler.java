@@ -3,10 +3,8 @@ package toolShop.server;
 import toolShop.InventoryService;
 import toolShop.OrderService;
 import toolShop.communication.requests.*;
-import toolShop.communication.responses.Response;
-import toolShop.communication.responses.SuccessResponse;
-import toolShop.communication.responses.ToolResponse;
-import toolShop.communication.responses.ToolsResponse;
+import toolShop.communication.responses.*;
+import toolShop.models.Order;
 import toolShop.models.Tool;
 
 import java.util.ArrayList;
@@ -40,6 +38,10 @@ public class ClientRequestHandler implements RequestHandler
                 return handelGetAllToolsRequest((GetAllToolsRequest) request);
             case 105:
                 return handelReduceToolQuantityRequest((ReduceToolQuantityRequest) request);
+            case 150:
+                return handelGetOrderRequest((GetOrderRequest) request);
+            case 151:
+                return handelExecuteOrderRequest((ExecuteOrderRequest) request);
             default:
                 throw new Error("Received request with unknown discriminator");
         }
@@ -82,6 +84,18 @@ public class ClientRequestHandler implements RequestHandler
     public SuccessResponse handelReduceToolQuantityRequest(ReduceToolQuantityRequest request)
     {
         boolean success = inventory.reduceToolQuantity(request.getToolId(), request.getQuantity());
+        return new SuccessResponse(success);
+    }
+
+    public OrderResponse handelGetOrderRequest(GetOrderRequest getOrderRequest)
+    {
+        Order order = orderService.getOrder();
+        return new OrderResponse(order);
+    }
+
+    public SuccessResponse handelExecuteOrderRequest(ExecuteOrderRequest executeOrderRequest)
+    {
+        boolean success = orderService.executeOrder(executeOrderRequest.getOrder());
         return new SuccessResponse(success);
     }
 }

@@ -48,7 +48,8 @@ public class LinkedOrderService implements OrderService
             if (!optional.isPresent()) return false;
             Tool tool = optional.get();
 
-            tool.setQuantity(line.getQuantity());
+            int quantity = tool.getQuantity() + line.getQuantity();
+            tool.setQuantity(quantity);
             toolRepository.updateTool(tool);
         }
 
