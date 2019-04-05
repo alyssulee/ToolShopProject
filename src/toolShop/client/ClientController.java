@@ -23,7 +23,7 @@ public class ClientController
         view.getListToolsCustomer().addActionListener(new ListToolsActionListener());
         view.getListToolsOwner().addActionListener(new ListToolsActionListener());
         view.getSearchNameAccept().addActionListener(new SearchNameAcceptActionListener());
-        view.getSearchIDAccept().addActionListener(new SearchNameAcceptActionListener());
+        view.getSearchIDAccept().addActionListener(new SearchIDAcceptActionListener());
         view.getBuyAmountAccept().addActionListener(new BuyAmountAcceptActionListener());
         view.getDecreaseQuantityAccept().addActionListener(new DecreaseQuantityAcceptActionListener());
 
@@ -113,18 +113,13 @@ public class ClientController
         public void actionPerformed(ActionEvent e)
         {
             int idToSearch = Integer.parseInt(view.getIdTextArea().getText());
-            Optional<Tool> tools = inventory.getToolById(idToSearch);
-            ArrayList<Tool> collected = new ArrayList<>();
-            collected.set(0, tools.get());
+            Optional<Tool> searchedTool = inventory.getToolById(idToSearch);
             view.getIdTextArea().setText("");
-            if (collected.size() != 0)
+            if (searchedTool.isPresent())
             {
                 view.getOwnerDisplay().setText("");
-                for (int i = 0; i < collected.size(); i++)
-                {
-                    Tool tool = collected.get(i);
-                    view.getOwnerDisplay().append(tool.toString());
-                }
+                Tool tool = searchedTool.get();
+                view.getOwnerDisplay().append(tool.toString());
             } else
             {
                 view.getOwnerDisplay().setText("Tool with id #" + idToSearch + " could not be found");
