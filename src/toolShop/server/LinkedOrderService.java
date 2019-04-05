@@ -31,7 +31,7 @@ public class LinkedOrderService implements OrderService
             if (tool.getQuantity() < MIN_TOOL_QUANTITY)
             {
                 int quantity = REFILL_TOOL_QUANTITY - tool.getQuantity();
-                OrderLine line = new OrderLine(tool.getId(), tool.getSupplierId(), quantity);
+                OrderLine line = new OrderLine(tool, quantity);
                 order.getOrderLines().add(line);
             }
         }
