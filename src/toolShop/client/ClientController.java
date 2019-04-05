@@ -35,6 +35,7 @@ public class ClientController
         view.getAddToolButton().addActionListener(new AddToolButtonActionListener());
         view.getRemoveItemButton().addActionListener(new RemoveToolButtonActionListener());
         view.getPrintOrder().addActionListener(new PrintTodayOrderActionListener());
+        view.getPlaceOrderAccept().addActionListener(new PlaceOrderAcceptButton());
 
         /*view.setBuyAmountAcceptActionListener(new BuyAmountAcceptActionListener());
         view.setDecreaseQuantityAcceptActionListener(new decreaseQuantityAcceptActionListener());
@@ -342,7 +343,9 @@ public class ClientController
         @Override
         public void actionPerformed(ActionEvent e)
         {
-
+            view.getOwnerDisplay().setText("Order executed successfully");
+            view.getOwnerDisplay().append(order.getOrder().printNewQuantities());
+            order.executeOrder(order.getOrder());
         }
     }
 
