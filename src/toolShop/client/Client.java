@@ -53,7 +53,7 @@ public class Client
         InventoryService inventory = new ServerInventoryService(connection);
         ClientController controller = new ClientController(inventory, new GUI());
 
-        connection.close();
+        //connection.close();
     }
 
     /**

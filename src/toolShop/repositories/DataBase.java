@@ -1,3 +1,5 @@
+package toolShop.repositories;
+
 import toolShop.InventoryService;
 import toolShop.models.Tool;
 
@@ -369,7 +371,6 @@ public class DataBase implements InventoryService
         {
             DatabaseMetaData meta = connect.getMetaData();
             ResultSet rs = meta.getTables(null, null, "shopusers", null);
-
 
 
             if (rs.next() == false)
