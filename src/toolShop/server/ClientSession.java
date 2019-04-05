@@ -24,7 +24,7 @@ public class ClientSession implements Runnable
             while (true)
             {
                 Request request = connection.listenForRequest();
-                Response response = requestHandler.handelRequest(request);
+                Response response = requestHandler.handleRequest(request);
                 connection.sendResponse(response);
             }
 

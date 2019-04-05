@@ -34,70 +34,70 @@ class ClientRequestHandlerTest
             loginService);
 
     @Test
-    void handelAddToolRequest()
+    void handleAddToolRequest()
     {
         AddToolRequest request = new AddToolRequest(new Tool(0, "Hammer", 10, 15, 0));
 
-        SuccessResponse response = handler.handelAddToolRequest(request);
+        SuccessResponse response = handler.handleAddToolRequest(request);
 
         assert response.isSuccess();
         assert toolRepository.getTool(0).isPresent();
     }
 
     @Test
-    void handelRemoveToolRequest()
+    void handleRemoveToolRequest()
     {
         inventory.addTool(new Tool(0, "Hammer", 10, 15, 0));
         RemoveToolRequest request = new RemoveToolRequest(0);
 
-        SuccessResponse response = handler.handelRemoveToolRequest(request);
+        SuccessResponse response = handler.handleRemoveToolRequest(request);
 
         assert response.isSuccess();
         assert !toolRepository.getTool(0).isPresent();
     }
 
     @Test
-    void handelGetToolByIdRequest()
+    void handleGetToolByIdRequest()
     {
         inventory.addTool(new Tool(0, "Hammer", 10, 15, 0));
         GetToolByIdRequest request = new GetToolByIdRequest(0);
 
-        ToolResponse response = handler.handelGetToolByIdRequest(request);
+        ToolResponse response = handler.handleGetToolByIdRequest(request);
 
         assert response.getTool() != null;
     }
 
     @Test
-    void handelGetToolsWithNameRequest()
+    void handleGetToolsWithNameRequest()
     {
         inventory.addTool(new Tool(0, "Hammer", 10, 15, 0));
         inventory.addTool(new Tool(1, "Hammer", 5, 30, 0));
         GetToolsWithNameRequest request = new GetToolsWithNameRequest("Hammer");
 
-        ToolsResponse response = handler.handelGetToolsWithNameRequest(request);
+        ToolsResponse response = handler.handleGetToolsWithNameRequest(request);
 
         assert response.getTools().size() == 2;
     }
 
     @Test
-    void handelGetAllToolsRequest()
+    void handleGetAllToolsRequest()
     {
         inventory.addTool(new Tool(0, "Hammer", 10, 15, 0));
         inventory.addTool(new Tool(1, "Nails", 5, 5, 0));
         GetAllToolsRequest request = new GetAllToolsRequest();
 
-        ToolsResponse response = handler.handelGetAllToolsRequest(request);
+        ToolsResponse response = handler.handleGetAllToolsRequest(request);
 
         assert response.getTools().size() == 2;
     }
 
     @Test
-    void handelReduceToolQuantityRequest()
+    void handleReduceToolQuantityRequest()
     {
         inventory.addTool(new Tool(0, "Hammer", 10, 15, 0));
         ReduceToolQuantityRequest request = new ReduceToolQuantityRequest(0, 8);
 
-        SuccessResponse response = handler.handelReduceToolQuantityRequest(request);
+        SuccessResponse response = handler.handleReduceToolQuantityRequest(request);
 
         assert response.isSuccess();
         Optional<Tool> tool = inventory.getToolById(0);
@@ -106,13 +106,13 @@ class ClientRequestHandlerTest
     }
 
     @Test
-    void handelGetSupplierByIdRequest()
+    void handleGetSupplierByIdRequest()
     {
         Supplier supplier = new Supplier(0, "Bark's", "Main St.", "bark@barks.co");
         supplierRepository.addSupplier(supplier);
         GetSupplierByIdRequest request = new GetSupplierByIdRequest(0);
 
-        SupplierResponse response = handler.handelGetSupplierByIdRequest(request);
+        SupplierResponse response = handler.handleGetSupplierByIdRequest(request);
 
         assert response.getSupplier() != null;
     }

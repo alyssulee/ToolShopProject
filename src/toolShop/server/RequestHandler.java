@@ -5,5 +5,5 @@ import toolShop.communication.responses.Response;
 
 public interface RequestHandler
 {
-    Response handelRequest(Request request);
+    Response handleRequest(Request request);
 }
