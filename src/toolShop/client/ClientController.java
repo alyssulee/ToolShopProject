@@ -1,6 +1,7 @@
 package toolShop.client;
 
 import toolShop.InventoryService;
+import toolShop.OrderService;
 import toolShop.models.Tool;
 
 import java.awt.event.ActionEvent;
@@ -12,11 +13,13 @@ public class ClientController
 {
 
     InventoryService inventory;
+    OrderService order;
     GUI view;
 
-    public ClientController(InventoryService inventory, GUI gui)
+    public ClientController(InventoryService inventory, OrderService order, GUI gui)
     {
         this.inventory = inventory;
+        this.order = order;
         view = gui;
         view.setVisible(true);
 
@@ -28,6 +31,8 @@ public class ClientController
         view.getBuyAmountAccept().addActionListener(new BuyAmountAcceptActionListener());
         view.getDecreaseQuantityAccept().addActionListener(new DecreaseQuantityAcceptActionListener());
         view.getAddToolButton().addActionListener(new AddToolButtonActionListener());
+
+        view.getPrintOrder().addActionListener(new PrintTodayOrderActionListener());
 
         /*view.setBuyAmountAcceptActionListener(new BuyAmountAcceptActionListener());
         view.setDecreaseQuantityAcceptActionListener(new decreaseQuantityAcceptActionListener());
@@ -114,19 +119,25 @@ public class ClientController
         @Override
         public void actionPerformed(ActionEvent e)
         {
-            int idToSearch = Integer.parseInt(view.getIdTextArea().getText());
-            Optional<Tool> searchedTool = inventory.getToolById(idToSearch);
-            view.getIdTextArea().setText("");
-            if (searchedTool.isPresent())
+            try
             {
-                view.getOwnerDisplay().setText("");
-                Tool tool = searchedTool.get();
-                view.getOwnerDisplay().append(tool.toString());
-            } else
+                int idToSearch = Integer.parseInt(view.getIdTextArea().getText());
+                Optional<Tool> searchedTool = inventory.getToolById(idToSearch);
+                view.getIdTextArea().setText("");
+                if (searchedTool.isPresent())
+                {
+                    view.getOwnerDisplay().setText("");
+                    Tool tool = searchedTool.get();
+                    view.getOwnerDisplay().append(tool.toString());
+                } else
+                {
+                    view.getOwnerDisplay().setText("Tool with id #" + idToSearch + " could not be found");
+                }
+                view.getSearchByIDDialog().setVisible(false);
+            } catch (NumberFormatException e1)
             {
-                view.getOwnerDisplay().setText("Tool with id #" + idToSearch + " could not be found");
+                view.getOwnerDisplay().setText("Tool could not be found");
             }
-            view.getSearchByIDDialog().setVisible(false);
         }
     }
 
@@ -248,6 +259,17 @@ public class ClientController
         @Override
         public void actionPerformed(ActionEvent e)
         {
+
+        }
+    }
+
+    class PrintTodayOrderActionListener implements ActionListener
+    {
+        @Override
+        public void actionPerformed(ActionEvent e)
+        {
+            view.getOwnerDisplay().setText("");
+            view.getOwnerDisplay().setText(order.getOrder().printOrder());
 
         }
     }

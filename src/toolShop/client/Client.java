@@ -60,7 +60,8 @@ public class Client
         // Use this order service for accessing orders
         OrderService orderService = new ServerOrderService(connection);
 
-        connection.close();
+        ClientController controller = new ClientController(inventory, orderService, new GUI());
+        //connection.close();
     }
 
     /**
