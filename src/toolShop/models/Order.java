@@ -69,10 +69,20 @@ public class Order implements Serializable
     {
         // Todo: This will not work because tool and supplier names must be shown, not ids
 
-        StringBuilder order = new StringBuilder("Order Date: " + orderDate.toString());
+        StringBuilder order = new StringBuilder("Order Date: " + orderDate.toString() + "\n");
         for (OrderLine o : orderLines)
             order.append(o).append("\n");
 
         return order.toString();
+    }
+
+    public String printNewQuantities()
+    {
+        String str = "\n";
+        for (OrderLine o : orderLines)
+        {
+            str += o.getToolId() + "\t Quantity Ordered: " + o.getQuantity() + "\n";
+        }
+        return str;
     }
 }

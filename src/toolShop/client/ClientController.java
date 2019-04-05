@@ -35,6 +35,7 @@ public class ClientController
         view.getAddToolButton().addActionListener(new AddToolButtonActionListener());
         view.getRemoveItemButton().addActionListener(new RemoveToolButtonActionListener());
         view.getPrintOrder().addActionListener(new PrintTodayOrderActionListener());
+        view.getPlaceOrderAccept().addActionListener(new PlaceOrderAcceptButton());
 
         /*view.setBuyAmountAcceptActionListener(new BuyAmountAcceptActionListener());
         view.setDecreaseQuantityAcceptActionListener(new decreaseQuantityAcceptActionListener());
@@ -104,9 +105,11 @@ public class ClientController
                     Tool tool = collected.get(i);
                     display(e).append(tool.toString());
                 }
+                view.getSuccessDialog().setVisible(true);
             } else
             {
                 display(e).setText("Tool with name " + nameToSearch + " could not be found");
+                view.getFailDialog().setVisible(true);
             }
             view.getSearchByNameDialog().setVisible(false);
         }
@@ -139,21 +142,27 @@ public class ClientController
         {
             try
             {
-                int idToSearch = Integer.parseInt(view.getIdTextArea().getText());
-                Optional<Tool> searchedTool = inventory.getToolById(idToSearch);
-                view.getIdTextArea().setText("");
-                if (searchedTool.isPresent())
+                if (view.getIdTextArea().getText() != null)
                 {
-                    view.getOwnerDisplay().setText("");
-                    Tool tool = searchedTool.get();
-                    view.getOwnerDisplay().append(tool.toString());
-                } else
-                {
-                    view.getOwnerDisplay().setText("Tool with id #" + idToSearch + " could not be found");
+                    int idToSearch = Integer.parseInt(view.getIdTextArea().getText());
+                    Optional<Tool> searchedTool = inventory.getToolById(idToSearch);
+                    view.getIdTextArea().setText("");
+                    if (searchedTool.isPresent())
+                    {
+                        view.getOwnerDisplay().setText("");
+                        Tool tool = searchedTool.get();
+                        view.getOwnerDisplay().append(tool.toString());
+                        view.getSuccessDialog().setVisible(true);
+                    } else
+                    {
+                        view.getFailDialog().setVisible(true);
+                        view.getOwnerDisplay().setText("Tool with id #" + idToSearch + " could not be found");
+                    }
+                    view.getSearchByIDDialog().setVisible(false);
                 }
-                view.getSearchByIDDialog().setVisible(false);
             } catch (NumberFormatException e1)
             {
+                view.getFailDialog().setVisible(true);
                 view.getOwnerDisplay().setText("Tool could not be found");
             }
         }
@@ -206,6 +215,7 @@ public class ClientController
                     }
                 } else
                 {
+                    view.getFailDialog().setVisible(true);
                     view.getOwnerDisplay().setText("This tool could not be found.\n");
                 }
 
@@ -238,9 +248,9 @@ public class ClientController
                 bool = inventory.reduceToolQuantity(toolList.get(0).getId(), amountToDecrease);
             }
             if (bool)
-                view.getCustomerDisplay().setText(toolInfo + " successfully decreased");
+                view.getOwnerDisplay().setText(toolInfo + " successfully decreased");
             else
-                view.getCustomerDisplay().setText(toolInfo + " NOT successfully decreased");
+                view.getOwnerDisplay().setText(toolInfo + " NOT successfully decreased");
             // Todo: Add checkStock to ensure quantity is above limit
             //theShop.checkStock(theTool);
             view.getDecreaseTextArea().setText("");
@@ -268,14 +278,23 @@ public class ClientController
                 boolean bool = inventory.addTool(tool);
                 view.getOwnerDisplay().setText("");
                 if (bool)
+                {
                     view.getOwnerDisplay().setText("Tool successfully added.\n");
+                    view.getSuccessDialog().setVisible(true);
+
+                }
                 else
+                {
                     view.getOwnerDisplay().setText("Tool could not be added.\n");
+                    view.getFailDialog().setVisible(true);
+
+                }
                 view.getOwnerDisplay().append(tool.toString());
 
             } catch (Exception e1)
             {
                 view.getOwnerDisplay().setText("The tool could not be added.\n");
+                view.getFailDialog().setVisible(true);
             }
         }
     }
@@ -297,9 +316,15 @@ public class ClientController
             }
             view.getOwnerDisplay().setText("");
             if (bool)
+            {
                 view.getOwnerDisplay().setText("Tool " + id + " was successfully removed.\n");
+                view.getSuccessDialog().setVisible(true);
+            }
             else
+            {
                 view.getOwnerDisplay().setText("Tool was NOT successfully removed.\n");
+                view.getFailDialog().setVisible(true);
+            }
         }
     }
 
@@ -312,6 +337,18 @@ public class ClientController
             view.getOwnerDisplay().setText(order.getOrder().printOrder());
         }
     }
+
+    class PlaceOrderAcceptButton implements ActionListener
+    {
+        @Override
+        public void actionPerformed(ActionEvent e)
+        {
+            view.getOwnerDisplay().setText("Order executed successfully");
+            view.getOwnerDisplay().append(order.getOrder().printNewQuantities());
+            order.executeOrder(order.getOrder());
+        }
+    }
+
 
     /**
      * ActionListener for customer purchase button
@@ -328,9 +365,15 @@ public class ClientController
             ArrayList<Tool> toolList = (ArrayList<Tool>) inventory.getToolsWithName(itemName);
             boolean bool = inventory.reduceToolQuantity(toolList.get(0).getId(), amountToBuy);
             if (bool)
+            {
                 view.getCustomerDisplay().setText(itemName + " successfully purchased");
+                view.getSuccessDialog().setVisible(true);
+            }
             else
+            {
                 view.getCustomerDisplay().setText(itemName + " NOT successfully purchased");
+                view.getFailDialog().setVisible(true);
+            }
 
             view.getBuyItemDialog().setVisible(false);
         }
