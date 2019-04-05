@@ -429,7 +429,6 @@ public class DataBase implements InventoryService
             e.printStackTrace();
         }
         return false;
-
     }
 
     public static void main(String[] args)

@@ -4,6 +4,7 @@ import toolShop.InventoryService;
 import toolShop.OrderService;
 import toolShop.models.Tool;
 
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -81,7 +82,7 @@ public class ClientController
 
 
     /**
-     * ActionListener for Shop Owner and Customer "Search by Name" button
+     * ActionListener for Shop Owner search by name
      */
     class SearchNameAcceptActionListener implements ActionListener
     {
@@ -89,6 +90,7 @@ public class ClientController
         @Override
         public void actionPerformed(ActionEvent e)
         {
+            JTextArea display = display(e);
             String nameToSearch = view.getNameTextArea().getText();
             Iterable<Tool> tools = inventory.getToolsWithName(nameToSearch);
             ArrayList<Tool> collected = new ArrayList<>();
@@ -96,17 +98,26 @@ public class ClientController
             view.getNameTextArea().setText("");
             if (collected.size() != 0)
             {
-                view.getOwnerDisplay().setText("");
+                display.setText("");
                 for (int i = 0; i < collected.size(); i++)
                 {
                     Tool tool = collected.get(i);
-                    view.getOwnerDisplay().append(tool.toString());
+                    display.append(tool.toString());
                 }
             } else
             {
-                view.getOwnerDisplay().setText("Tool with name " + nameToSearch + " could not be found");
+                display.setText("Tool with name " + nameToSearch + " could not be found");
             }
             view.getSearchByNameDialog().setVisible(false);
+        }
+
+        private JTextArea display(ActionEvent e)
+        {
+            if (e.getSource() == view.getSearchNameAccept())
+                return view.getOwnerDisplay();
+            else
+                //Todo: Fix get source... always prints to owner display
+                return view.getCustomerDisplay();
         }
     }
 
@@ -115,7 +126,6 @@ public class ClientController
      */
     class SearchIDAcceptActionListener implements ActionListener
     {
-
         @Override
         public void actionPerformed(ActionEvent e)
         {
@@ -213,12 +223,13 @@ public class ClientController
             {
                 int toolID = Integer.parseInt(toolInfo);
                 inventory.reduceToolQuantity(toolID, amountToDecrease);
+
             } catch (NumberFormatException exception)
             {
-                //inventory.reduceToolQuantity(inventory.getToolsWithName(itemName), amountToBuy);
+                ArrayList<Tool> tool = (ArrayList<Tool>) inventory.getToolsWithName(toolInfo);
+                inventory.reduceToolQuantity(tool.get(0).getId(), amountToDecrease);
             }
-            // Todo: Add checkStock to ensure quantity is above limit
-            //theShop.checkStock(theTool);
+            view.getOwnerDisplay().setText("New quantity set: \n");
             view.getDecreaseTextArea().setText("");
             view.getDecreaseQuantityDialog().setVisible(false);
         }
@@ -255,10 +266,10 @@ public class ClientController
 
     class RemoveToolButtonActionListener implements ActionListener
     {
-
         @Override
         public void actionPerformed(ActionEvent e)
         {
+
 
         }
     }
@@ -270,7 +281,6 @@ public class ClientController
         {
             view.getOwnerDisplay().setText("");
             view.getOwnerDisplay().setText(order.getOrder().printOrder());
-
         }
     }
 
@@ -286,8 +296,11 @@ public class ClientController
             String itemName = view.getBuyTextArea().getText();
 
             //Decrease stock by this amount
-            //inventory.reduceToolQuantity(inventory.getToolsWithName(itemName), amountToBuy);
+            ArrayList<Tool> tool = (ArrayList<Tool>) inventory.getToolsWithName(itemName);
+            inventory.reduceToolQuantity(tool.get(0).getId(), amountToBuy);
 
+            // Todo: Add checkStock to ensure quantity is above limit
+            view.getCustomerDisplay().setText("Purchase successful.");
             view.getBuyItemDialog().setVisible(false);
         }
     }
