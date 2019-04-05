@@ -1895,7 +1895,7 @@ public class GUI extends javax.swing.JFrame
         //Check for validity here with database
         if (true)
         {
-            ownerClientMenu.setBounds(((int) screenSize.getWidth() - 880) / 2, ((int) screenSize.getHeight() - 650) / 2, 880, 595);
+            ownerClientMenu.setBounds(((int) screenSize.getWidth() - 880) / 2, ((int) screenSize.getHeight() - 650) / 2, 880, 590);
             ownerClientMenu.setVisible(true);
         } else
         {
