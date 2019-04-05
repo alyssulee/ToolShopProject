@@ -1,10 +1,10 @@
 package toolShop.client;
-
 import toolShop.InventoryService;
 import toolShop.models.Tool;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.Optional;
 
 public class ClientController
@@ -83,10 +83,22 @@ public class ClientController
         public void actionPerformed(ActionEvent e)
         {
             String nameToSearch = view.getNameTextArea().getText();
-            Iterable<Tool> t = inventory.getToolsWithName(nameToSearch);
-
-            // Todo: Display tool or not found message to display
+            Iterable<Tool> tools = inventory.getToolsWithName(nameToSearch);
+            ArrayList<Tool> collected = new ArrayList<>();
+            tools.forEach(collected::add);
             view.getNameTextArea().setText("");
+            if (collected.size() != 0)
+            {
+                view.getOwnerDisplay().setText("");
+                for (int i = 0; i < collected.size(); i++)
+                {
+                    Tool tool = collected.get(i);
+                    view.getOwnerDisplay().append(tool.toString());
+                }
+            } else
+            {
+                view.getOwnerDisplay().setText("Tool with name " + nameToSearch + " could not be found");
+            }
             view.getSearchByNameDialog().setVisible(false);
         }
     }
@@ -100,19 +112,24 @@ public class ClientController
         @Override
         public void actionPerformed(ActionEvent e)
         {
-            String idToSearch = view.getIdTextArea().getText();
-            try
+            int idToSearch = Integer.parseInt(view.getIdTextArea().getText());
+            Optional<Tool> tools = inventory.getToolById(idToSearch);
+            ArrayList<Tool> collected = new ArrayList<>();
+            collected.set(0, tools.get());
+            view.getIdTextArea().setText("");
+            if (collected.size() != 0)
             {
-                int id = Integer.parseInt(idToSearch);
-                Optional<Tool> t = inventory.getToolById(id);
-                // Todo: Display tool or not found message to display
-                view.getIdTextArea().setText("");
-                view.getSearchByIDDialog().setVisible(false);
-            } catch (NumberFormatException exception)
+                view.getOwnerDisplay().setText("");
+                for (int i = 0; i < collected.size(); i++)
+                {
+                    Tool tool = collected.get(i);
+                    view.getOwnerDisplay().append(tool.toString());
+                }
+            } else
             {
-                // Todo: Catch exception
+                view.getOwnerDisplay().setText("Tool with id #" + idToSearch + " could not be found");
             }
-
+            view.getSearchByIDDialog().setVisible(false);
         }
     }
 
@@ -124,17 +141,51 @@ public class ClientController
         @Override
         public void actionPerformed(ActionEvent e)
         {
-            String toolInfo = view.getQuantityTextArea().getText();
+            String input = view.getIdTextArea().getText();
+
             try
             {
-                int toolID = Integer.parseInt(toolInfo);
-                Optional<Tool> t = inventory.getToolById(toolID);
-            } catch (NumberFormatException exception)
+                int idToSearch = Integer.parseInt(input);
+                Optional<Tool> tools = inventory.getToolById(idToSearch);
+                ArrayList<Tool> collected = new ArrayList<>();
+                collected.set(0, tools.get());
+                if (collected.size() != 0)
+                {
+                    view.getOwnerDisplay().setText("");
+                    for (int i = 0; i < collected.size(); i++)
+                    {
+                        Tool tool = collected.get(i);
+                        view.getOwnerDisplay().append("Tool found.\tStock: " + tool.getQuantity() + "\n");
+                        //inventory.checkStock(tool);
+                        //Todo add stock checking capability
+                    }
+                } else
+                {
+                    view.getOwnerDisplay().setText("This tool could not be found.\n");
+                }
+
+            } catch (java.lang.NumberFormatException string)
             {
-                Iterable<Tool> t = inventory.getToolsWithName(toolInfo);
+                Iterable<Tool> tools = inventory.getToolsWithName(input);
+                ArrayList<Tool> collected = new ArrayList<>();
+                tools.forEach(collected::add);
+                if (tools != null)
+                {
+                    view.getOwnerDisplay().setText("");
+                    for (int i = 0; i < collected.size(); i++)
+                    {
+                        Tool tool = collected.get(i);
+                        view.getOwnerDisplay().append("Tool found.\tStock: " + tool.getQuantity() + "\n");
+                        //inventory.checkStock(tool);
+                    }
+                } else
+                {
+                    view.getOwnerDisplay().setText("This tool could not be found.\n");
+                }
+
+
             }
-            // Todo: Display tool quantity to display
-            view.getQuantityTextArea().setText("");
+            view.getIdTextArea().setText("");
             view.getCheckQuantityDialog().setVisible(false);
         }
     }

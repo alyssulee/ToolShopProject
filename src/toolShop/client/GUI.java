@@ -6,8 +6,11 @@
 
 package toolShop.client;
 
+import toolShop.models.Tool;
+
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 
 public class GUI extends javax.swing.JFrame
 {
@@ -386,13 +389,11 @@ public class GUI extends javax.swing.JFrame
         listToolsOwner.setText("List All Tools");
         listToolsOwner.setToolTipText("Display all tools currently in inventory");
         listToolsOwner.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        listToolsOwner.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+       /* listToolsOwner.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 listToolsOwnerActionPerformed(evt);
             }
-        });
+        });*/
 
         searchByID.setFont(new java.awt.Font("Trebuchet MS", 1, 16)); // NOI18N
         searchByID.setText("Search By ID");
@@ -422,13 +423,12 @@ public class GUI extends javax.swing.JFrame
         printOrder.setText("Print Today's Order");
         printOrder.setToolTipText("Decrease the quantity of an item based on name or ID");
         printOrder.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        printOrder.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        /*printOrder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 printOrderActionPerformed(evt);
             }
-        });
+
+        });*/
 
         logout.setFont(new java.awt.Font("Trebuchet MS", 1, 16)); // NOI18N
         logout.setText("Logout");
@@ -579,13 +579,11 @@ public class GUI extends javax.swing.JFrame
         searchNameAccept.setFont(new java.awt.Font("Trebuchet MS", 1, 16)); // NOI18N
         searchNameAccept.setText("Search");
         searchNameAccept.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        searchNameAccept.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        /*searchNameAccept.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 searchNameAcceptActionPerformed(evt);
             }
-        });
+        });*/
 
         searchNameCancel.setFont(new java.awt.Font("Trebuchet MS", 1, 16)); // NOI18N
         searchNameCancel.setText("Cancel");
@@ -657,13 +655,11 @@ public class GUI extends javax.swing.JFrame
         searchIDAccept.setFont(new java.awt.Font("Trebuchet MS", 1, 16)); // NOI18N
         searchIDAccept.setText("Search");
         searchIDAccept.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        searchIDAccept.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        /*searchIDAccept.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 searchIDAcceptActionPerformed(evt);
             }
-        });
+        });*/
 
         idNameCancel.setFont(new java.awt.Font("Trebuchet MS", 1, 16)); // NOI18N
         idNameCancel.setText("Cancel");
@@ -737,13 +733,11 @@ public class GUI extends javax.swing.JFrame
         checkQuantityAccept.setFont(new java.awt.Font("Trebuchet MS", 1, 16)); // NOI18N
         checkQuantityAccept.setText("Search");
         checkQuantityAccept.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        checkQuantityAccept.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        /*checkQuantityAccept.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 checkQuantityAcceptActionPerformed(evt);
             }
-        });
+        });*/
 
         checkQuantityCancel.setFont(new java.awt.Font("Trebuchet MS", 1, 16)); // NOI18N
         checkQuantityCancel.setText("Cancel");
@@ -813,13 +807,11 @@ public class GUI extends javax.swing.JFrame
         decreaseQuantityAccept.setFont(new java.awt.Font("Trebuchet MS", 1, 16)); // NOI18N
         decreaseQuantityAccept.setText("Decrease by Amount");
         decreaseQuantityAccept.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        decreaseQuantityAccept.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        /*decreaseQuantityAccept.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 decreaseQuantityAcceptActionPerformed(evt);
             }
-        });
+        });*/
 
         decreaseQuantityCancel.setFont(new java.awt.Font("Trebuchet MS", 1, 16)); // NOI18N
         decreaseQuantityCancel.setText("Done");
@@ -1454,7 +1446,7 @@ public class GUI extends javax.swing.JFrame
         jPanel18.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jLabel23.setFont(new java.awt.Font("Tahoma", 2, 16)); // NOI18N
-        jLabel23.setText("Please enter tool name or ID to remove:");
+        jLabel23.setText("Please enter tool ID to remove:");
         jLabel23.setBorder(javax.swing.BorderFactory.createCompoundBorder());
 
         jScrollPane17.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
@@ -1663,7 +1655,7 @@ public class GUI extends javax.swing.JFrame
         loginMenu.setVisible(false);
         loginUsernameField.setText("");
         loginPasswordField.setText("");
-        //Check for validity here
+        //Check for validity here with database
         if (true)
         {
             ownerClientMenu.setBounds(((int) screenSize.getWidth() - 880) / 2, ((int) screenSize.getHeight() - 650) / 2, 880, 650);
@@ -1688,14 +1680,6 @@ public class GUI extends javax.swing.JFrame
 
     }
 
-    private void listToolsOwnerActionPerformed(java.awt.event.ActionEvent evt)
-    {
-        //Display all tools for owner
-        ownerDisplay.setText("");
-        //For xxx
-        //ownerDisplay.append(xxx);
-    }
-
     private void searchByIDActionPerformed(java.awt.event.ActionEvent evt)
     {
         searchByIDDialog.setBounds(((int) screenSize.getWidth() - 404) / 2, ((int) screenSize.getHeight() - 160) / 2, 404, 180);
@@ -1708,22 +1692,9 @@ public class GUI extends javax.swing.JFrame
         decreaseQuantityDialog.setVisible(true);
     }
 
-    private void printOrderActionPerformed(java.awt.event.ActionEvent evt)
-    {
-        // Print order
-    }
-
     private void logoutActionPerformed(java.awt.event.ActionEvent evt)
     {
         System.exit(1);
-    }
-
-    private void searchNameAcceptActionPerformed(java.awt.event.ActionEvent evt)
-    {
-        String nameToSearch = nameTextArea.getText();
-        //Search name
-        nameTextArea.setText("");
-        searchByNameDialog.setVisible(false);
     }
 
     private void searchNameCancelActionPerformed(java.awt.event.ActionEvent evt)
@@ -1732,13 +1703,6 @@ public class GUI extends javax.swing.JFrame
         searchByNameDialog.setVisible(false);
     }
 
-    private void searchIDAcceptActionPerformed(java.awt.event.ActionEvent evt)
-    {
-        String idToSearch = idTextArea.getText();
-        //Search id
-        idTextArea.setText("");
-        searchByIDDialog.setVisible(false);
-    }
 
     private void idNameCancelActionPerformed(java.awt.event.ActionEvent evt)
     {
@@ -1746,80 +1710,10 @@ public class GUI extends javax.swing.JFrame
         searchByIDDialog.setVisible(false);
     }
 
-    private void checkQuantityAcceptActionPerformed(java.awt.event.ActionEvent evt)
-    {
-        String input = idTextArea.getText();
-
-        try
-        {
-            int id = Integer.parseInt(input);
-            //Lookup tool by id
-            /*
-            Tool theTool = theShop.getTool(id);
-            if (theTool != null) {
-                System.out.println("Tool found.\nStock: " + theTool.getQuantity() + "\n");
-                theShop.checkStock(theTool);
-            } else {
-                System.out.println("This tool could not be found.\n");
-            }
-            */
-        } catch (java.lang.NumberFormatException string)
-        {
-            //Lookup tool by name
-            /*Tool theTool = theShop.getTool(in);
-            if (theTool != null) {
-                System.out.println("Tool found.\nStock: " + theTool.getQuantity() + "\n");
-                theShop.checkStock(theTool);
-            } else {
-                System.out.println("This tool could not be found.\n");
-            }
-            */
-
-        }
-        idTextArea.setText("");
-        checkQuantityDialog.setVisible(false);
-    }
-
     private void checkQuantityCancelActionPerformed(java.awt.event.ActionEvent evt)
     {
         quantityTextArea.setText("");
         checkQuantityDialog.setVisible(false);
-    }
-
-    private void decreaseQuantityAcceptActionPerformed(java.awt.event.ActionEvent evt)
-    {
-        String input = decreaseTextArea.getText();
-
-        try
-        {
-            int id = Integer.parseInt(input);
-            //Lookup tool by id
-            /*
-            Tool theTool = theShop.getTool(id);
-            if (theTool != null) {
-                System.out.println("Tool found.\nStock: " + theTool.getQuantity() + "\n");
-                theShop.checkStock(theTool);
-            } else {
-                System.out.println("This tool could not be found.\n");
-            }
-            */
-
-        } catch (java.lang.NumberFormatException string)
-        {
-            //Lookup tool by name
-
-            /*Tool theTool = theShop.getTool(in);
-            if (theTool != null) {
-                System.out.println("Tool found.\nStock: " + theTool.getQuantity() + "\n");
-                theShop.checkStock(theTool);
-            } else {
-                System.out.println("This tool could not be found.\n");
-            }
-           */
-
-        }
-        decreaseTextArea.setText("");
-        decreaseQuantityDialog.setVisible(false);
     }
 
     private void decreaseQuantityCancelActionPerformed(java.awt.event.ActionEvent evt)
@@ -1875,10 +1769,16 @@ public class GUI extends javax.swing.JFrame
 
     private void listToolsCustomerActionPerformed(java.awt.event.ActionEvent evt)
     {
-        //List tools for customer display
+        /*Iterable<Tool> tools = inventory.getAllTools());
+        ArrayList<Tool> collected = new ArrayList<>();
+        tools.forEach(collected::add);
         customerDisplay.setText("");
-        //For xxx
-        //customerDisplay.append(xxx);
+        for(int i = 0; i < collected.size(); i++)
+        {
+            Tool tool = collected.get(i);
+            customerDisplay.append(tool.toString);
+        }
+        */
     }
 
     private void buyItemActionPerformed(java.awt.event.ActionEvent evt)
@@ -1908,7 +1808,7 @@ public class GUI extends javax.swing.JFrame
 
     private void amountToBuyFieldActionPerformed(java.awt.event.ActionEvent evt)
     {
-
+        //Delete this
     }
 
     private void increaseBuyActionPerformed(java.awt.event.ActionEvent evt)
@@ -1940,7 +1840,7 @@ public class GUI extends javax.swing.JFrame
 
     private void addToolButtonActionPerformed(java.awt.event.ActionEvent evt)
     {
-        String name = addToolNameArea.getText();
+        /*String name = addToolNameArea.getText();
         String id = addToolIDArea.getText();
         String stock = addToolStockArea.getText();
         String price = addToolPriceArea.getText();
@@ -1950,8 +1850,9 @@ public class GUI extends javax.swing.JFrame
         addToolStockArea.setText("");
         addToolPriceArea.setText("");
         addToolSupplierIDArea.setText("");
-
-        //Add to inventory
+        Tool tool = new Tool(id, name, stock, price, supplierID);
+        inventory.addTool(tool);
+        */
     }
 
     private void doneAddingToolsActionPerformed(java.awt.event.ActionEvent evt)
@@ -1966,35 +1867,18 @@ public class GUI extends javax.swing.JFrame
 
     private void removeItemButtonActionPerformed(java.awt.event.ActionEvent evt)
     {
-        String input = removeItemArea.getText();
-        try
-        {
-            int id = Integer.parseInt(input);
-            //Lookup tool by id
-            /*
-            Tool theTool = theShop.getTool(id);
-            if (theTool != null) {
-                System.out.println("Tool found.\nStock: " + theTool.getQuantity() + "\n");
-                theShop.checkStock(theTool);
-            } else {
-                System.out.println("This tool could not be found.\n");
-            }
-            */
-        } catch (java.lang.NumberFormatException string)
-        {
-            //Lookup tool by name
-            /*Tool theTool = theShop.getTool(in);
-            if (theTool != null) {
-                System.out.println("Tool found.\nStock: " + theTool.getQuantity() + "\n");
-                theShop.checkStock(theTool);
-            } else {
-                System.out.println("This tool could not be found.\n");
-            }
-            */
-
+        /*try{
+            int input = Integer.parseInt(removeItemArea.getText());
+            inventory.removeTool();
+            removeItemArea.setText("");
         }
-        removeItemArea.setText("");
+        catch(Exception e)
+        {
+            removeItemArea.setText("ERROR");
+        }
+        */
     }
+
 
     private void removeItemDoneActionPerformed(java.awt.event.ActionEvent evt)
     {
