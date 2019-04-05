@@ -1,7 +1,8 @@
 package toolShop.server;
 
 import toolShop.InventoryService;
-import toolShop.repositories.MemoryToolRepository;
+import toolShop.repositories.DataBase;
+import toolShop.repositories.DatabaseToolRepository;
 import toolShop.repositories.ToolRepository;
 
 import java.io.IOException;
@@ -44,8 +45,12 @@ public class Server
         executorService = Executors.newFixedThreadPool(maxClients);
 
         // Todo: Replace in-memory repository with database repository
-        ToolRepository toolRepository = new MemoryToolRepository();
+/*        ToolRepository toolRepository = new MemoryToolRepository();
+        inventoryService = new LinkedInventoryService(toolRepository);*/
+        DataBase database = new DataBase();
+        ToolRepository toolRepository = new DatabaseToolRepository(database);
         inventoryService = new LinkedInventoryService(toolRepository);
+
     }
 
     /**
