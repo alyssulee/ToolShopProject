@@ -1,6 +1,7 @@
 package toolShop.server;
 
 import toolShop.InventoryService;
+import toolShop.OrderService;
 import toolShop.communication.requests.*;
 import toolShop.communication.responses.Response;
 import toolShop.communication.responses.SuccessResponse;
@@ -14,10 +15,12 @@ import java.util.Optional;
 public class ClientRequestHandler implements RequestHandler
 {
     private InventoryService inventory;
+    private OrderService orderService;
 
-    public ClientRequestHandler(InventoryService inventory)
+    public ClientRequestHandler(InventoryService inventory, OrderService orderService)
     {
         this.inventory = inventory;
+        this.orderService = orderService;
     }
 
     @Override
