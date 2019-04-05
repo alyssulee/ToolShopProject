@@ -2,6 +2,7 @@ package toolShop.client;
 
 import toolShop.InventoryService;
 import toolShop.OrderService;
+import toolShop.SupplierService;
 
 import java.io.IOException;
 import java.net.Socket;
@@ -57,10 +58,15 @@ public class Client
         // Use this InventoryService for accessing tools
         InventoryService inventory = new ServerInventoryService(connection);
 
+        // Use this SupplierService for accessing suppliers
+        SupplierService supplierService = new ServerSupplierService(connection);
+
         // Use this order service for accessing orders
         OrderService orderService = new ServerOrderService(connection);
 
         ClientController controller = new ClientController(inventory, orderService, new GUI());
+
+        // Todo: Wait for user to exit then terminate connection
         //connection.close();
     }
 

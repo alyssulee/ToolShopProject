@@ -2,6 +2,12 @@ package toolShop.server;
 
 import toolShop.InventoryService;
 import toolShop.OrderService;
+import toolShop.SupplierService;
+import toolShop.communication.responses.SupplierResponse;
+import toolShop.models.Supplier;
+import toolShop.repositories.MemorySupplierRepository;
+import toolShop.repositories.MemoryToolRepository;
+import toolShop.repositories.SupplierRepository;
 import toolShop.repositories.ToolRepository;
 
 import java.io.IOException;
@@ -31,6 +37,11 @@ public class Server
     private ToolRepository toolRepository;
 
     /**
+     * The supplier repository service.
+     */
+    private SupplierRepository supplierRepository;
+
+    /**
      * Creates a new tool shop server.
      *
      * @param port       The port clients must bind to.
@@ -44,10 +55,15 @@ public class Server
         executorService = Executors.newFixedThreadPool(maxClients);
 
         // Todo: Replace in-memory repository with database repository
-//        toolRepository = new MemoryToolRepository();
+        toolRepository = new MemoryToolRepository();
 
-        DataBase database = new DataBase();
-        toolRepository = new DatabaseToolRepository(database);
+        // Todo: Replace in-memory repository with database repository
+        supplierRepository = new MemorySupplierRepository();
+        supplierRepository.addSupplier(
+                new Supplier(0, "Bark's Tools", "Main St.", "bark@barks.co"));
+
+//        DataBase database = new DataBase();
+//        toolRepository = new DatabaseToolRepository(database);
     }
 
     /**
@@ -83,8 +99,9 @@ public class Server
         ClientConnection connection = new ClientConnection(socket);
 
         InventoryService inventory = new LinkedInventoryService(toolRepository);
+        SupplierService supplierService = new LinkedSupplierService(supplierRepository);
         OrderService orderService = new LinkedOrderService(toolRepository);
-        RequestHandler requestHandler = new ClientRequestHandler(inventory, orderService);
+        RequestHandler requestHandler = new ClientRequestHandler(inventory, supplierService, orderService);
 
         ClientSession session = new ClientSession(connection, requestHandler);
 

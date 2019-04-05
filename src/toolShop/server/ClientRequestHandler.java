@@ -2,9 +2,11 @@ package toolShop.server;
 
 import toolShop.InventoryService;
 import toolShop.OrderService;
+import toolShop.SupplierService;
 import toolShop.communication.requests.*;
 import toolShop.communication.responses.*;
 import toolShop.models.Order;
+import toolShop.models.Supplier;
 import toolShop.models.Tool;
 
 import java.util.ArrayList;
@@ -13,11 +15,13 @@ import java.util.Optional;
 public class ClientRequestHandler implements RequestHandler
 {
     private InventoryService inventory;
+    private SupplierService supplierService;
     private OrderService orderService;
 
-    public ClientRequestHandler(InventoryService inventory, OrderService orderService)
+    public ClientRequestHandler(InventoryService inventory, SupplierService supplierService, OrderService orderService)
     {
         this.inventory = inventory;
+        this.supplierService = supplierService;
         this.orderService = orderService;
     }
 
@@ -40,6 +44,8 @@ public class ClientRequestHandler implements RequestHandler
                 return handelReduceToolQuantityRequest((ReduceToolQuantityRequest) request);
             case 150:
                 return handelGetOrderRequest((GetOrderRequest) request);
+            case 120:
+                return handelGetSupplierByIdRequest((GetSupplierByIdRequest) request);
             case 151:
                 return handelExecuteOrderRequest((ExecuteOrderRequest) request);
             default:
@@ -85,6 +91,12 @@ public class ClientRequestHandler implements RequestHandler
     {
         boolean success = inventory.reduceToolQuantity(request.getToolId(), request.getQuantity());
         return new SuccessResponse(success);
+    }
+
+    public SupplierResponse handelGetSupplierByIdRequest(GetSupplierByIdRequest request)
+    {
+        Optional<Supplier> optional = supplierService.getSupplierById(request.getSupplierId());
+        return optional.map(SupplierResponse::new).orElseGet(() -> new SupplierResponse(null));
     }
 
     public OrderResponse handelGetOrderRequest(GetOrderRequest getOrderRequest)
