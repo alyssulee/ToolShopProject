@@ -1,6 +1,7 @@
 package toolShop.client;
 
 import toolShop.InventoryService;
+import toolShop.LoginService;
 import toolShop.OrderService;
 import toolShop.SupplierService;
 
@@ -54,6 +55,9 @@ public class Client
     {
         connection = establishConnection(host, port);
         System.out.println("Connected to server.");
+
+        // Use this LoginService for attempting logins
+        LoginService loginService = new ServerLoginService(connection);
 
         // Use this InventoryService for accessing tools
         InventoryService inventory = new ServerInventoryService(connection);

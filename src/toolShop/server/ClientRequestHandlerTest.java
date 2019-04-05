@@ -2,6 +2,7 @@ package toolShop.server;
 
 import org.junit.jupiter.api.Test;
 import toolShop.InventoryService;
+import toolShop.LoginService;
 import toolShop.OrderService;
 import toolShop.SupplierService;
 import toolShop.communication.requests.*;
@@ -11,10 +12,7 @@ import toolShop.communication.responses.ToolResponse;
 import toolShop.communication.responses.ToolsResponse;
 import toolShop.models.Supplier;
 import toolShop.models.Tool;
-import toolShop.repositories.MemorySupplierRepository;
-import toolShop.repositories.MemoryToolRepository;
-import toolShop.repositories.SupplierRepository;
-import toolShop.repositories.ToolRepository;
+import toolShop.repositories.*;
 
 import java.util.Optional;
 
@@ -22,10 +20,18 @@ class ClientRequestHandlerTest
 {
     private ToolRepository toolRepository = new MemoryToolRepository();
     private SupplierRepository supplierRepository = new MemorySupplierRepository();
+    private UserRepository userRepository = new MemoryUserRepository();
+
     private InventoryService inventory = new LinkedInventoryService(toolRepository);
     private SupplierService supplierService = new LinkedSupplierService(supplierRepository);
     private OrderService orderService = new LinkedOrderService(toolRepository);
-    private ClientRequestHandler handler = new ClientRequestHandler(inventory, supplierService, orderService);
+    private LoginService loginService = new LinkedLoginService(userRepository);
+
+    private ClientRequestHandler handler = new ClientRequestHandler(
+            inventory,
+            supplierService,
+            orderService,
+            loginService);
 
     @Test
     void handelAddToolRequest()
