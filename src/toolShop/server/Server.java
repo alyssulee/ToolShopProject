@@ -3,7 +3,6 @@ package toolShop.server;
 import toolShop.InventoryService;
 import toolShop.OrderService;
 import toolShop.SupplierService;
-import toolShop.communication.responses.SupplierResponse;
 import toolShop.models.Supplier;
 import toolShop.repositories.MemorySupplierRepository;
 import toolShop.repositories.MemoryToolRepository;
@@ -62,8 +61,8 @@ public class Server
         supplierRepository.addSupplier(
                 new Supplier(0, "Bark's Tools", "Main St.", "bark@barks.co"));
 
-//        DataBase database = new DataBase();
-//        toolRepository = new DatabaseToolRepository(database);
+        DataBase database = new DataBase();
+        toolRepository = new DatabaseToolRepository(database);
     }
 
     /**
