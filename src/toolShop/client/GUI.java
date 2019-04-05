@@ -6,11 +6,8 @@
 
 package toolShop.client;
 
-import toolShop.models.Tool;
-
 import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
 
 public class GUI extends javax.swing.JFrame
 {
@@ -1311,13 +1308,13 @@ public class GUI extends javax.swing.JFrame
         addToolButton.setFont(new java.awt.Font("Trebuchet MS", 1, 16)); // NOI18N
         addToolButton.setText("Add");
         addToolButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        addToolButton.addActionListener(new java.awt.event.ActionListener()
+/*        addToolButton.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
                 addToolButtonActionPerformed(evt);
             }
-        });
+        });*/
 
         doneAddingTools.setFont(new java.awt.Font("Trebuchet MS", 1, 16)); // NOI18N
         doneAddingTools.setText("Done");

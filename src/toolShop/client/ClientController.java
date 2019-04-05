@@ -26,6 +26,7 @@ public class ClientController
         view.getSearchIDAccept().addActionListener(new SearchIDAcceptActionListener());
         view.getBuyAmountAccept().addActionListener(new BuyAmountAcceptActionListener());
         view.getDecreaseQuantityAccept().addActionListener(new DecreaseQuantityAcceptActionListener());
+        view.getAddToolButton().addActionListener(new AddToolButtonActionListener());
 
         /*view.setBuyAmountAcceptActionListener(new BuyAmountAcceptActionListener());
         view.setDecreaseQuantityAcceptActionListener(new decreaseQuantityAcceptActionListener());
@@ -208,6 +209,35 @@ public class ClientController
             //theShop.checkStock(theTool);
             view.getDecreaseTextArea().setText("");
             view.getDecreaseQuantityDialog().setVisible(false);
+        }
+    }
+
+    /**
+     * ActionListener for Shop Owner add tool
+     */
+    class AddToolButtonActionListener implements ActionListener
+    {
+        @Override
+        public void actionPerformed(ActionEvent e)
+        {
+            try
+            {
+                String name = view.getAddToolNameArea().getText();
+                int id = Integer.parseInt(view.getAddToolIDArea().getText());
+                int stock = Integer.parseInt(view.getAddToolStockArea().getText());
+                double price = Double.parseDouble(view.getAddToolPriceArea().getText());
+                int supplierID = Integer.parseInt(view.getAddToolSupplierIDArea().getText());
+
+                Tool tool = new Tool(id, name, stock, price, supplierID)
+                inventory.addTool(tool);
+                view.getOwnerDisplay().setText("");
+                view.getOwnerDisplay().setText("Tool successfully added.\n");
+                view.getOwnerDisplay().append(tool.toString());
+
+            } catch (Exception e1)
+            {
+                view.getOwnerDisplay().setText("The tool could not be added.\n");
+            }
         }
     }
 
