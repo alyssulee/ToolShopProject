@@ -27,6 +27,19 @@ public class DataBase implements InventoryService
     private final String customer = "Customer";
     private final String owner = "Shop Owner";
 
+    public DataBase()
+    {
+        initializeConnection("newuser", "password");
+
+        createToolTable();
+        createSupplierTables();
+        createUserTable();
+
+        readToolsFile();
+        readSuppliersFile();
+    }
+
+
     /**
      * Connects to the database
      */
@@ -350,20 +363,25 @@ public class DataBase implements InventoryService
         }
     }
 
-    private void createUsersTable()
+    private void createUserTable()
     {
         try
         {
             DatabaseMetaData meta = connect.getMetaData();
-            ResultSet rs = meta.getTables(null, null, "user", null);
+            ResultSet rs = meta.getTables(null, null, "shopusers", null);
+
+
+
             if (rs.next() == false)
             {
-                String query = "CREATE TABLE tool (username VARCHAR(255) not NULL, password VARCHAR(255) not NULL, userType VARCHAR(255)"
+                String query = "CREATE TABLE shopusers (username VARCHAR(255) not NULL, password VARCHAR(255), userType VARCHAR(255),"
                         + " PRIMARY KEY (username))";
                 statement.executeUpdate(query);
+
                 insertUser("admin", "password", owner);
                 insertUser("user1", "user1", customer);
                 insertUser("user2", "user2", customer);
+                System.out.println("User Table created");
             }
         } catch (SQLException e)
         {
@@ -376,8 +394,8 @@ public class DataBase implements InventoryService
     {
         try
         {
-            String query = "INSERT INTO user (username, password, userType)"
-                    + "values(?, ?)";
+            String query = "INSERT INTO shopusers (username, password, userType)"
+                    + "values(?, ?, ?)";
             PreparedStatement pState = connect.prepareStatement(query);
             pState.setString(1, username);
             pState.setString(2, password);
@@ -391,16 +409,32 @@ public class DataBase implements InventoryService
         }
     }
 
+    private boolean userExists(String username, String password)
+    {
+        try
+        {
+            resultSet = statement.executeQuery("Select * from shopusers WHERE username = " + "\"" + username + "\"");
+            if (resultSet.next())
+            {
+                if (resultSet.getString("password").equals(password))
+                    return true;
+                else
+                {
+                    System.out.println("Incorrect Password!");
+                }
+            }
+        } catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
+        return false;
+
+    }
+
     public static void main(String[] args)
     {
         DataBase dataBase = new DataBase();
-        dataBase.initializeConnection("newuser", "password");
 
-        dataBase.createToolTable();
-        dataBase.createSupplierTables();
-
-        dataBase.readToolsFile();
-        dataBase.readSuppliersFile();
         //dataBase.addTool(new Tool(1, "Barn Bins", 1, 2, 3));
         //dataBase.removeTool(1);
         //dataBase.close();
@@ -419,5 +453,6 @@ public class DataBase implements InventoryService
 
 /*        Optional<Tool> tool = dataBase.getToolById(1);
         System.out.println(tool);*/
+        System.out.println(dataBase.userExists("admin", "password"));
     }
 }
