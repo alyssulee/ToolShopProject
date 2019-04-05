@@ -1,4 +1,4 @@
-package toolShop.repositories;
+package toolShop.server;
 
 import toolShop.InventoryService;
 import toolShop.models.Tool;

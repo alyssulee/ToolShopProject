@@ -1,6 +1,7 @@
-package toolShop.repositories;
+package toolShop.server;
 
 import toolShop.models.Tool;
+import toolShop.repositories.ToolRepository;
 
 import java.util.Optional;
 
