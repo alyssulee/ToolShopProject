@@ -31,7 +31,7 @@ public class ServerOrderService implements OrderService
         } catch (IOException e)
         {
             e.printStackTrace();
-            return new Order(new Date());
+            return new Order(0, new Date());
         }
     }
 

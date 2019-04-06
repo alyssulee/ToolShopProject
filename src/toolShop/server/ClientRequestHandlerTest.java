@@ -16,88 +16,138 @@ import toolShop.repositories.*;
 
 import java.util.Optional;
 
+/**
+ * Tests for ClientRequestHandler.
+ */
 class ClientRequestHandlerTest
 {
+    /**
+     * The tool repository.
+     */
     private ToolRepository toolRepository = new MemoryToolRepository();
+
+    /**
+     * The supplier repository.
+     */
     private SupplierRepository supplierRepository = new MemorySupplierRepository();
+
+    /**
+     * The user repository.
+     */
     private UserRepository userRepository = new MemoryUserRepository();
 
+    /**
+     * The inventory.
+     */
     private InventoryService inventory = new LinkedInventoryService(toolRepository);
+
+    /**
+     * The supplier service.
+     */
     private SupplierService supplierService = new LinkedSupplierService(supplierRepository);
+
+    /**
+     * The order service.
+     */
     private OrderService orderService = new LinkedOrderService(toolRepository);
+
+    /**
+     * The login service.
+     */
     private LoginService loginService = new LinkedLoginService(userRepository);
 
+    /**
+     * The client request handler to test.
+     */
     private ClientRequestHandler handler = new ClientRequestHandler(
             inventory,
             supplierService,
             orderService,
             loginService);
 
+    /**
+     * Tests the handleAddToolRequest method.
+     */
     @Test
-    void handelAddToolRequest()
+    void handleAddToolRequest()
     {
         AddToolRequest request = new AddToolRequest(new Tool(0, "Hammer", 10, 15, 0));
 
-        SuccessResponse response = handler.handelAddToolRequest(request);
+        SuccessResponse response = handler.handleAddToolRequest(request);
 
         assert response.isSuccess();
         assert toolRepository.getTool(0).isPresent();
     }
 
+    /**
+     * Tests the handleRemoveToolRequest method.
+     */
     @Test
-    void handelRemoveToolRequest()
+    void handleRemoveToolRequest()
     {
         inventory.addTool(new Tool(0, "Hammer", 10, 15, 0));
         RemoveToolRequest request = new RemoveToolRequest(0);
 
-        SuccessResponse response = handler.handelRemoveToolRequest(request);
+        SuccessResponse response = handler.handleRemoveToolRequest(request);
 
         assert response.isSuccess();
         assert !toolRepository.getTool(0).isPresent();
     }
 
+    /**
+     * Tests the handleGetToolByIdRequest method.
+     */
     @Test
-    void handelGetToolByIdRequest()
+    void handleGetToolByIdRequest()
     {
         inventory.addTool(new Tool(0, "Hammer", 10, 15, 0));
         GetToolByIdRequest request = new GetToolByIdRequest(0);
 
-        ToolResponse response = handler.handelGetToolByIdRequest(request);
+        ToolResponse response = handler.handleGetToolByIdRequest(request);
 
         assert response.getTool() != null;
     }
 
+    /**
+     * Tests the handleGetToolsWithNameRequest method.
+     */
     @Test
-    void handelGetToolsWithNameRequest()
+    void handleGetToolsWithNameRequest()
     {
         inventory.addTool(new Tool(0, "Hammer", 10, 15, 0));
         inventory.addTool(new Tool(1, "Hammer", 5, 30, 0));
         GetToolsWithNameRequest request = new GetToolsWithNameRequest("Hammer");
 
-        ToolsResponse response = handler.handelGetToolsWithNameRequest(request);
+        ToolsResponse response = handler.handleGetToolsWithNameRequest(request);
 
         assert response.getTools().size() == 2;
     }
 
+    /**
+     * Tests the handleGetAllToolsRequest method.
+     */
     @Test
-    void handelGetAllToolsRequest()
+    void handleGetAllToolsRequest()
     {
         inventory.addTool(new Tool(0, "Hammer", 10, 15, 0));
         inventory.addTool(new Tool(1, "Nails", 5, 5, 0));
         GetAllToolsRequest request = new GetAllToolsRequest();
 
-        ToolsResponse response = handler.handelGetAllToolsRequest(request);
+        ToolsResponse response = handler.handleGetAllToolsRequest(request);
 
         assert response.getTools().size() == 2;
     }
 
+    /**
+     * Tests the handleReduceToolQuantityRequest method.
+     */
     @Test
-    void handelReduceToolQuantityRequest()
+    void handleReduceToolQuantityRequest()
     {
         inventory.addTool(new Tool(0, "Hammer", 10, 15, 0));
         ReduceToolQuantityRequest request = new ReduceToolQuantityRequest(0, 8);
 
-        SuccessResponse response = handler.handelReduceToolQuantityRequest(request);
+        SuccessResponse response = handler.handleReduceToolQuantityRequest(request);
 
         assert response.isSuccess();
         Optional<Tool> tool = inventory.getToolById(0);
@@ -105,14 +155,17 @@ class ClientRequestHandlerTest
         assert tool.get().getQuantity() == 2;
     }
 
+    /**
+     * Tests the handleGetSupplierByIdRequest method.
+     */
     @Test
-    void handelGetSupplierByIdRequest()
+    void handleGetSupplierByIdRequest()
     {
         Supplier supplier = new Supplier(0, "Bark's", "Main St.", "bark@barks.co");
         supplierRepository.addSupplier(supplier);
         GetSupplierByIdRequest request = new GetSupplierByIdRequest(0);
 
-        SupplierResponse response = handler.handelGetSupplierByIdRequest(request);
+        SupplierResponse response = handler.handleGetSupplierByIdRequest(request);
 
         assert response.getSupplier() != null;
     }

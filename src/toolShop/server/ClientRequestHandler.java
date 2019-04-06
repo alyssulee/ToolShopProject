@@ -13,13 +13,39 @@ import toolShop.models.Tool;
 import java.util.ArrayList;
 import java.util.Optional;
 
+/**
+ * {@inheritDoc}
+ */
 public class ClientRequestHandler implements RequestHandler
 {
+    /**
+     * The inventory service.
+     */
     private InventoryService inventory;
+
+    /**
+     * The supplier service.
+     */
     private SupplierService supplierService;
+
+    /**
+     * The order service.
+     */
     private OrderService orderService;
+
+    /**
+     * The login service.
+     */
     private LoginService loginService;
 
+    /**
+     * Creates a client request handler.
+     *
+     * @param inventory       The inventory service.
+     * @param supplierService The supplier service.
+     * @param orderService    The order service.
+     * @param loginService    The login service.
+     */
     public ClientRequestHandler(
             InventoryService inventory,
             SupplierService supplierService,
@@ -32,56 +58,83 @@ public class ClientRequestHandler implements RequestHandler
         this.loginService = loginService;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public Response handelRequest(Request request)
+    public Response handleRequest(Request request)
     {
         switch (request.getDiscriminator())
         {
             case 100:
-                return handelAddToolRequest((AddToolRequest) request);
+                return handleAddToolRequest((AddToolRequest) request);
             case 101:
-                return handelRemoveToolRequest((RemoveToolRequest) request);
+                return handleRemoveToolRequest((RemoveToolRequest) request);
             case 102:
-                return handelGetToolByIdRequest((GetToolByIdRequest) request);
+                return handleGetToolByIdRequest((GetToolByIdRequest) request);
             case 103:
-                return handelGetToolsWithNameRequest((GetToolsWithNameRequest) request);
+                return handleGetToolsWithNameRequest((GetToolsWithNameRequest) request);
             case 104:
-                return handelGetAllToolsRequest((GetAllToolsRequest) request);
+                return handleGetAllToolsRequest((GetAllToolsRequest) request);
             case 105:
-                return handelReduceToolQuantityRequest((ReduceToolQuantityRequest) request);
+                return handleReduceToolQuantityRequest((ReduceToolQuantityRequest) request);
             case 120:
-                return handelGetSupplierByIdRequest((GetSupplierByIdRequest) request);
+                return handleGetSupplierByIdRequest((GetSupplierByIdRequest) request);
             case 150:
-                return handelGetOrderRequest((GetOrderRequest) request);
+                return handleGetOrderRequest((GetOrderRequest) request);
             case 151:
-                return handelExecuteOrderRequest((ExecuteOrderRequest) request);
+                return handleExecuteOrderRequest((ExecuteOrderRequest) request);
             case 170:
-                return handelLoginRequest((LoginRequest) request);
+                return handleLoginRequest((LoginRequest) request);
 
             default:
                 throw new Error("Received request with unknown discriminator");
         }
     }
 
-    public SuccessResponse handelAddToolRequest(AddToolRequest request)
+    /**
+     * Handles a request to add a tool.
+     *
+     * @param request The request.
+     * @return The response.
+     */
+    public SuccessResponse handleAddToolRequest(AddToolRequest request)
     {
         boolean success = inventory.addTool(request.getTool());
         return new SuccessResponse(success);
     }
 
-    public SuccessResponse handelRemoveToolRequest(RemoveToolRequest request)
+    /**
+     * Handles a request to remove a tool.
+     *
+     * @param request The request.
+     * @return The response.
+     */
+    public SuccessResponse handleRemoveToolRequest(RemoveToolRequest request)
     {
         boolean success = inventory.removeTool(request.getToolId());
         return new SuccessResponse(success);
     }
 
-    public ToolResponse handelGetToolByIdRequest(GetToolByIdRequest request)
+    /**
+     * Handles a request to get a tool by id.
+     *
+     * @param request The request.
+     * @return The response.
+     */
+    public ToolResponse handleGetToolByIdRequest(GetToolByIdRequest request)
     {
         Optional<Tool> optional = inventory.getToolById(request.getToolId());
         return optional.map(ToolResponse::new).orElseGet(() -> new ToolResponse(null));
     }
 
-    public ToolsResponse handelGetToolsWithNameRequest(GetToolsWithNameRequest request)
+    /**
+     * Handles a request to get tools by name.
+     *
+     * @param request The request.
+     * @return The response.
+     */
+    public ToolsResponse handleGetToolsWithNameRequest(GetToolsWithNameRequest request)
     {
         Iterable<Tool> tools = inventory.getToolsWithName(request.getToolName());
         ArrayList<Tool> collected = new ArrayList<>();
@@ -89,7 +142,13 @@ public class ClientRequestHandler implements RequestHandler
         return new ToolsResponse(collected);
     }
 
-    public ToolsResponse handelGetAllToolsRequest(GetAllToolsRequest request)
+    /**
+     * Handles a request to get all tools.
+     *
+     * @param request The request.
+     * @return The response.
+     */
+    public ToolsResponse handleGetAllToolsRequest(GetAllToolsRequest request)
     {
         Iterable<Tool> tools = inventory.getAllTools();
         ArrayList<Tool> collected = new ArrayList<>();
@@ -97,31 +156,61 @@ public class ClientRequestHandler implements RequestHandler
         return new ToolsResponse(collected);
     }
 
-    public SuccessResponse handelReduceToolQuantityRequest(ReduceToolQuantityRequest request)
+    /**
+     * Handles a request to reduce a tool's quantity.
+     *
+     * @param request The request.
+     * @return The response.
+     */
+    public SuccessResponse handleReduceToolQuantityRequest(ReduceToolQuantityRequest request)
     {
         boolean success = inventory.reduceToolQuantity(request.getToolId(), request.getQuantity());
         return new SuccessResponse(success);
     }
 
-    public SupplierResponse handelGetSupplierByIdRequest(GetSupplierByIdRequest request)
+    /**
+     * Handles a request to get a supplier by id.
+     *
+     * @param request The request.
+     * @return The response.
+     */
+    public SupplierResponse handleGetSupplierByIdRequest(GetSupplierByIdRequest request)
     {
         Optional<Supplier> optional = supplierService.getSupplierById(request.getSupplierId());
         return optional.map(SupplierResponse::new).orElseGet(() -> new SupplierResponse(null));
     }
 
-    public OrderResponse handelGetOrderRequest(GetOrderRequest getOrderRequest)
+    /**
+     * Handles a request to get the current order.
+     *
+     * @param request The request.
+     * @return The response.
+     */
+    public OrderResponse handleGetOrderRequest(GetOrderRequest request)
     {
         Order order = orderService.getOrder();
         return new OrderResponse(order);
     }
 
-    public SuccessResponse handelExecuteOrderRequest(ExecuteOrderRequest executeOrderRequest)
+    /**
+     * Handles a request to execute an order.
+     *
+     * @param request The request.
+     * @return The response.
+     */
+    public SuccessResponse handleExecuteOrderRequest(ExecuteOrderRequest request)
     {
-        boolean success = orderService.executeOrder(executeOrderRequest.getOrder());
+        boolean success = orderService.executeOrder(request.getOrder());
         return new SuccessResponse(success);
     }
 
-    public SuccessResponse handelLoginRequest(LoginRequest request)
+    /**
+     * Handles a request to login.
+     *
+     * @param request The request.
+     * @return The response.
+     */
+    public SuccessResponse handleLoginRequest(LoginRequest request)
     {
         boolean success = loginService.login(request.getUsername(), request.getPassword(), request.getUserType());
         return new SuccessResponse(success);

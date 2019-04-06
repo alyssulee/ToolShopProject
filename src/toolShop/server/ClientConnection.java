@@ -8,6 +8,9 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 
+/**
+ * An abstraction of a client connection.
+ */
 public class ClientConnection
 {
     /**

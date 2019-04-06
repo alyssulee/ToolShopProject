@@ -6,15 +6,29 @@ import toolShop.repositories.ToolRepository;
 
 import java.util.Optional;
 
+/**
+ * An inventory service connected to an underlying tool repository.
+ */
 public class LinkedInventoryService implements InventoryService
 {
+    /**
+     * The tool repository.
+     */
     private ToolRepository toolRepository;
 
+    /**
+     * Creates a linked inventory service.
+     *
+     * @param toolRepository The tool repository.
+     */
     public LinkedInventoryService(ToolRepository toolRepository)
     {
         this.toolRepository = toolRepository;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public boolean addTool(Tool tool)
     {
@@ -29,6 +43,9 @@ public class LinkedInventoryService implements InventoryService
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public boolean removeTool(int toolId)
     {
@@ -40,24 +57,36 @@ public class LinkedInventoryService implements InventoryService
         return true;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Optional<Tool> getToolById(int toolId)
     {
         return toolRepository.getTool(toolId);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Iterable<Tool> getToolsWithName(String toolName)
     {
         return toolRepository.getToolsWithName(toolName);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Iterable<Tool> getAllTools()
     {
         return toolRepository.getAllTools();
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public boolean reduceToolQuantity(int toolId, int quantity)
     {
