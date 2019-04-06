@@ -10,19 +10,45 @@ import java.security.SecureRandom;
 import java.util.Date;
 import java.util.Optional;
 
+/**
+ * An order service connected to an underlying tool repository.
+ */
 @SuppressWarnings("FieldCanBeLocal")
 public class LinkedOrderService implements OrderService
 {
+    /**
+     * The minimum quantity below which a tool will be resupplied.
+     */
     private final int MIN_TOOL_QUANTITY = 40;
+
+    /**
+     * The quantity to which tools are resupplied to.
+     */
     private final int REFILL_TOOL_QUANTITY = 50;
+
+    /**
+     * A random number generator.
+     */
     private SecureRandom random = new SecureRandom();
+
+    /**
+     * The tool repository.
+     */
     private ToolRepository toolRepository;
 
+    /**
+     * Creates a linked order service.
+     *
+     * @param toolRepository The tool repository.
+     */
     public LinkedOrderService(ToolRepository toolRepository)
     {
         this.toolRepository = toolRepository;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Order getOrder()
     {
@@ -41,6 +67,9 @@ public class LinkedOrderService implements OrderService
         return order;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public boolean executeOrder(Order order)
     {
@@ -58,6 +87,11 @@ public class LinkedOrderService implements OrderService
         return true;
     }
 
+    /**
+     * Generates a random five digit number.
+     *
+     * @return A random five digit number.
+     */
     private int randomFiveDigitNumber()
     {
         return random.nextInt(100000);

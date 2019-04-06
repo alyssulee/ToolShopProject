@@ -5,17 +5,35 @@ import toolShop.communication.responses.Response;
 
 import java.io.IOException;
 
+/**
+ * Manages a client session.
+ */
 public class ClientSession implements Runnable
 {
+    /**
+     * The connection to the client.
+     */
     private ClientConnection connection;
+
+    /**
+     * The request handler.
+     */
     private RequestHandler requestHandler;
 
+    /**
+     * Creates a client session.
+     *
+     * @param connection The connection to the client.
+     */
     public ClientSession(ClientConnection connection, RequestHandler requestHandler)
     {
         this.connection = connection;
         this.requestHandler = requestHandler;
     }
 
+    /**
+     * Begin and run the client session. This method blocks until the client disconnects.
+     */
     @Override
     public void run()
     {

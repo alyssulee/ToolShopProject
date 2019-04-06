@@ -16,23 +16,58 @@ import toolShop.repositories.*;
 
 import java.util.Optional;
 
+/**
+ * Tests for ClientRequestHandler.
+ */
 class ClientRequestHandlerTest
 {
+    /**
+     * The tool repository.
+     */
     private ToolRepository toolRepository = new MemoryToolRepository();
+
+    /**
+     * The supplier repository.
+     */
     private SupplierRepository supplierRepository = new MemorySupplierRepository();
+
+    /**
+     * The user repository.
+     */
     private UserRepository userRepository = new MemoryUserRepository();
 
+    /**
+     * The inventory.
+     */
     private InventoryService inventory = new LinkedInventoryService(toolRepository);
+
+    /**
+     * The supplier service.
+     */
     private SupplierService supplierService = new LinkedSupplierService(supplierRepository);
+
+    /**
+     * The order service.
+     */
     private OrderService orderService = new LinkedOrderService(toolRepository);
+
+    /**
+     * The login service.
+     */
     private LoginService loginService = new LinkedLoginService(userRepository);
 
+    /**
+     * The client request handler to test.
+     */
     private ClientRequestHandler handler = new ClientRequestHandler(
             inventory,
             supplierService,
             orderService,
             loginService);
 
+    /**
+     * Tests the handleAddToolRequest method.
+     */
     @Test
     void handleAddToolRequest()
     {
@@ -44,6 +79,9 @@ class ClientRequestHandlerTest
         assert toolRepository.getTool(0).isPresent();
     }
 
+    /**
+     * Tests the handleRemoveToolRequest method.
+     */
     @Test
     void handleRemoveToolRequest()
     {
@@ -56,6 +94,9 @@ class ClientRequestHandlerTest
         assert !toolRepository.getTool(0).isPresent();
     }
 
+    /**
+     * Tests the handleGetToolByIdRequest method.
+     */
     @Test
     void handleGetToolByIdRequest()
     {
@@ -67,6 +108,9 @@ class ClientRequestHandlerTest
         assert response.getTool() != null;
     }
 
+    /**
+     * Tests the handleGetToolsWithNameRequest method.
+     */
     @Test
     void handleGetToolsWithNameRequest()
     {
@@ -79,6 +123,9 @@ class ClientRequestHandlerTest
         assert response.getTools().size() == 2;
     }
 
+    /**
+     * Tests the handleGetAllToolsRequest method.
+     */
     @Test
     void handleGetAllToolsRequest()
     {
@@ -91,6 +138,9 @@ class ClientRequestHandlerTest
         assert response.getTools().size() == 2;
     }
 
+    /**
+     * Tests the handleReduceToolQuantityRequest method.
+     */
     @Test
     void handleReduceToolQuantityRequest()
     {
@@ -105,6 +155,9 @@ class ClientRequestHandlerTest
         assert tool.get().getQuantity() == 2;
     }
 
+    /**
+     * Tests the handleGetSupplierByIdRequest method.
+     */
     @Test
     void handleGetSupplierByIdRequest()
     {

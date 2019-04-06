@@ -6,11 +6,24 @@ import toolShop.repositories.MemoryToolRepository;
 import java.util.Optional;
 import java.util.stream.StreamSupport;
 
+/**
+ * Tests for LinkedInventoryServiceTest.
+ */
 class LinkedInventoryServiceTest
 {
+    /**
+     * The tool repository.
+     */
     private MemoryToolRepository toolRepository = new MemoryToolRepository();
+
+    /**
+     * The inventory.
+     */
     private LinkedInventoryService inventory = new LinkedInventoryService(toolRepository);
 
+    /**
+     * Tests the addTool method.
+     */
     @org.junit.jupiter.api.Test
     void addTool()
     {
@@ -21,6 +34,9 @@ class LinkedInventoryServiceTest
         assert toolRepository.getTool(0).isPresent();
     }
 
+    /**
+     * Tests the removeTool method.
+     */
     @org.junit.jupiter.api.Test
     void removeTool()
     {
@@ -32,6 +48,9 @@ class LinkedInventoryServiceTest
         assert !toolRepository.getTool(0).isPresent();
     }
 
+    /**
+     * Tests the getToolById method.
+     */
     @org.junit.jupiter.api.Test
     void getToolById()
     {
@@ -44,6 +63,9 @@ class LinkedInventoryServiceTest
         assert optional.get().equals(tool);
     }
 
+    /**
+     * Tests the getToolsWithName method.
+     */
     @org.junit.jupiter.api.Test
     void getToolsWithName()
     {
@@ -58,6 +80,9 @@ class LinkedInventoryServiceTest
         assert StreamSupport.stream(tools.spliterator(), false).noneMatch(tool -> tool.getId() == 2);
     }
 
+    /**
+     * Tests the getAllTools method.
+     */
     @org.junit.jupiter.api.Test
     void getAllTools()
     {
@@ -72,6 +97,9 @@ class LinkedInventoryServiceTest
         assert StreamSupport.stream(tools.spliterator(), false).anyMatch(tool -> tool.getId() == 2);
     }
 
+    /**
+     * Tests the reduceToolQuantity method.
+     */
     @SuppressWarnings("OptionalGetWithoutIsPresent")
     @org.junit.jupiter.api.Test
     void reduceToolQuantity()

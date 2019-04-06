@@ -13,13 +13,39 @@ import toolShop.models.Tool;
 import java.util.ArrayList;
 import java.util.Optional;
 
+/**
+ * {@inheritDoc}
+ */
 public class ClientRequestHandler implements RequestHandler
 {
+    /**
+     * The inventory service.
+     */
     private InventoryService inventory;
+
+    /**
+     * The supplier service.
+     */
     private SupplierService supplierService;
+
+    /**
+     * The order service.
+     */
     private OrderService orderService;
+
+    /**
+     * The login service.
+     */
     private LoginService loginService;
 
+    /**
+     * Creates a client request handler.
+     *
+     * @param inventory       The inventory service.
+     * @param supplierService The supplier service.
+     * @param orderService    The order service.
+     * @param loginService    The login service.
+     */
     public ClientRequestHandler(
             InventoryService inventory,
             SupplierService supplierService,
@@ -32,6 +58,9 @@ public class ClientRequestHandler implements RequestHandler
         this.loginService = loginService;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Response handleRequest(Request request)
     {
@@ -63,24 +92,48 @@ public class ClientRequestHandler implements RequestHandler
         }
     }
 
+    /**
+     * Handles a request to add a tool.
+     *
+     * @param request The request.
+     * @return The response.
+     */
     public SuccessResponse handleAddToolRequest(AddToolRequest request)
     {
         boolean success = inventory.addTool(request.getTool());
         return new SuccessResponse(success);
     }
 
+    /**
+     * Handles a request to remove a tool.
+     *
+     * @param request The request.
+     * @return The response.
+     */
     public SuccessResponse handleRemoveToolRequest(RemoveToolRequest request)
     {
         boolean success = inventory.removeTool(request.getToolId());
         return new SuccessResponse(success);
     }
 
+    /**
+     * Handles a request to get a tool by id.
+     *
+     * @param request The request.
+     * @return The response.
+     */
     public ToolResponse handleGetToolByIdRequest(GetToolByIdRequest request)
     {
         Optional<Tool> optional = inventory.getToolById(request.getToolId());
         return optional.map(ToolResponse::new).orElseGet(() -> new ToolResponse(null));
     }
 
+    /**
+     * Handles a request to get tools by name.
+     *
+     * @param request The request.
+     * @return The response.
+     */
     public ToolsResponse handleGetToolsWithNameRequest(GetToolsWithNameRequest request)
     {
         Iterable<Tool> tools = inventory.getToolsWithName(request.getToolName());
@@ -89,6 +142,12 @@ public class ClientRequestHandler implements RequestHandler
         return new ToolsResponse(collected);
     }
 
+    /**
+     * Handles a request to get all tools.
+     *
+     * @param request The request.
+     * @return The response.
+     */
     public ToolsResponse handleGetAllToolsRequest(GetAllToolsRequest request)
     {
         Iterable<Tool> tools = inventory.getAllTools();
@@ -97,30 +156,60 @@ public class ClientRequestHandler implements RequestHandler
         return new ToolsResponse(collected);
     }
 
+    /**
+     * Handles a request to reduce a tool's quantity.
+     *
+     * @param request The request.
+     * @return The response.
+     */
     public SuccessResponse handleReduceToolQuantityRequest(ReduceToolQuantityRequest request)
     {
         boolean success = inventory.reduceToolQuantity(request.getToolId(), request.getQuantity());
         return new SuccessResponse(success);
     }
 
+    /**
+     * Handles a request to get a supplier by id.
+     *
+     * @param request The request.
+     * @return The response.
+     */
     public SupplierResponse handleGetSupplierByIdRequest(GetSupplierByIdRequest request)
     {
         Optional<Supplier> optional = supplierService.getSupplierById(request.getSupplierId());
         return optional.map(SupplierResponse::new).orElseGet(() -> new SupplierResponse(null));
     }
 
-    public OrderResponse handleGetOrderRequest(GetOrderRequest getOrderRequest)
+    /**
+     * Handles a request to get the current order.
+     *
+     * @param request The request.
+     * @return The response.
+     */
+    public OrderResponse handleGetOrderRequest(GetOrderRequest request)
     {
         Order order = orderService.getOrder();
         return new OrderResponse(order);
     }
 
-    public SuccessResponse handleExecuteOrderRequest(ExecuteOrderRequest executeOrderRequest)
+    /**
+     * Handles a request to execute an order.
+     *
+     * @param request The request.
+     * @return The response.
+     */
+    public SuccessResponse handleExecuteOrderRequest(ExecuteOrderRequest request)
     {
-        boolean success = orderService.executeOrder(executeOrderRequest.getOrder());
+        boolean success = orderService.executeOrder(request.getOrder());
         return new SuccessResponse(success);
     }
 
+    /**
+     * Handles a request to login.
+     *
+     * @param request The request.
+     * @return The response.
+     */
     public SuccessResponse handleLoginRequest(LoginRequest request)
     {
         boolean success = loginService.login(request.getUsername(), request.getPassword(), request.getUserType());

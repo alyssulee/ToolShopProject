@@ -9,6 +9,8 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.Optional;
 
+// Todo: Document undocumented fields and methods
+
 /**
  * Database containing information pertaining to a shop's suppliers and tools.
  */
