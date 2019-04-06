@@ -119,18 +119,4 @@ public class OrderLine implements Serializable
     {
         this.quantity = quantity;
     }
-
-    /**
-     * Pretty-prints the order line to a string.
-     *
-     * @return The properly formatted order line.
-     */
-    public String toString()
-    {
-        // Todo: This will not work because tool and supplier names must be shown, not ids
-
-        return ", Tool ID: " + toolId + "\n" +
-                "Order Quantity: " + quantity + "\n"
-                + "Supplier ID: " + supplierId + "\n";
-    }
 }

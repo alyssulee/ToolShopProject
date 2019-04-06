@@ -16,6 +16,11 @@ public class Order implements Serializable
     private HashSet<OrderLine> orderLines = new HashSet<>();
 
     /**
+     * The order id.
+     */
+    private int id;
+
+    /**
      * The order date.
      */
     private Date orderDate;
@@ -25,8 +30,9 @@ public class Order implements Serializable
      *
      * @param orderDate The order date.
      */
-    public Order(Date orderDate)
+    public Order(int id, Date orderDate)
     {
+        this.id = id;
         this.orderDate = orderDate;
     }
 
@@ -38,6 +44,26 @@ public class Order implements Serializable
     public Collection<OrderLine> getOrderLines()
     {
         return orderLines;
+    }
+
+    /**
+     * Gets the order id.
+     *
+     * @return The order id.
+     */
+    public int getId()
+    {
+        return id;
+    }
+
+    /**
+     * Sets the order id.
+     *
+     * @param id The order id.
+     */
+    public void setId(int id)
+    {
+        this.id = id;
     }
 
     /**
@@ -58,31 +84,5 @@ public class Order implements Serializable
     public void setOrderDate(Date orderDate)
     {
         this.orderDate = orderDate;
-    }
-
-    /**
-     * Pretty-prints the order to a string.
-     *
-     * @return The properly formatted order.
-     */
-    public String printOrder()
-    {
-        // Todo: This will not work because tool and supplier names must be shown, not ids
-
-        StringBuilder order = new StringBuilder("Order Date: " + orderDate.toString() + "\n");
-        for (OrderLine o : orderLines)
-            order.append(o).append("\n");
-
-        return order.toString();
-    }
-
-    public String printNewQuantities()
-    {
-        String str = "\n";
-        for (OrderLine o : orderLines)
-        {
-            str += o.getToolId() + "\t Quantity Ordered: " + o.getQuantity() + "\n";
-        }
-        return str;
     }
 }

@@ -68,7 +68,10 @@ public class Client
         // Use this order service for accessing orders
         OrderService orderService = new ServerOrderService(connection);
 
-        ClientController controller = new ClientController(inventory, orderService, new GUI());
+        // Use this order formatter service for producing order prints
+        OrderFormatter orderFormatter = new GuiOrderFormatter(inventory, supplierService);
+
+        ClientController controller = new ClientController(new GUI(), inventory, orderService, orderFormatter);
 
         // Todo: Wait for user to exit then terminate connection
         //connection.close();

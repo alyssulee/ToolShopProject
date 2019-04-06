@@ -15,12 +15,15 @@ public class ClientController
 
     InventoryService inventory;
     OrderService order;
+    OrderFormatter orderFormatter;
     GUI view;
 
-    public ClientController(InventoryService inventory, OrderService order, GUI gui)
+    public ClientController(GUI gui, InventoryService inventory, OrderService order, OrderFormatter orderFormatter)
     {
         this.inventory = inventory;
         this.order = order;
+        this.orderFormatter = orderFormatter;
+
         view = gui;
         view.setVisible(true);
 
@@ -100,9 +103,8 @@ public class ClientController
             if (collected.size() != 0)
             {
                 display(e).setText("");
-                for (int i = 0; i < collected.size(); i++)
+                for (Tool tool : collected)
                 {
-                    Tool tool = collected.get(i);
                     display(e).append(tool.toString());
                 }
                 view.getSuccessDialog().setVisible(true);
@@ -183,13 +185,13 @@ public class ClientController
                 int idToSearch = Integer.parseInt(input);
                 Optional<Tool> tools = inventory.getToolById(idToSearch);
                 ArrayList<Tool> collected = new ArrayList<>();
+                //noinspection OptionalGetWithoutIsPresent
                 collected.set(0, tools.get());
                 if (collected.size() != 0)
                 {
                     view.getOwnerDisplay().setText("");
-                    for (int i = 0; i < collected.size(); i++)
+                    for (Tool tool : collected)
                     {
-                        Tool tool = collected.get(i);
                         view.getOwnerDisplay().append("Tool found.\tStock: " + tool.getQuantity() + "\n");
                         //inventory.checkStock(tool);
                         //Todo add stock checking capability
@@ -204,12 +206,13 @@ public class ClientController
                 Iterable<Tool> tools = inventory.getToolsWithName(input);
                 ArrayList<Tool> collected = new ArrayList<>();
                 tools.forEach(collected::add);
+
+                // Todo: This is always true... did you intend to check if the collection is empty?
                 if (tools != null)
                 {
                     view.getOwnerDisplay().setText("");
-                    for (int i = 0; i < collected.size(); i++)
+                    for (Tool tool : collected)
                     {
-                        Tool tool = collected.get(i);
                         view.getOwnerDisplay().append("Tool found.\tStock: " + tool.getQuantity() + "\n");
                         //inventory.checkStock(tool);
                     }
@@ -282,8 +285,7 @@ public class ClientController
                     view.getOwnerDisplay().setText("Tool successfully added.\n");
                     view.getSuccessDialog().setVisible(true);
 
-                }
-                else
+                } else
                 {
                     view.getOwnerDisplay().setText("Tool could not be added.\n");
                     view.getFailDialog().setVisible(true);
@@ -319,8 +321,7 @@ public class ClientController
             {
                 view.getOwnerDisplay().setText("Tool " + id + " was successfully removed.\n");
                 view.getSuccessDialog().setVisible(true);
-            }
-            else
+            } else
             {
                 view.getOwnerDisplay().setText("Tool was NOT successfully removed.\n");
                 view.getFailDialog().setVisible(true);
@@ -334,7 +335,7 @@ public class ClientController
         public void actionPerformed(ActionEvent e)
         {
             view.getOwnerDisplay().setText("");
-            view.getOwnerDisplay().setText(order.getOrder().printOrder());
+            view.getOwnerDisplay().setText(orderFormatter.formatOrder(order.getOrder()));
         }
     }
 
@@ -344,7 +345,6 @@ public class ClientController
         public void actionPerformed(ActionEvent e)
         {
             view.getOwnerDisplay().setText("Order executed successfully");
-            view.getOwnerDisplay().append(order.getOrder().printNewQuantities());
             order.executeOrder(order.getOrder());
         }
     }
@@ -368,8 +368,7 @@ public class ClientController
             {
                 view.getCustomerDisplay().setText(itemName + " successfully purchased");
                 view.getSuccessDialog().setVisible(true);
-            }
-            else
+            } else
             {
                 view.getCustomerDisplay().setText(itemName + " NOT successfully purchased");
                 view.getFailDialog().setVisible(true);

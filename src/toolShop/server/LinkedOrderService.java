@@ -6,15 +6,17 @@ import toolShop.models.OrderLine;
 import toolShop.models.Tool;
 import toolShop.repositories.ToolRepository;
 
+import java.security.SecureRandom;
 import java.util.Date;
 import java.util.Optional;
 
 @SuppressWarnings("FieldCanBeLocal")
 public class LinkedOrderService implements OrderService
 {
-    private ToolRepository toolRepository;
     private final int MIN_TOOL_QUANTITY = 40;
     private final int REFILL_TOOL_QUANTITY = 50;
+    private SecureRandom random = new SecureRandom();
+    private ToolRepository toolRepository;
 
     public LinkedOrderService(ToolRepository toolRepository)
     {
@@ -24,7 +26,7 @@ public class LinkedOrderService implements OrderService
     @Override
     public Order getOrder()
     {
-        Order order = new Order(new Date());
+        Order order = new Order(randomFiveDigitNumber(), new Date());
 
         for (Tool tool : toolRepository.getAllTools())
         {
@@ -54,5 +56,10 @@ public class LinkedOrderService implements OrderService
         }
 
         return true;
+    }
+
+    private int randomFiveDigitNumber()
+    {
+        return random.nextInt(100000);
     }
 }
