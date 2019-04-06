@@ -10,15 +10,29 @@ import toolShop.models.Order;
 import java.io.IOException;
 import java.util.Date;
 
+/**
+ * An order service connected to the server.
+ */
 public class ServerOrderService implements OrderService
 {
+    /**
+     * The server connection.
+     */
     private ServerConnection connection;
 
+    /**
+     * Creates a server order service.
+     *
+     * @param connection The server connection.
+     */
     public ServerOrderService(ServerConnection connection)
     {
         this.connection = connection;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Order getOrder()
     {
@@ -35,6 +49,9 @@ public class ServerOrderService implements OrderService
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public boolean executeOrder(Order order)
     {

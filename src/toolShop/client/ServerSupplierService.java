@@ -8,15 +8,29 @@ import toolShop.models.Supplier;
 import java.io.IOException;
 import java.util.Optional;
 
+/**
+ * A supplier service connected to the server,
+ */
 public class ServerSupplierService implements SupplierService
 {
+    /**
+     * The server connection.
+     */
     private ServerConnection connection;
 
+    /**
+     * Creates a server supplier service.
+     *
+     * @param connection The server connection.
+     */
     public ServerSupplierService(ServerConnection connection)
     {
         this.connection = connection;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Optional<Supplier> getSupplierById(int supplierId)
     {

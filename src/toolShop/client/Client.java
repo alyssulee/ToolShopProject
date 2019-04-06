@@ -8,6 +8,9 @@ import toolShop.SupplierService;
 import java.io.IOException;
 import java.net.Socket;
 
+/**
+ * A tool shop client that exposes inventory management functionality though a connection to a server.
+ */
 public class Client
 {
     /**
@@ -32,6 +35,9 @@ public class Client
 
     /**
      * Creates a new tool shop client.
+     *
+     * @param host The host address.
+     * @param port The port.
      */
     public Client(String host, int port)
     {
@@ -79,6 +85,10 @@ public class Client
 
     /**
      * Establish a connection with the server in preparation of a session.
+     *
+     * @param host The host address.
+     * @param port The port.
+     * @return The connection.
      */
     private ServerConnection establishConnection(String host, int port) throws IOException
     {

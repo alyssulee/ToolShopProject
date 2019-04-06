@@ -2,21 +2,38 @@ package toolShop.client;
 
 import toolShop.InventoryService;
 import toolShop.communication.requests.*;
-import toolShop.communication.responses.*;
+import toolShop.communication.responses.SuccessResponse;
+import toolShop.communication.responses.ToolResponse;
+import toolShop.communication.responses.ToolsResponse;
 import toolShop.models.Tool;
 
 import java.io.IOException;
-import java.util.*;
+import java.util.LinkedList;
+import java.util.Optional;
 
+/**
+ * An inventory service connected to the server.
+ */
 public class ServerInventoryService implements InventoryService
 {
+    /**
+     * The server connection.
+     */
     private ServerConnection connection;
 
+    /**
+     * Creates a server inventory service.
+     *
+     * @param connection The server connection.
+     */
     public ServerInventoryService(ServerConnection connection)
     {
         this.connection = connection;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public boolean addTool(Tool tool)
     {
@@ -33,6 +50,9 @@ public class ServerInventoryService implements InventoryService
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public boolean removeTool(int toolId)
     {
@@ -49,6 +69,9 @@ public class ServerInventoryService implements InventoryService
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Optional<Tool> getToolById(int toolId)
     {
@@ -65,6 +88,9 @@ public class ServerInventoryService implements InventoryService
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Iterable<Tool> getToolsWithName(String toolName)
     {
@@ -81,6 +107,9 @@ public class ServerInventoryService implements InventoryService
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Iterable<Tool> getAllTools()
     {
@@ -97,6 +126,9 @@ public class ServerInventoryService implements InventoryService
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public boolean reduceToolQuantity(int toolId, int quantity)
     {

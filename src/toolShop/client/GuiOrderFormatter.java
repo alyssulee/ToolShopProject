@@ -12,17 +12,36 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Optional;
 
+/**
+ * Formats an order to a string appropriate for display in the GUI.
+ */
 public class GuiOrderFormatter implements OrderFormatter
 {
+    /**
+     * The inventory.
+     */
     private InventoryService inventory;
+
+    /**
+     * The supplier service.
+     */
     private SupplierService supplierService;
 
+    /**
+     * Creates a GUI order formatter.
+     *
+     * @param inventory       The inventory service.
+     * @param supplierService The supplier service.
+     */
     public GuiOrderFormatter(InventoryService inventory, SupplierService supplierService)
     {
         this.inventory = inventory;
         this.supplierService = supplierService;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public String formatOrder(Order order)
     {
@@ -40,12 +59,24 @@ public class GuiOrderFormatter implements OrderFormatter
         return builder.toString();
     }
 
+    /**
+     * Formats a date to a string.
+     *
+     * @param date The date.
+     * @return The formatted string.
+     */
     private String formatDate(Date date)
     {
         DateFormat dateFormat = new SimpleDateFormat("MMMM d, yyyy");
         return dateFormat.format(date);
     }
 
+    /**
+     * Formats an order line to a string.
+     *
+     * @param line The order line.
+     * @return The formatted string.
+     */
     public String formatOrderLine(OrderLine line)
     {
         Optional<Tool> tool = inventory.getToolById(line.getToolId());
@@ -65,6 +96,14 @@ public class GuiOrderFormatter implements OrderFormatter
         return formatOrderLine(tool.get().getName(), line.getQuantity(), supplier.get().getCompanyName());
     }
 
+    /**
+     * Formats an order line to a string.
+     *
+     * @param toolName     The tool name.
+     * @param quantity     The order quantity.
+     * @param supplierName The supplier name.
+     * @return The formatted string.
+     */
     @SuppressWarnings("StringBufferReplaceableByString")
     public String formatOrderLine(String toolName, int quantity, String supplierName)
     {
