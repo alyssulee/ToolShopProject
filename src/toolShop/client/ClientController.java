@@ -363,11 +363,18 @@ public class ClientController
 
             //Decrease stock by this amount
             ArrayList<Tool> toolList = (ArrayList<Tool>) inventory.getToolsWithName(itemName);
-            boolean bool = inventory.reduceToolQuantity(toolList.get(0).getId(), amountToBuy);
-            if (bool)
+            if (!toolList.isEmpty())
             {
-                view.getCustomerDisplay().setText(itemName + " successfully purchased");
-                view.getSuccessDialog().setVisible(true);
+                boolean bool = inventory.reduceToolQuantity(toolList.get(0).getId(), amountToBuy);
+                if (bool)
+                {
+                    view.getCustomerDisplay().setText(itemName + " successfully purchased");
+                    view.getSuccessDialog().setVisible(true);
+                } else
+                {
+                    view.getCustomerDisplay().setText(itemName + " NOT successfully purchased");
+                    view.getFailDialog().setVisible(true);
+                }
             }
             else
             {
