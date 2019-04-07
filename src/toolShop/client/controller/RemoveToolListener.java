@@ -6,15 +6,26 @@ import toolShop.client.GUI;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * InventoryController which connects the "Remove Tool" Button in the GUI to the action listener
+ */
 public class RemoveToolListener extends InventoryController
 {
+    /**
+     * Constructs a RemoveToolListener object and sets the button's ActionListener
+     *
+     * @param gui
+     * @param inventory
+     */
     public RemoveToolListener(GUI gui, InventoryService inventory)
     {
         super(gui, inventory);
         view.getRemoveItemButton().addActionListener(new RemoveToolButtonActionListener());
     }
 
-
+    /**
+     * ActionListener which removes a tool when the "Remove Tool" button in the Shop Owner window is pressed
+     */
     class RemoveToolButtonActionListener implements ActionListener
     {
         @Override

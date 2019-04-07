@@ -1,7 +1,9 @@
 package toolShop.server;
 
 import toolShop.InventoryService;
+import toolShop.LoginService;
 import toolShop.models.Tool;
+import toolShop.models.UserType;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -14,7 +16,7 @@ import java.util.Optional;
 /**
  * Database containing information pertaining to a shop's suppliers and tools.
  */
-public class DataBase implements InventoryService
+public class DataBase implements InventoryService, LoginService
 {
     /**
      * Used to establish a connection to the database
@@ -199,6 +201,12 @@ public class DataBase implements InventoryService
         return toolList;
     }
 
+    /**
+     * Searches for tool(s) with a certain name
+     *
+     * @param toolName - The name of the tool(s)
+     * @return toolList - List of tools of that name
+     */
     public ArrayList<Tool> getToolsWithName(String toolName)
     {
         ArrayList<Tool> toolList = new ArrayList<>();
@@ -222,6 +230,11 @@ public class DataBase implements InventoryService
         return toolList;
     }
 
+    /**
+     * Searches for tool with a certain ID number
+     * @param toolID - ID number of the tool
+     * @return
+     */
     public Optional<Tool> getToolById(int toolID)
     {
         Tool tool = null;
@@ -440,6 +453,12 @@ public class DataBase implements InventoryService
         return false;
     }
 
+    @Override
+    public boolean login(String username, String password, UserType userType)
+    {
+        return false;
+    }
+
     public static void main(String[] args)
     {
         DataBase dataBase = new DataBase();
@@ -462,6 +481,8 @@ public class DataBase implements InventoryService
 
 /*        Optional<Tool> tool = dataBase.getToolById(1);
         System.out.println(tool);*/
-        System.out.println(dataBase.userExists("admin", "password"));
+        // System.out.println(dataBase.userExists("admin", "password"));
     }
+
+
 }

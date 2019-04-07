@@ -7,8 +7,17 @@ import toolShop.models.Tool;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * InventoryController which connects the "Add Tool" Button in the GUI to the action listener
+ */
 public class AddToolListener extends InventoryController
 {
+    /**
+     * Creates an AddToolListener and sets the button's ActionListener
+     *
+     * @param gui
+     * @param inventory
+     */
     public AddToolListener(GUI gui, InventoryService inventory)
     {
         super(gui, inventory);
@@ -17,7 +26,7 @@ public class AddToolListener extends InventoryController
 
 
     /**
-     * ActionListener for Shop Owner add tool
+     * ActionListener which adds a tool when the "Add Tool" button in the Shop Owner window is pressed
      */
     class AddToolButtonActionListener implements ActionListener
     {

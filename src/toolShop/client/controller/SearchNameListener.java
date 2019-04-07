@@ -9,8 +9,17 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+/**
+ * InventoryController which connects the "Search by Name" Button in the GUI to the action listener
+ */
 public class SearchNameListener extends InventoryController
 {
+    /**
+     * Constructs a SearchNameListener object and sets the button's ActionListener
+     *
+     * @param gui
+     * @param inventory
+     */
     public SearchNameListener(GUI gui, InventoryService inventory)
     {
         super(gui, inventory);

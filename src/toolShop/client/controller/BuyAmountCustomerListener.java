@@ -8,9 +8,17 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+/**
+ * InventoryController which connects the "Buy Item" Button in the GUI to the action listener
+ */
 public class BuyAmountCustomerListener extends InventoryController
 {
-
+    /**
+     * Creates a BuyAmountCstomerListener and sets the button's ActionListener
+     *
+     * @param gui
+     * @param inventory
+     */
     public BuyAmountCustomerListener(GUI gui, InventoryService inventory)
     {
         super(gui, inventory);

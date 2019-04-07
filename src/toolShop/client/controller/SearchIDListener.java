@@ -8,9 +8,17 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Optional;
 
+/**
+ * InventoryController which connects the "Search by ID" Button in the GUI to the action listener
+ */
 public class SearchIDListener extends InventoryController
 {
-
+    /**
+     * Constructs a SearchIDListener object and sets the button's ActionListener
+     *
+     * @param gui
+     * @param inventory
+     */
     public SearchIDListener(GUI gui, InventoryService inventory)
     {
         super(gui, inventory);

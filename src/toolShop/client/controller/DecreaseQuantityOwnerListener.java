@@ -8,9 +8,17 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+/**
+ * InventoryController which connects the "Decrease Quantity" Button in the GUI to the action listener
+ */
 public class DecreaseQuantityOwnerListener extends InventoryController
 {
-
+    /**
+     * Creates an DecreaseQuantityOwnerListener and sets the button's ActionListener
+     *
+     * @param gui
+     * @param inventory
+     */
     public DecreaseQuantityOwnerListener(GUI gui, InventoryService inventory)
     {
         super(gui, inventory);
@@ -19,7 +27,7 @@ public class DecreaseQuantityOwnerListener extends InventoryController
 
 
     /**
-     * ActionListener for Shop Owner decrease by amount button
+     * ActionListener which decreases the quantity a tool when the "Decrease Quantity" button in the Shop Owner window is pressed
      */
     class DecreaseQuantityAcceptActionListener implements ActionListener
     {
@@ -36,7 +44,13 @@ public class DecreaseQuantityOwnerListener extends InventoryController
             } catch (NumberFormatException exception)
             {
                 ArrayList<Tool> toolList = (ArrayList<Tool>) inventory.getToolsWithName(toolInfo);
-                bool = inventory.reduceToolQuantity(toolList.get(0).getId(), amountToDecrease);
+                if (!toolList.isEmpty())
+                    bool = inventory.reduceToolQuantity(toolList.get(0).getId(), amountToDecrease);
+                else
+                    bool = false;
+            } catch (Exception exception)
+            {
+                bool = false;
             }
             if (bool)
                 view.getOwnerDisplay().setText(toolInfo + " successfully decreased");

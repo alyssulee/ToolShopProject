@@ -7,9 +7,17 @@ import toolShop.models.Tool;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * InventoryController which connects the "List All Tools" Button in the GUI to the action listener
+ */
 public class ListToolsListener extends InventoryController
 {
-
+    /**
+     * Creates a ListToolsListener and sets the button's ActionListener
+     *
+     * @param gui
+     * @param inventory
+     */
     public ListToolsListener(GUI gui, InventoryService inventory)
     {
         super(gui, inventory);
