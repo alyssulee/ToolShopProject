@@ -13,14 +13,14 @@ public class DatabaseToolRepository implements ToolRepository
     /**
      * The database.
      */
-    private DataBase database;
+    private ToolDataTable database;
 
     /**
      * Creates a database-backed tool repository.
      *
      * @param db The database.
      */
-    public DatabaseToolRepository(DataBase db)
+    public DatabaseToolRepository(ToolDataTable db)
     {
         database = db;
     }

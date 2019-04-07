@@ -27,6 +27,9 @@ public class MainController
      */
     ArrayList<OrderController> orderController;
 
+    ArrayList<LoginController> loginController;
+
+
     /**
      * Displays GUI
      *
@@ -37,6 +40,7 @@ public class MainController
         this.view = view;
         inventoryController = new ArrayList<>();
         orderController = new ArrayList<>();
+        loginController = new ArrayList<>();
 
         view.setVisible(true);
     }

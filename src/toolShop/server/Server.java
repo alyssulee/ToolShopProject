@@ -72,8 +72,10 @@ public class Server
         userRepository.addUser(new User("Alyssa", "1234", UserType.Owner));
         userRepository.addUser(new User("Owen", "1234", UserType.Customer));
 
-        DataBase database = new DataBase();
-        toolRepository = new DatabaseToolRepository(database);
+        //DataBase database = new DataBase();
+        toolRepository = new DatabaseToolRepository(new ToolDataTable());
+        supplierRepository = new DatabaseSupplierRepository(new SupplierDataTable());
+        userRepository = new DatabaseUserRepository(new UserDataTable());
     }
 
     /**
