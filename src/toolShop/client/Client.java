@@ -4,6 +4,7 @@ import toolShop.InventoryService;
 import toolShop.LoginService;
 import toolShop.OrderService;
 import toolShop.SupplierService;
+import toolShop.client.controller.MainController;
 
 import java.io.IOException;
 import java.net.Socket;
@@ -77,7 +78,12 @@ public class Client
         // Use this order formatter service for producing order prints
         OrderFormatter orderFormatter = new GuiOrderFormatter(inventory, supplierService);
 
-        ClientController controller = new ClientController(new GUI(), inventory, orderService, orderFormatter);
+        // User Interface
+        GUI gui = new GUI();
+
+        //ClientController controller = new ClientController(new GUI(), inventory, orderService, orderFormatter);
+        MainController controller = new MainController(gui);
+        controller.addInventoryControllers(inventory);
 
         // Todo: Wait for user to exit then terminate connection
         //connection.close();

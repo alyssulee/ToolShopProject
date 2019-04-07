@@ -1,7 +1,9 @@
-package toolShop.client;
+package toolShop.client.controller;
 
 import toolShop.InventoryService;
 import toolShop.OrderService;
+import toolShop.client.GUI;
+import toolShop.client.OrderFormatter;
 import toolShop.models.Tool;
 
 import javax.swing.*;
@@ -169,66 +171,6 @@ public class ClientController
             }
         }
     }
-
-    /**
-     * ActionListener for Shop Owner "Check Quantity" button
-     */
-    class CheckQuantityAcceptActionListener implements ActionListener
-    {
-        @Override
-        public void actionPerformed(ActionEvent e)
-        {
-            String input = view.getIdTextArea().getText();
-
-            try
-            {
-                int idToSearch = Integer.parseInt(input);
-                Optional<Tool> tools = inventory.getToolById(idToSearch);
-                ArrayList<Tool> collected = new ArrayList<>();
-                //noinspection OptionalGetWithoutIsPresent
-                collected.set(0, tools.get());
-                if (collected.size() != 0)
-                {
-                    view.getOwnerDisplay().setText("");
-                    for (Tool tool : collected)
-                    {
-                        view.getOwnerDisplay().append("Tool found.\tStock: " + tool.getQuantity() + "\n");
-                        //inventory.checkStock(tool);
-                        //Todo add stock checking capability
-                    }
-                } else
-                {
-                    view.getOwnerDisplay().setText("This tool could not be found.\n");
-                }
-
-            } catch (java.lang.NumberFormatException string)
-            {
-                Iterable<Tool> tools = inventory.getToolsWithName(input);
-                ArrayList<Tool> collected = new ArrayList<>();
-                tools.forEach(collected::add);
-
-                // Todo: This is always true... did you intend to check if the collection is empty?
-                if (tools != null)
-                {
-                    view.getOwnerDisplay().setText("");
-                    for (Tool tool : collected)
-                    {
-                        view.getOwnerDisplay().append("Tool found.\tStock: " + tool.getQuantity() + "\n");
-                        //inventory.checkStock(tool);
-                    }
-                } else
-                {
-                    view.getFailDialog().setVisible(true);
-                    view.getOwnerDisplay().setText("This tool could not be found.\n");
-                }
-
-
-            }
-            view.getIdTextArea().setText("");
-            view.getCheckQuantityDialog().setVisible(false);
-        }
-    }
-
 
     /**
      * ActionListener for Shop Owner decrease by amount button
