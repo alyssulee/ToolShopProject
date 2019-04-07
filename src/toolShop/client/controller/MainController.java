@@ -17,10 +17,22 @@ public class MainController
         view.setVisible(true);
     }
 
+    /**
+     * Adds all InventoryControllers
+     *
+     * @param inventory
+     */
     public void addInventoryControllers(InventoryService inventory)
     {
         inventoryController.add(new SearchNameListener(view, inventory));
         inventoryController.add(new ListToolsListener(view, inventory));
+        inventoryController.add(new SearchIDListener(view, inventory));
+        inventoryController.add(new BuyAmountCustomerListener(view, inventory));
+        inventoryController.add(new DecreaseQuantityOwnerListener(view, inventory));
+        inventoryController.add(new AddToolListener(view, inventory));
+        inventoryController.add(new RemoveToolListener(view, inventory));
+
+
     }
 
 }

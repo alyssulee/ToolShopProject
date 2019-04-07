@@ -2060,8 +2060,8 @@ public class GUI extends javax.swing.JFrame
 
     private void searchByName1ActionPerformed(java.awt.event.ActionEvent evt)
     {
-        searchByNameDialog.setBounds(((int) screenSize.getWidth() - 404) / 2, ((int) screenSize.getHeight() - 160) / 2, 404, 180);
-        searchByNameDialog.setVisible(true);
+        searchByNameDialog1.setBounds(((int) screenSize.getWidth() - 404) / 2, ((int) screenSize.getHeight() - 160) / 2, 404, 180);
+        searchByNameDialog1.setVisible(true);
     }
 
     private void listToolsCustomerActionPerformed(java.awt.event.ActionEvent evt)
