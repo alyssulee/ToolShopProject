@@ -239,13 +239,13 @@ public class GUI extends javax.swing.JFrame
         acceptLoginButton.setFont(new java.awt.Font("Trebuchet MS", 1, 16)); // NOI18N
         acceptLoginButton.setText("Accept");
         acceptLoginButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        acceptLoginButton.addActionListener(new java.awt.event.ActionListener()
+/*        acceptLoginButton.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
                 acceptLoginButtonActionPerformed(evt);
             }
-        });
+        });*/
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);

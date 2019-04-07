@@ -1,6 +1,7 @@
 package toolShop.client.controller;
 
 import toolShop.InventoryService;
+import toolShop.LoginService;
 import toolShop.OrderService;
 import toolShop.client.GUI;
 import toolShop.client.OrderFormatter;
@@ -71,6 +72,11 @@ public class MainController
     {
         orderController.add(new PlaceOrderListener(view, order, orderFormatter));
         orderController.add(new PrintOrderListener(view, order, orderFormatter));
+    }
+
+    public void addLoginControllers(LoginService login)
+    {
+        loginController.add(new LoginOwnerListener(view, login));
     }
 
 }

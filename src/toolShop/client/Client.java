@@ -85,6 +85,7 @@ public class Client
         MainController controller = new MainController(gui);
         controller.addInventoryControllers(inventory);
         controller.addOrderControllers(orderService, orderFormatter);
+        controller.addLoginControllers(loginService);
 
 
         // Todo: Wait for user to exit then terminate connection
