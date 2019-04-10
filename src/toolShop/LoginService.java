@@ -16,4 +16,14 @@ public interface LoginService
      * @return An indication of success.
      */
     boolean login(String username, String password, UserType userType);
+
+    /**
+     * Adds the supplied user.
+     *
+     * @param username The username.
+     * @param password The password.
+     * @param userType The user type.
+     * @return An indication of success.
+     */
+    boolean addUser(String username, String password, UserType userType);
 }

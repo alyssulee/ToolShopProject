@@ -984,13 +984,13 @@ public class GUI extends javax.swing.JFrame
         addLoginButton.setFont(new java.awt.Font("Trebuchet MS", 1, 16)); // NOI18N
         addLoginButton.setText("Add");
         addLoginButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        addLoginButton.addActionListener(new java.awt.event.ActionListener()
+/*        addLoginButton.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
                 addLoginButtonActionPerformed(evt);
             }
-        });
+        });*/
 
         javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
         jPanel13.setLayout(jPanel13Layout);

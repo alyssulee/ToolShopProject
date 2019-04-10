@@ -86,6 +86,8 @@ public class ClientRequestHandler implements RequestHandler
                 return handleExecuteOrderRequest((ExecuteOrderRequest) request);
             case 170:
                 return handleLoginRequest((LoginRequest) request);
+            case 171:
+                return handleAddUserRequest((AddUserRequest) request);
 
             default:
                 throw new Error("Received request with unknown discriminator");
@@ -213,6 +215,12 @@ public class ClientRequestHandler implements RequestHandler
     public SuccessResponse handleLoginRequest(LoginRequest request)
     {
         boolean success = loginService.login(request.getUsername(), request.getPassword(), request.getUserType());
+        return new SuccessResponse(success);
+    }
+
+    public SuccessResponse handleAddUserRequest(AddUserRequest request)
+    {
+        boolean success = loginService.addUser(request.getUser().getUsername(), request.getUser().getPassword(), request.getUser().getType());
         return new SuccessResponse(success);
     }
 }

@@ -77,6 +77,7 @@ public class MainController
     public void addLoginControllers(LoginService login)
     {
         loginController.add(new LoginOwnerListener(view, login));
+        loginController.add(new AddNewUserListener(view, login));
     }
 
 }

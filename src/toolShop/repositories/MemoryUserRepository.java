@@ -19,10 +19,10 @@ public class MemoryUserRepository implements UserRepository
      * {@inheritDoc}
      */
     @Override
-    public void addUser(User user)
+    public boolean addUser(User user)
     {
         // Unlike the database, there is no protection against duplicate ids
-        users.add(user);
+        return users.add(user);
     }
 
     /**

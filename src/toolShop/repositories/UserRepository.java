@@ -14,7 +14,7 @@ public interface UserRepository
      *
      * @param user The user to add.
      */
-    void addUser(User user);
+    boolean addUser(User user);
 
     /**
      * Removes a user.

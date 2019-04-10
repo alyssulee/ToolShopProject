@@ -1,8 +1,10 @@
 package toolShop.client;
 
 import toolShop.LoginService;
+import toolShop.communication.requests.AddUserRequest;
 import toolShop.communication.requests.LoginRequest;
 import toolShop.communication.responses.SuccessResponse;
+import toolShop.models.User;
 import toolShop.models.UserType;
 
 import java.io.IOException;
@@ -36,6 +38,22 @@ public class ServerLoginService implements LoginService
         try
         {
             LoginRequest request = new LoginRequest(username, password, userType);
+            SuccessResponse response = (SuccessResponse) connection.sendRequest(request);
+            return response.isSuccess();
+
+        } catch (IOException e)
+        {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    @Override
+    public boolean addUser(String username, String password, UserType userType)
+    {
+        try
+        {
+            AddUserRequest request = new AddUserRequest(new User(username, password, userType));
             SuccessResponse response = (SuccessResponse) connection.sendRequest(request);
             return response.isSuccess();
 

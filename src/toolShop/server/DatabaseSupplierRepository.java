@@ -5,6 +5,9 @@ import toolShop.repositories.SupplierRepository;
 
 import java.util.Optional;
 
+/**
+ * A database-backed supplier repository.
+ */
 public class DatabaseSupplierRepository implements SupplierRepository
 {
     /**

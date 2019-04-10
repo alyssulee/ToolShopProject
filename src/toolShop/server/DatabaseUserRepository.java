@@ -5,6 +5,9 @@ import toolShop.repositories.UserRepository;
 
 import java.util.Optional;
 
+/**
+ * A database-backed user repository.
+ */
 public class DatabaseUserRepository implements UserRepository
 {
     /**
@@ -22,30 +25,45 @@ public class DatabaseUserRepository implements UserRepository
         database = db;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public void addUser(User user)
+    public boolean addUser(User user)
     {
-        database.insertUser(user.getUsername(), user.getPassword(), user.getType().toString());
+        return database.addUser(user.getUsername(), user.getPassword(), user.getType());
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void removeUser(User user)
     {
         database.removeUser(user.getUsername());
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Optional<User> getUser(String username)
     {
         return database.getUser(username);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Iterable<User> getAllUsers()
     {
         return database.getAllUsers();
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void updateUser(User user)
     {

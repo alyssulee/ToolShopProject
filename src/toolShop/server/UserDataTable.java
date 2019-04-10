@@ -4,17 +4,14 @@ import toolShop.LoginService;
 import toolShop.models.User;
 import toolShop.models.UserType;
 
-import java.sql.DatabaseMetaData;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.Optional;
 
 public class UserDataTable extends DataBase implements LoginService
 {
-    private final String customer = "Customer";
-    private final String owner = "Owner";
+    private final UserType customer = UserType.Customer;
+    private final UserType owner = UserType.Owner;
 
     public UserDataTable()
     {
@@ -36,9 +33,10 @@ public class UserDataTable extends DataBase implements LoginService
                         + " PRIMARY KEY (username))";
                 statement.executeUpdate(query);
 
-                insertUser("admin", "password", owner);
-                insertUser("user1", "user1", customer);
-                insertUser("user2", "user2", customer);
+                addUser("admin", "password", owner);
+                addUser("admin1", "password", owner);
+                addUser("user1", "user1", customer);
+                addUser("user2", "user2", customer);
                 System.out.println("User Table created");
             }
         } catch (SQLException e)
@@ -48,7 +46,7 @@ public class UserDataTable extends DataBase implements LoginService
         }
     }
 
-    public void insertUser(String username, String password, String userType)
+    public boolean addUser(String username, String password, UserType userType)
     {
         try
         {
@@ -57,13 +55,19 @@ public class UserDataTable extends DataBase implements LoginService
             PreparedStatement pState = connect.prepareStatement(query);
             pState.setString(1, username);
             pState.setString(2, password);
-            pState.setString(3, userType);
+            pState.setString(3, userType.toString());
             pState.executeUpdate();
             System.out.println("User added successfully");
             pState.close();
-        } catch (SQLException e)
+            return true;
+        } catch (SQLIntegrityConstraintViolationException e)
         {
-            e.printStackTrace();
+            System.out.println("Entry of the same username has already been added!");
+            return false;
+        } catch (SQLException e1)
+        {
+            e1.printStackTrace();
+            return false;
         }
     }
 

@@ -39,4 +39,17 @@ public class LinkedLoginService implements LoginService
 
         return user.getPassword().equals(password) && user.getType().equals(userType);
     }
+
+    @Override
+    public boolean addUser(String username, String password, UserType userType)
+    {
+        try
+        {
+            return userRepository.addUser(new User(username, password, userType));
+        } catch (Exception e)
+        {
+            // Todo: Catch a proper exception
+            return false;
+        }
+    }
 }
