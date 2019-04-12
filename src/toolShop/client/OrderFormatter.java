@@ -1,3 +1,7 @@
+/**
+ * @author Alyssa Lee, Joel Poirier, Owen Troke-Billard
+ */
+
 package toolShop.client;
 
 import toolShop.models.Order;
