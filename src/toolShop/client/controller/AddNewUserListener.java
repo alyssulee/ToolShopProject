@@ -7,6 +7,9 @@ import toolShop.models.UserType;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * LoginController which connects the "Add User" Button in the GUI to the action listener
+ */
 public class AddNewUserListener extends LoginController
 {
 

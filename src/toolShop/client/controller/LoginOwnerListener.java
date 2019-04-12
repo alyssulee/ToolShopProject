@@ -7,14 +7,26 @@ import toolShop.models.UserType;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * LoginController which connects the "Login" Button in the GUI to the action listener
+ */
 public class LoginOwnerListener extends LoginController
 {
+    /**
+     * Sets the GUI and LoginService as well as the button action listener
+     *
+     * @param view
+     * @param loginService
+     */
     public LoginOwnerListener(GUI view, LoginService loginService)
     {
         super(view, loginService);
         view.getAcceptLoginButton().addActionListener(new LoginActionListener());
     }
 
+    /**
+     * ActionListener which adds a user when the "Login" button in the Shop Owner window is pressed
+     */
     public class LoginActionListener implements ActionListener
     {
 

@@ -74,6 +74,11 @@ public class MainController
         orderController.add(new PrintOrderListener(view, order, orderFormatter));
     }
 
+    /**
+     * Adds all LoginControllers
+     *
+     * @param login
+     */
     public void addLoginControllers(LoginService login)
     {
         loginController.add(new LoginOwnerListener(view, login));
