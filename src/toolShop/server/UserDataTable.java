@@ -8,6 +8,9 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.Optional;
 
+/**
+ * Maintains data and functions pertaining to the Suppliers
+ */
 public class UserDataTable extends DataBase implements LoginService
 {
     private final UserType customer = UserType.Customer;
@@ -19,6 +22,9 @@ public class UserDataTable extends DataBase implements LoginService
         createUserTable();
     }
 
+    /**
+     * Creates empty user table in database if table has yet to be created.
+     */
     private void createUserTable()
     {
         try
@@ -46,6 +52,14 @@ public class UserDataTable extends DataBase implements LoginService
         }
     }
 
+    /**
+     * Inserts a user into the tool table in the database
+     *
+     * @param username The username.
+     * @param password The password.
+     * @param userType The user type.
+     * @return
+     */
     public boolean addUser(String username, String password, UserType userType)
     {
         try
@@ -71,6 +85,12 @@ public class UserDataTable extends DataBase implements LoginService
         }
     }
 
+    /**
+     * Removes the user from data table
+     *
+     * @param username - username of the user
+     * @return
+     */
     public boolean removeUser(String username)
     {
         String query = "DELETE FROM shopusers WHERE username = \"" + username + "\"";

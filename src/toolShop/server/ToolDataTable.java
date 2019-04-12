@@ -9,6 +9,9 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.Optional;
 
+/**
+ * Maintains data and functions pertaining to the Tools
+ */
 public class ToolDataTable extends DataBase implements InventoryService
 {
     public ToolDataTable()

@@ -11,8 +11,7 @@ public class AddNewUserListener extends LoginController
 {
 
     /**
-     * Sets the GUI and LoginService
-     * *
+     * Sets the GUI and LoginService as well as the button action listener
      *
      * @param view
      * @param loginService
@@ -23,6 +22,9 @@ public class AddNewUserListener extends LoginController
         view.getAddLoginButton().addActionListener(new AddNewUserActionListener());
     }
 
+    /**
+     * ActionListener which adds a user when the "Add User" button in the Shop Owner window is pressed
+     */
     class AddNewUserActionListener implements ActionListener
     {
         @Override
