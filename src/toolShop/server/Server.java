@@ -9,10 +9,9 @@ import toolShop.InventoryService;
 import toolShop.LoginService;
 import toolShop.OrderService;
 import toolShop.SupplierService;
-import toolShop.models.Supplier;
-import toolShop.models.User;
-import toolShop.models.UserType;
-import toolShop.repositories.*;
+import toolShop.repositories.SupplierRepository;
+import toolShop.repositories.ToolRepository;
+import toolShop.repositories.UserRepository;
 
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -62,20 +61,6 @@ public class Server
 
         // Each client must have its own thread since Java IO is blocking
         executorService = Executors.newFixedThreadPool(maxClients);
-
-        // Todo: Replace in-memory tool repository with database repository
-        toolRepository = new MemoryToolRepository();
-
-        // Todo: Consider replacing in-memory supplier repository with database repository
-        supplierRepository = new MemorySupplierRepository();
-        supplierRepository.addSupplier(
-                new Supplier(0, "Bark's Tools", "Main St.", "bark@barks.co"));
-
-        // Todo: Consider replacing in-memory user repository with database repository
-        userRepository = new MemoryUserRepository();
-        userRepository.addUser(new User("Joel", "1234", UserType.Owner));
-        userRepository.addUser(new User("Alyssa", "1234", UserType.Owner));
-        userRepository.addUser(new User("Owen", "1234", UserType.Customer));
 
         //DATABASE:
         toolRepository = new DatabaseToolRepository(new ToolDataTable());
