@@ -1,3 +1,8 @@
+/**
+ * @author Alyssa Lee, Joel Poirier, Owen Troke-Billard
+ */
+
+
 package toolShop;
 
 import toolShop.models.Supplier;
@@ -18,4 +23,3 @@ public interface SupplierService
     Optional<Supplier> getSupplierById(int supplierId);
 }
 
-//Test

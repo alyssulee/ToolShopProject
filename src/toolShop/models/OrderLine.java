@@ -1,3 +1,8 @@
+/**
+ * @author Alyssa Lee, Joel Poirier, Owen Troke-Billard
+ */
+
+
 package toolShop.models;
 
 import java.io.Serializable;
